@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { MenuHoverNav } from '@/components/ui/MenuHoverNav';
 
 export function Header() {
@@ -6,12 +7,13 @@ export function Header() {
       <div className="flex justify-between items-center px-6 h-20 max-w-7xl mx-auto">
         {/* Logo */}
         <a href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-brand-orange flex items-center justify-center">
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-              <path d="M12 6v6l4 2" strokeLinecap="round" />
-            </svg>
-          </div>
+          <Image
+            src="/logos/jobsingles-logo.webp"
+            alt="Jobsingles Network"
+            width={40}
+            height={40}
+            className="rounded-lg"
+          />
           <span className="font-bold text-xl text-foreground tracking-tight">
             Blaulicht<span className="text-brand-orange"> Magazin</span>
           </span>

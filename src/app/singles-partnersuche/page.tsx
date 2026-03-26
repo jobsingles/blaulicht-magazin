@@ -1,6 +1,7 @@
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { ArticleCard } from '@/components/content/ArticleCard';
+import { HeartButton } from '@/components/ui/HeartButton';
 
 export const metadata = {
   title: 'Singles & Partnersuche',
@@ -14,8 +15,8 @@ export default async function SinglesPartnersuche() {
   return (
     <>
       <PillarHero
-        title="Singles & Partnersuche"
-        subtitle="Partnersuche für Blaulicht-Berufe — von Polizei bis Sanität."
+        title="Wer rettet, verdient jemanden der wartet"
+        subtitle="Partnersuche für Blaulicht-Berufe — von Polizei bis Sanität. Dein Guide für die Liebe neben dem Dienst."
       />
 
       <section className="max-w-6xl mx-auto px-6 py-16">
@@ -32,6 +33,12 @@ export default async function SinglesPartnersuche() {
             />
           ))}
         </div>
+      </section>
+
+      <section className="text-center py-16 px-6">
+        <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+          Jetzt kostenlos anmelden
+        </HeartButton>
       </section>
     </>
   );
