@@ -21,14 +21,14 @@ export function Footer() {
               clipPath: 'polygon(4% 0%, 98% 2%, 100% 18%, 96% 35%, 100% 52%, 97% 70%, 100% 88%, 95% 100%, 3% 98%, 0% 82%, 3% 65%, 0% 48%, 4% 30%, 0% 14%)',
             }}
           />
-          {/* Tape right — leicht schräg, zerrissene Ränder */}
+          {/* Tape right — horizontal schräg, zerrissene Ränder */}
           <div
-            className="absolute -top-3 right-14 w-9 h-20 hidden md:block z-10"
+            className="absolute -top-3 right-14 w-24 h-8 hidden md:block z-10"
             style={{
               background: 'rgba(255,255,255,0.35)',
               transform: 'rotate(6deg)',
               boxShadow: '0 2px 10px rgba(0,0,0,0.18)',
-              clipPath: 'polygon(3% 0%, 97% 1%, 100% 15%, 96% 32%, 100% 50%, 97% 68%, 100% 85%, 96% 100%, 2% 98%, 0% 80%, 4% 62%, 0% 45%, 3% 28%, 0% 12%)',
+              clipPath: 'polygon(0% 3%, 15% 0%, 35% 4%, 52% 0%, 70% 3%, 88% 0%, 100% 4%, 98% 97%, 85% 100%, 65% 96%, 48% 100%, 30% 97%, 12% 100%, 2% 96%)',
             }}
           />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
