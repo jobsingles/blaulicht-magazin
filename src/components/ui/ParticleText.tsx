@@ -138,7 +138,7 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       const isMobile = w < 500;
       const usableWidth = w * (isMobile ? 0.9 : 0.85);
       const maxH = h / (lines.length * 1.2);
-      let fontSize = Math.min(maxH, isMobile ? 70 : 120); // start large, shrink to fit
+      let fontSize = Math.min(maxH, isMobile ? 52 : 100); // slightly smaller, still bold
       oc.font = `bold ${fontSize}px Arial`;
       // Shrink until longest line fits
       const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
