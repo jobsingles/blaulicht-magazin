@@ -135,9 +135,10 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
         lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
       }
 
-      // Calculate font size based on longest line
+      // Calculate font size based on longest line, with padding
       const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
-      const fontSize = Math.min(w / (longestLine.length * 0.55), h / (lines.length * 1.4));
+      const usableWidth = w * 0.88; // 6% padding each side
+      const fontSize = Math.min(usableWidth / (longestLine.length * 0.58), h / (lines.length * 1.5));
       oc.fillStyle = 'white';
       oc.font = `bold ${fontSize}px Arial`;
       oc.textAlign = 'center';
