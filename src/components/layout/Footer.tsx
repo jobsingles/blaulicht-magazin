@@ -8,12 +8,12 @@ export function Footer() {
       {/* Tape top-left */}
       <div
         className="absolute -top-5 left-[20%] w-24 h-8 rounded-sm hidden md:block"
-        style={{ background: 'rgba(255,255,255,0.12)', transform: 'rotate(-8deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
+        style={{ background: 'rgba(255,255,255,0.22)', transform: 'rotate(-8deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
       />
       {/* Tape top-right */}
       <div
         className="absolute -top-5 right-[20%] w-24 h-8 rounded-sm hidden md:block"
-        style={{ background: 'rgba(255,255,255,0.12)', transform: 'rotate(6deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
+        style={{ background: 'rgba(255,255,255,0.22)', transform: 'rotate(6deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
       />
 
       {/* Orange accent line */}
@@ -49,16 +49,16 @@ export function Footer() {
                 Magazin
               </h4>
               <nav className="flex flex-col gap-2">
-                <a href="/singles-partnersuche" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="/singles-partnersuche" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Singles & Partnersuche
                 </a>
-                <a href="/tv-news" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="/tv-news" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   TV News
                 </a>
-                <a href="/regional" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="/regional" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Regional
                 </a>
-                <a href="/erfolgsgeschichten" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="/erfolgsgeschichten" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Erfolgsgeschichten
                 </a>
               </nav>
@@ -70,16 +70,16 @@ export function Footer() {
                 Netzwerk
               </h4>
               <nav className="flex flex-col gap-2">
-                <a href="https://blaulichtsingles.ch" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Blaulichtsingles.ch
                 </a>
-                <a href="https://farmersingles.de" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://farmersingles.de" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Farmersingles.de
                 </a>
-                <a href="https://singlebuure.ch" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://singlebuure.ch" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Singlebuure.ch
                 </a>
-                <a href="https://jobsingles.de" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://jobsingles.de" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Jobsingles.de
                 </a>
               </nav>
@@ -91,13 +91,13 @@ export function Footer() {
                 Rechtliches
               </h4>
               <nav className="flex flex-col gap-2">
-                <a href="https://blaulichtsingles.ch/impressum" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch/impressum" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Impressum
                 </a>
-                <a href="https://blaulichtsingles.ch/datenschutz" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch/datenschutz" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Datenschutz
                 </a>
-                <a href="https://blaulichtsingles.ch/ueber-uns" className="text-sm text-white/60 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Über uns
                 </a>
               </nav>
