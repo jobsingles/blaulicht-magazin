@@ -89,7 +89,7 @@ interface ParticleTextProps {
 const BRAND_COLORS = [
   { r: 255, g: 122, b: 0 },   // brand-orange #FF7A00
   { r: 74, g: 144, b: 217 },  // primary-light #4A90D9
-  { r: 233, g: 195, b: 73 },  // secondary #e9c349
+  { r: 66, g: 154, b: 69 },   // green #429A45
 ];
 
 export function ParticleText({ text, texts, className = '', colors = BRAND_COLORS }: ParticleTextProps) {

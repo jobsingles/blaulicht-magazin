@@ -24,9 +24,9 @@ export default async function Regional() {
       <PillarHero
         title="Regional"
         texts={[
-          "Liebe spricht Dialekt",
+          "Liebe Dialekt",
           "Singles vor Ort",
-          "Dein Kanton. Dein Match.",
+          "Dein Kanton",
           "Nähe verbindet",
           "Regional",
         ]}
