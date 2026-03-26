@@ -134,14 +134,19 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
         lines = [words[0], words.slice(1).join(' ')];
       }
 
-      // Calculate font size based on longest line
-      const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
+      // Calculate font size — measure actual text width to prevent clipping
       const isMobile = w < 500;
-      const usableWidth = w * (isMobile ? 0.92 : 0.85);
-      const charWidth = isMobile ? 0.48 : 0.55;
-      const fontSize = Math.min(usableWidth / (longestLine.length * charWidth), h / (lines.length * 1.4));
-      oc.fillStyle = 'white';
+      const usableWidth = w * (isMobile ? 0.9 : 0.85);
+      const maxH = h / (lines.length * 1.4);
+      let fontSize = Math.min(maxH, isMobile ? 60 : 120); // start large
       oc.font = `bold ${fontSize}px Arial`;
+      // Shrink until longest line fits
+      const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
+      while (fontSize > 12 && oc.measureText(longestLine).width > usableWidth) {
+        fontSize -= 2;
+        oc.font = `bold ${fontSize}px Arial`;
+      }
+      oc.fillStyle = 'white';
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
 
@@ -157,7 +162,7 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       colorIdx.current++;
       const particles = particlesRef.current;
       let pi = 0;
-      const step = 4;
+      const step = isMobile ? 3 : 4; // more particles on mobile for sharper text
 
       const coords: number[] = [];
       for (let i = 0; i < imgData.length; i += step * 4) coords.push(i);
@@ -209,7 +214,8 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       const r = parseInt(bgColor.slice(1, 3), 16) || 253;
       const g = parseInt(bgColor.slice(3, 5), 16) || 251;
       const b = parseInt(bgColor.slice(5, 7), 16) || 247;
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.15)`;
+      const trailOpacity = w < 500 ? 0.22 : 0.15; // faster fade on mobile = sharper
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${trailOpacity})`;
       ctx.fillRect(0, 0, w, h);
       const particles = particlesRef.current;
       for (let i = particles.length - 1; i >= 0; i--) {
