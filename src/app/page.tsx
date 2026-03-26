@@ -8,6 +8,7 @@ import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { CarouselCards } from '@/components/ui/CarouselCards';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { AnimatedStats } from '@/components/ui/AnimatedCounter';
+import { MatchQuiz } from '@/components/ui/MatchQuiz';
 
 const rotations: Array<'left' | 'right' | 'slight'> = ['left', 'right', 'slight'];
 
@@ -107,6 +108,15 @@ export default async function HomePage() {
       <ScrollReveal>
         <section className="max-w-6xl mx-auto px-6">
           <CircularTestimonials items={testimonials} />
+        </section>
+      </ScrollReveal>
+
+      {/* Quiz */}
+      <ScrollReveal>
+        <section className="max-w-4xl mx-auto px-6 py-16">
+          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Finde deinen Match-Typ</h2>
+          <p className="text-foreground/60 mb-8 text-center">3 Fragen — und du weisst, wer zu dir passt.</p>
+          <MatchQuiz />
         </section>
       </ScrollReveal>
 

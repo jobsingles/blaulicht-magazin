@@ -207,3 +207,68 @@ body {
   100% { transform: scale(0) translateY(-20px); opacity: 0; }
 }
 
+/* === Drop Cap — first paragraph in article prose === */
+.prose > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.8;
+  padding-right: 0.1em;
+  padding-top: 0.05em;
+  font-weight: 700;
+  color: var(--brand-orange);
+}
+
+/* === Pull Quote === */
+.pull-quote {
+  position: relative;
+  border-left: 4px solid var(--brand-orange);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--foreground);
+  background: linear-gradient(135deg, rgba(255, 122, 0, 0.05), rgba(74, 144, 217, 0.05));
+  border-radius: 0 8px 8px 0;
+}
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.3em;
+  left: 0.3em;
+  font-size: 3em;
+  color: var(--brand-orange);
+  opacity: 0.2;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* === Card Hover Lift === */
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* === Subtle Pulse for CTA === */
+@keyframes subtle-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(66, 154, 69, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(66, 154, 69, 0); }
+}
+.pulse-cta {
+  animation: subtle-pulse 2.5s ease infinite;
+}
+
+/* === prefers-reduced-motion === */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-line,
+  .gradient-border,
+  .pulse-cta {
+    animation: none;
+  }
+  .hover-lift:hover {
+    transform: none;
+  }
+}
+
