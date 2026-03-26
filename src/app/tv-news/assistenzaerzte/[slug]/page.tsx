@@ -1,5 +1,6 @@
 import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
+import { ArticleBody } from '@/components/content/ArticleBody';
 
 export async function generateStaticParams() {
   const [series, articles] = await Promise.all([
@@ -15,9 +16,11 @@ export default async function AssistenzaerzteArticle({ params }: { params: Promi
   const { slug } = await params;
 
   // Try series collection first, then articles
-  const seriesArticle = await reader.collections.series.read(slug);
-  const article = seriesArticle || await reader.collections.articles.read(slug);
+  const seriesArticle = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
+  const article = seriesArticle || await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
+
+  const content = article.content;
 
   return (
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">
@@ -33,6 +36,8 @@ export default async function AssistenzaerzteArticle({ params }: { params: Promi
               {'calloutAnswer' in article && <p className="mt-2 text-foreground/80">{article.calloutAnswer}</p>}
             </div>
           )}
+
+          <ArticleBody document={content} />
 
           {'takeaways' in article && article.takeaways && article.takeaways.length > 0 && (
             <div className="bg-surface-dark rounded-lg p-6 mt-8">

@@ -1,5 +1,6 @@
 import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
+import { ArticleBody } from '@/components/content/ArticleBody';
 
 export async function generateStaticParams() {
   const articles = await reader.collections.articles.all();
@@ -10,8 +11,10 @@ export async function generateStaticParams() {
 
 export default async function ClusterArticle({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = await reader.collections.articles.read(slug);
+  const article = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
+
+  const content = article.content;
 
   return (
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">
@@ -30,10 +33,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
             </div>
           )}
 
-          {/* Article content will be rendered via Markdoc */}
-          <div className="prose prose-invert max-w-none">
-            {/* TODO: Markdoc renderer */}
-          </div>
+          <ArticleBody document={content} />
 
           {article.takeaways && article.takeaways.length > 0 && (
             <div className="bg-surface-dark rounded-lg p-6 mt-12">
