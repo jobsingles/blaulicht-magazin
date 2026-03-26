@@ -8,10 +8,10 @@ export function Header() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-3">
           <Image
-            src="/logos/jobsingles-logo.webp"
+            src="/logos/jobsingles-logo.png"
             alt="Jobsingles Network"
-            width={40}
-            height={40}
+            width={44}
+            height={44}
             className="rounded-lg"
           />
           <span className="font-bold text-xl text-foreground tracking-tight">
