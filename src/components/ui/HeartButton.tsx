@@ -21,17 +21,17 @@ export function HeartButton({ href, children, className = '' }: HeartButtonProps
     <motion.a
       href={href}
       onClick={handleClick}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className={`relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-brand-orange to-[#ff9a3e] text-white font-bold shadow-[0_4px_20px_rgba(255,122,0,0.3)] hover:shadow-[0_6px_28px_rgba(255,122,0,0.45)] transition-shadow ${className}`}
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      className={`relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#3a8c3d] via-[#429A45] to-[#55ad58] text-white text-lg font-bold tracking-tight shadow-[0_6px_24px_rgba(66,154,69,0.35)] hover:shadow-[0_8px_36px_rgba(66,154,69,0.5)] transition-shadow animate-[pulse-glow-green_2.5s_ease-in-out_infinite] ${className}`}
     >
       <span className="relative">
         <motion.svg
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-5 h-5"
-          animate={burst ? { scale: [1, 1.4, 1] } : {}}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="w-6 h-6 text-red-400"
+          animate={burst ? { scale: [1, 1.5, 1] } : { scale: [1, 1.15, 1] }}
+          transition={burst ? { duration: 0.4, ease: 'easeOut' } : { duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
         >
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
         </motion.svg>

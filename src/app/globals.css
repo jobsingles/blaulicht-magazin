@@ -195,3 +195,9 @@ body {
   50% { transform: scale(1.2); opacity: 0.8; }
   100% { transform: scale(0) translateY(-20px); opacity: 0; }
 }
+
+/* === Pulse Glow for CTA (Green Network Style) === */
+@keyframes pulse-glow-green {
+  0%, 100% { box-shadow: 0 6px 24px rgba(66, 154, 69, 0.35); }
+  50% { box-shadow: 0 8px 40px rgba(66, 154, 69, 0.55); }
+}
