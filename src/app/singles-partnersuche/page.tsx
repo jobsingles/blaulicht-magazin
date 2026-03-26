@@ -37,7 +37,7 @@ export default async function SinglesPartnersuche() {
 
       <section className="text-center py-16 px-6">
         <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-          Jetzt kostenlos anmelden
+          Jetzt kostenfrei mitmachen
         </HeartButton>
       </section>
     </>

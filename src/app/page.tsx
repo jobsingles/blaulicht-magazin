@@ -87,7 +87,7 @@ export default async function HomePage() {
           Tausende Blaulicht-Singles warten auf dich.
         </p>
         <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-          Jetzt kostenlos anmelden
+          Jetzt kostenfrei mitmachen
         </HeartButton>
       </section>
 
