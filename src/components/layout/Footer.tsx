@@ -16,8 +16,8 @@ export function Footer() {
         style={{ background: 'rgba(255,255,255,0.22)', transform: 'rotate(6deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
       />
 
-      {/* Orange accent line */}
-      <div className="h-1 bg-gradient-to-r from-brand-orange via-secondary to-brand-orange" />
+      {/* Animated gradient accent line */}
+      <div className="animated-gradient-line h-[2px]" />
 
       <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
         {/* Inner content area — slightly lighter surface */}
@@ -121,6 +121,7 @@ export function Footer() {
           </a>
         </div>
       </div>
+
     </footer>
   );
 }
