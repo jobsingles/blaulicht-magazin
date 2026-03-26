@@ -118,6 +118,26 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
     ctx.scale(dpr, dpr);
     const w = rect.width;
     const h = rect.height;
+    const isMobile = w < 500;
+
+    // Pre-calculate a single fontSize that fits ALL texts — so every text looks the same
+    const tempCanvas = document.createElement('canvas');
+    const tempCtx = tempCanvas.getContext('2d')!;
+    const usableWidth = w * (isMobile ? 0.78 : 0.85);
+    const maxLines = 2;
+    const maxH = h / (maxLines * 1.3);
+    let globalFontSize = Math.min(maxH, isMobile ? 42 : 100);
+    tempCtx.font = `bold ${globalFontSize}px Arial`;
+
+    for (const t of allTexts) {
+      const ws = t.split(' ');
+      const tLines = ws.length === 1 ? [t] : [ws[0], ws.slice(1).join(' ')];
+      const longest = tLines.reduce((a, b) => a.length > b.length ? a : b);
+      while (globalFontSize > 12 && tempCtx.measureText(longest).width > usableWidth) {
+        globalFontSize -= 2;
+        tempCtx.font = `bold ${globalFontSize}px Arial`;
+      }
+    }
 
     function spawnText(word: string) {
       const off = document.createElement('canvas');
@@ -134,18 +154,8 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
         lines = [words[0], words.slice(1).join(' ')];
       }
 
-      // Calculate font size — measure actual text width to prevent clipping
-      const isMobile = w < 500;
-      const usableWidth = w * (isMobile ? 0.78 : 0.85); // 11% padding each side on mobile
-      const maxH = h / (lines.length * 1.3);
-      let fontSize = Math.min(maxH, isMobile ? 42 : 100);
+      const fontSize = globalFontSize;
       oc.font = `bold ${fontSize}px Arial`;
-      // Shrink until longest line fits
-      const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
-      while (fontSize > 12 && oc.measureText(longestLine).width > usableWidth) {
-        fontSize -= 2;
-        oc.font = `bold ${fontSize}px Arial`;
-      }
       oc.fillStyle = 'white';
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
@@ -153,7 +163,7 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       const lineHeight = fontSize * 1.2;
       const totalTextH = (lines.length - 1) * lineHeight;
       const startY = (h - totalTextH) / 2;
-      const centerX = w / 2 + (isMobile ? 30 : 0);
+      const centerX = w / 2 + (isMobile ? 55 : 0);
       for (let i = 0; i < lines.length; i++) {
         oc.fillText(lines[i], centerX, startY + i * lineHeight);
       }
