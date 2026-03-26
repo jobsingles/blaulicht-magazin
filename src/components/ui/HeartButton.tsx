@@ -20,19 +20,18 @@ const Heart = () => (
 
 export function HeartButton({ href, children, className = '' }: HeartButtonProps) {
   return (
+    <span className={`gradient-border inline-block !rounded-full !p-[3px] ${className}`}>
     <a
       href={href}
       className={`
         group relative inline-flex items-center gap-3 px-9 py-4
         text-lg font-bold text-white
         rounded-full
-        border-[3px] border-[#429A45]
         transition-all duration-300 ease-in-out
         cursor-pointer
         bg-[#429A45] shadow-[0_0_0_#429a458c]
         hover:bg-transparent hover:text-[#429A45] hover:shadow-[0_0_25px_#429a458c]
         active:scale-95
-        ${className}
       `}
     >
       {/* Main heart icon */}
@@ -120,5 +119,6 @@ export function HeartButton({ href, children, className = '' }: HeartButtonProps
         <Heart />
       </div>
     </a>
+    </span>
   );
 }
