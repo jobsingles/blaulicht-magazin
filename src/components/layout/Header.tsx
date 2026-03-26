@@ -22,6 +22,8 @@ export function Header() {
         {/* Navigation */}
         <MenuHoverNav />
       </div>
+      {/* Animated gradient border */}
+      <div className="animated-gradient-line h-[2px]" />
     </header>
   );
 }
