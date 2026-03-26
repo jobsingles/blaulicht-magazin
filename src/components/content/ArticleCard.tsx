@@ -13,7 +13,7 @@ interface ArticleCardProps {
 
 export function ArticleCard({ title, excerpt, href, image, category, date }: ArticleCardProps) {
   return (
-    <SpotlightCard>
+    <SpotlightCard className="hover-lift">
       <a href={href} className="block group">
         {image && (
           <div className="aspect-[16/10] overflow-hidden">
