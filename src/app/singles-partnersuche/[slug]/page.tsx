@@ -80,7 +80,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
         {/* CTA mid-article */}
         <div className="text-center py-8">
           <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-            Jetzt kostenlos anmelden
+            Jetzt kostenfrei mitmachen
           </HeartButton>
         </div>
 
@@ -115,7 +115,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
       {/* Bottom CTA */}
       <section className="text-center py-16 px-6">
         <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-          Jetzt kostenlos anmelden
+          Jetzt kostenfrei mitmachen
         </HeartButton>
       </section>
     </>
