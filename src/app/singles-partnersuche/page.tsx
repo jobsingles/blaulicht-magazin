@@ -18,11 +18,11 @@ export default async function SinglesPartnersuche() {
       <PillarHero
         title="Partnersuche"
         texts={[
-          "Schicht. Schluss. Liebe.",
+          "Schicht Liebe",
           "Wer rettet dich?",
-          "Dein Blaulicht-Match",
-          "Herz an Zentrale",
-          "Liebe trotz Piepser",
+          "Dein Match",
+          "Herz Zentrale",
+          "Liebe Piepser",
           "Partnersuche",
         ]}
         subtitle="Partnersuche für Blaulicht-Berufe — von Polizei bis Sanität. Dein Guide für die Liebe neben dem Dienst."

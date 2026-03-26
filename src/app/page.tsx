@@ -48,12 +48,12 @@ export default async function HomePage() {
         title="Blaulichtsingles"
         texts={[
           "Held sucht Herz",
-          "Notruf Herzklopfen",
-          "Einsatz: Liebe",
-          "Dein Match wartet",
-          "Blaulicht. Herzlicht.",
-          "Dienst. Frei. Verliebt.",
-          "Blaulichtsingles",
+          "Notruf Liebe",
+          "Einsatz Herz",
+          "Dein Match",
+          "Blaulicht Herz",
+          "Frei. Verliebt.",
+          "Blaulicht Singles",
         ]}
         subtitle="Das Magazin für Singles bei Polizei, Feuerwehr und Sanität"
       />
