@@ -21,8 +21,10 @@ export default config({
           defaultValue: 'polizei',
           options: [
             { label: 'Polizei', value: 'polizei' },
+            { label: 'Feuerwehr', value: 'feuerwehr' },
             { label: 'Sanität', value: 'sanitaet' },
             { label: 'Partnersuche', value: 'partnersuche' },
+            { label: 'TV News', value: 'tv-news' },
           ],
         }),
         type: fields.select({
