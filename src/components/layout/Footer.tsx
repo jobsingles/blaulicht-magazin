@@ -5,14 +5,14 @@ export function Footer() {
 
   return (
     <footer className="bg-primary text-white/90 relative overflow-visible">
-      {/* Tape top-left — lighter than dark blue */}
+      {/* Tape top-left */}
       <div
-        className="absolute -top-5 left-[8%] w-24 h-8 rounded-sm hidden md:block"
+        className="absolute -top-5 left-[20%] w-24 h-8 rounded-sm hidden md:block"
         style={{ background: 'rgba(255,255,255,0.12)', transform: 'rotate(-8deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
       />
       {/* Tape top-right */}
       <div
-        className="absolute -top-5 right-[8%] w-24 h-8 rounded-sm hidden md:block"
+        className="absolute -top-5 right-[20%] w-24 h-8 rounded-sm hidden md:block"
         style={{ background: 'rgba(255,255,255,0.12)', transform: 'rotate(6deg)', boxShadow: '0 3px 10px rgba(0,0,0,0.15)' }}
       />
 
