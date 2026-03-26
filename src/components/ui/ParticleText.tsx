@@ -139,7 +139,7 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
       const isMobile = w < 500;
       const usableWidth = w * (isMobile ? 0.92 : 0.88);
-      const charWidth = isMobile ? 0.38 : 0.58; // larger font on mobile
+      const charWidth = isMobile ? 0.48 : 0.58; // larger font on mobile
       const fontSize = Math.min(usableWidth / (longestLine.length * charWidth), h / (lines.length * 1.5));
       oc.fillStyle = 'white';
       oc.font = `bold ${fontSize}px Arial`;
