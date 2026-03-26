@@ -2,11 +2,12 @@ import { ParticleText } from '@/components/ui/ParticleText';
 
 interface PillarHeroProps {
   title: string;
+  texts?: string[];
   subtitle?: string;
   image?: string;
 }
 
-export function PillarHero({ title, subtitle, image }: PillarHeroProps) {
+export function PillarHero({ title, texts, subtitle, image }: PillarHeroProps) {
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
       {/* Background */}
@@ -18,7 +19,7 @@ export function PillarHero({ title, subtitle, image }: PillarHeroProps) {
       )}
 
       <div className="relative max-w-4xl mx-auto px-6 text-center">
-        <ParticleText text={title} className="w-full h-32 md:h-48 mb-6" />
+        <ParticleText text={title} texts={texts} className="w-full h-32 md:h-48 mb-6" />
         {subtitle && (
           <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
             {subtitle}

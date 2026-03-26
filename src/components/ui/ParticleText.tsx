@@ -76,7 +76,10 @@ class Particle {
 }
 
 interface ParticleTextProps {
-  text: string;
+  /** Single text (legacy) */
+  text?: string;
+  /** Multiple texts to rotate through */
+  texts?: string[];
   className?: string;
   /** Colors cycle: default brand-orange → primary-light */
   colors?: Array<{ r: number; g: number; b: number }>;
@@ -89,11 +92,13 @@ const BRAND_COLORS = [
   { r: 233, g: 195, b: 73 },  // secondary #e9c349
 ];
 
-export function ParticleText({ text, className = '', colors = BRAND_COLORS }: ParticleTextProps) {
+export function ParticleText({ text, texts, className = '', colors = BRAND_COLORS }: ParticleTextProps) {
+  const allTexts = texts && texts.length > 0 ? texts : text ? [text] : [''];
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animRef = useRef<number>(0);
   const colorIdx = useRef(0);
+  const textIdx = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -215,33 +220,26 @@ export function ParticleText({ text, className = '', colors = BRAND_COLORS }: Pa
       animRef.current = requestAnimationFrame(animate);
     }
 
-    spawnText(text);
+    spawnText(allTexts[0]);
+    textIdx.current = 1;
     animate();
 
-    // Re-trigger text every 8 seconds with next color
-    const interval = setInterval(() => spawnText(text), 8000);
+    // Re-trigger with next text + color every 8 seconds
+    const interval = setInterval(() => {
+      const nextText = allTexts[textIdx.current % allTexts.length];
+      textIdx.current++;
+      spawnText(nextText);
+    }, 8000);
 
     return () => {
       if (animRef.current) cancelAnimationFrame(animRef.current);
       clearInterval(interval);
     };
-  }, [text, colors]);
-
-  const wordCount = text.split(' ').length;
-  const useCanvas = wordCount <= 3;
+  }, [allTexts, colors]);
 
   return (
     <div className={`relative ${className}`} style={{ minHeight: '120px' }}>
-      {useCanvas ? (
-        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg" />
-      ) : (
-        <>
-          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg hidden md:block" />
-          <h1 className="md:hidden absolute inset-0 flex items-center justify-center text-2xl font-bold text-center px-4 particle-text">
-            {text}
-          </h1>
-        </>
-      )}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg" />
     </div>
   );
 }
