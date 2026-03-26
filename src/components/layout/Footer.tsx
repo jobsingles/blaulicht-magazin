@@ -17,7 +17,7 @@ export function Footer() {
       />
 
       {/* Animated gradient accent line */}
-      <div className="animated-gradient-line h-[2px]" />
+      <div className="animated-gradient-line h-[3px]" />
 
       <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
         {/* Inner content area — slightly lighter surface */}
