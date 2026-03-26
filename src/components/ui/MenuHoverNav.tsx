@@ -144,7 +144,7 @@ export function MenuHoverNav() {
               {/* Dropdown */}
               {item.dropdown && openDropdown === item.label && (
                 <div
-                  className="absolute top-full left-0 mt-1 min-w-[220px] py-2 rounded-lg glass-nav ambient-shadow z-50"
+                  className="absolute top-full left-0 mt-1 min-w-[220px] py-2 rounded-lg bg-surface shadow-lg border border-foreground/10 z-50"
                   onMouseEnter={() => {
                     if (timeoutRef.current) clearTimeout(timeoutRef.current);
                   }}
@@ -185,7 +185,7 @@ export function MenuHoverNav() {
 
       {/* Mobile Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-20 z-40 glass-nav md:hidden">
+        <div className="fixed inset-0 top-20 z-40 bg-background md:hidden">
           <nav className="flex flex-col p-6 gap-1">
             {NAV_ITEMS.map((item) => (
               <div key={item.label}>
