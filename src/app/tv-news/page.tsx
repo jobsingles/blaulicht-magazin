@@ -16,8 +16,8 @@ export default async function TVNews() {
   return (
     <>
       <PillarHero
-        title="TV News"
-        subtitle="Dating-Perspektiven aus beliebten Schweizer TV-Serien."
+        title="Wenn die Sirene schweigt, beginnt das Herzklopfen"
+        subtitle="Dating-Perspektiven aus beliebten Schweizer TV-Serien — Fiktion trifft auf echtes Leben."
       />
 
       <section className="max-w-6xl mx-auto px-6 py-16">

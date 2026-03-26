@@ -15,8 +15,8 @@ export default async function Erfolgsgeschichten() {
   return (
     <>
       <PillarHero
-        title="Erfolgsgeschichten"
-        subtitle="Echte Paare. Echte Geschichten. Echte Liebe."
+        title="Zwei Herzen, ein Notruf"
+        subtitle="Echte Paare. Echte Geschichten. So findet Blaulicht die Liebe."
       />
 
       <section className="max-w-6xl mx-auto px-6 py-16">

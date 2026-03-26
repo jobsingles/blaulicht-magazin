@@ -1,10 +1,14 @@
 import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
+import { getArticleUrl } from '@/lib/routes';
 import { ArticleBody } from '@/components/content/ArticleBody';
 import { ClusterHero } from '@/components/content/ClusterHero';
 import { CalloutBox } from '@/components/ui/CalloutBox';
 import { TakeawayBox } from '@/components/ui/TakeawayBox';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
+import { HeartButton } from '@/components/ui/HeartButton';
+import { AuthorBio } from '@/components/ui/AuthorBio';
+import { CarouselCards } from '@/components/ui/CarouselCards';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
@@ -19,6 +23,22 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const article = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
+
+  const author = article.author
+    ? await reader.collections.authors.read(article.author)
+    : null;
+
+  const allArticles = await reader.collections.articles.all();
+  const relatedArticles = allArticles
+    .filter((a) => a.slug !== slug && a.entry.category === article.category)
+    .slice(0, 6)
+    .map((a) => ({
+      title: a.entry.title,
+      excerpt: a.entry.excerpt,
+      href: getArticleUrl(a.slug, a.entry.type, a.entry.series),
+      image: a.entry.featuredImage || undefined,
+      category: a.entry.category,
+    }));
 
   return (
     <>
@@ -57,6 +77,13 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
 
         <ArticleBody content={article.content} />
 
+        {/* CTA mid-article */}
+        <div className="text-center py-8">
+          <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+            Jetzt kostenlos anmelden
+          </HeartButton>
+        </div>
+
         {article.takeaways && article.takeaways.length > 0 && (
           <TakeawayBox items={article.takeaways} />
         )}
@@ -67,7 +94,30 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
             <FAQAccordion items={article.faqItems} />
           </>
         )}
+
+        {/* Author Bio */}
+        {author && (
+          <AuthorBio
+            name={author.name}
+            role={author.role}
+            bio={author.bio}
+            avatar={author.avatar || undefined}
+            socialLinks={author.socialLinks}
+          />
+        )}
       </div>
+
+      {/* Related Articles Carousel */}
+      {relatedArticles.length > 0 && (
+        <CarouselCards title="Weitere Artikel" items={relatedArticles} />
+      )}
+
+      {/* Bottom CTA */}
+      <section className="text-center py-16 px-6">
+        <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+          Jetzt kostenlos anmelden
+        </HeartButton>
+      </section>
     </>
   );
 }

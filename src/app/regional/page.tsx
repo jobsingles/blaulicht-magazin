@@ -21,8 +21,8 @@ export default async function Regional() {
   return (
     <>
       <PillarHero
-        title="Regional"
-        subtitle="Blaulicht-Singles in deinem Kanton finden."
+        title="Liebe spricht Dialekt"
+        subtitle="Blaulicht-Singles in deinem Kanton — regionale Tipps, lokale Orte, echte Verbindungen."
       />
 
       <section className="max-w-6xl mx-auto px-6 py-16">
