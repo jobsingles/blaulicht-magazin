@@ -42,7 +42,16 @@ export default async function HomePage() {
   return (
     <>
       <PillarHero
-        title="Dein Herz kennt keinen Dienstplan"
+        title="Blaulichtsingles"
+        texts={[
+          "Held sucht Herz",
+          "Notruf Herzklopfen",
+          "Einsatz: Liebe",
+          "Dein Match wartet",
+          "Blaulicht. Herzlicht.",
+          "Dienst. Frei. Verliebt.",
+          "Blaulichtsingles",
+        ]}
         subtitle="Das Magazin für Singles bei Polizei, Feuerwehr und Sanität"
       />
 
