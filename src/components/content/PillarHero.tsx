@@ -9,7 +9,7 @@ interface PillarHeroProps {
 
 export function PillarHero({ title, texts, subtitle, image }: PillarHeroProps) {
   return (
-    <section className="relative overflow-hidden py-20 md:py-32">
+    <section className="relative overflow-hidden pt-2 pb-12 md:pt-2 md:pb-20">
       {/* Background */}
       <div className="absolute inset-0 particle-overlay opacity-50" />
       {image && (
@@ -19,7 +19,7 @@ export function PillarHero({ title, texts, subtitle, image }: PillarHeroProps) {
       )}
 
       <div className="relative max-w-4xl mx-auto px-6 text-center">
-        <ParticleText text={title} texts={texts} className="w-full h-32 md:h-48 mb-6" />
+        <ParticleText text={title} texts={texts} className="w-full h-48 md:h-56 mb-6" />
         {subtitle && (
           <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
             {subtitle}

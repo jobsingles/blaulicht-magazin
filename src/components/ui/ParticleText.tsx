@@ -125,30 +125,29 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       off.height = h;
       const oc = off.getContext('2d')!;
 
-      // Split into lines if text is long, render larger
+      // Split: first word on line 1, rest on line 2
       const words = word.split(' ');
       let lines: string[];
-      if (words.length <= 3) {
+      if (words.length === 1) {
         lines = [word];
       } else {
-        const mid = Math.ceil(words.length / 2);
-        lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+        lines = [words[0], words.slice(1).join(' ')];
       }
 
       // Calculate font size based on longest line
       const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
       const isMobile = w < 500;
-      const usableWidth = w * (isMobile ? 0.92 : 0.88);
-      const charWidth = isMobile ? 0.48 : 0.58; // larger font on mobile
-      const fontSize = Math.min(usableWidth / (longestLine.length * charWidth), h / (lines.length * 1.5));
+      const usableWidth = w * (isMobile ? 0.92 : 0.85);
+      const charWidth = isMobile ? 0.48 : 0.55;
+      const fontSize = Math.min(usableWidth / (longestLine.length * charWidth), h / (lines.length * 1.4));
       oc.fillStyle = 'white';
       oc.font = `bold ${fontSize}px Arial`;
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
 
-      const lineHeight = fontSize * 1.2;
-      const startY = h / 2 - ((lines.length - 1) * lineHeight) / 2 - 20; // 20px up
-      const centerX = w / 2 + 8; // 8px right
+      const lineHeight = fontSize * 1.15;
+      const startY = h / 2 - ((lines.length - 1) * lineHeight) / 2;
+      const centerX = w / 2;
       for (let i = 0; i < lines.length; i++) {
         oc.fillText(lines[i], centerX, startY + i * lineHeight);
       }
