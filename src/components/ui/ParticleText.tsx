@@ -119,12 +119,30 @@ export function ParticleText({ text, className = '', colors = BRAND_COLORS }: Pa
       off.width = w;
       off.height = h;
       const oc = off.getContext('2d')!;
-      const fontSize = Math.min(w / (word.length * 0.6), h * 0.6);
+
+      // Split into lines if text is long, render larger
+      const words = word.split(' ');
+      let lines: string[];
+      if (words.length <= 3) {
+        lines = [word];
+      } else {
+        const mid = Math.ceil(words.length / 2);
+        lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+      }
+
+      // Calculate font size based on longest line
+      const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
+      const fontSize = Math.min(w / (longestLine.length * 0.55), h / (lines.length * 1.4));
       oc.fillStyle = 'white';
       oc.font = `bold ${fontSize}px Arial`;
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
-      oc.fillText(word, w / 2, h / 2);
+
+      const lineHeight = fontSize * 1.2;
+      const startY = h / 2 - ((lines.length - 1) * lineHeight) / 2;
+      for (let i = 0; i < lines.length; i++) {
+        oc.fillText(lines[i], w / 2, startY + i * lineHeight);
+      }
 
       const imgData = oc.getImageData(0, 0, w, h).data;
       const color = colors[colorIdx.current % colors.length];
@@ -175,8 +193,15 @@ export function ParticleText({ text, className = '', colors = BRAND_COLORS }: Pa
       for (let i = pi; i < particles.length; i++) particles[i].kill(w, h);
     }
 
+    // Get page background color for canvas trail
+    const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#FDFBF7';
+
     function animate() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      // Use page background with low opacity for trail effect
+      const r = parseInt(bgColor.slice(1, 3), 16) || 253;
+      const g = parseInt(bgColor.slice(3, 5), 16) || 251;
+      const b = parseInt(bgColor.slice(5, 7), 16) || 247;
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.15)`;
       ctx.fillRect(0, 0, w, h);
       const particles = particlesRef.current;
       for (let i = particles.length - 1; i >= 0; i--) {
