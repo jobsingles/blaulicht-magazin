@@ -135,18 +135,20 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
         lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
       }
 
-      // Calculate font size based on longest line, with padding
+      // Calculate font size based on longest line
       const longestLine = lines.reduce((a, b) => a.length > b.length ? a : b);
-      const usableWidth = w * 0.88; // 6% padding each side
-      const fontSize = Math.min(usableWidth / (longestLine.length * 0.58), h / (lines.length * 1.5));
+      const isMobile = w < 500;
+      const usableWidth = w * (isMobile ? 0.92 : 0.88);
+      const charWidth = isMobile ? 0.38 : 0.58; // larger font on mobile
+      const fontSize = Math.min(usableWidth / (longestLine.length * charWidth), h / (lines.length * 1.5));
       oc.fillStyle = 'white';
       oc.font = `bold ${fontSize}px Arial`;
       oc.textAlign = 'center';
       oc.textBaseline = 'middle';
 
       const lineHeight = fontSize * 1.2;
-      const startY = h / 2 - ((lines.length - 1) * lineHeight) / 2;
-      const centerX = w / 2 + (w < 500 ? w * 0.03 : 0); // slight right nudge on mobile
+      const startY = h / 2 - ((lines.length - 1) * lineHeight) / 2 - 20; // 20px up
+      const centerX = w / 2 + 8; // 8px right
       for (let i = 0; i < lines.length; i++) {
         oc.fillText(lines[i], centerX, startY + i * lineHeight);
       }
