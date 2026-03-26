@@ -227,9 +227,21 @@ export function ParticleText({ text, className = '', colors = BRAND_COLORS }: Pa
     };
   }, [text, colors]);
 
+  const wordCount = text.split(' ').length;
+  const useCanvas = wordCount <= 3;
+
   return (
     <div className={`relative ${className}`} style={{ minHeight: '120px' }}>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg" />
+      {useCanvas ? (
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg" />
+      ) : (
+        <>
+          <canvas ref={canvasRef} className="absolute inset-0 w-full h-full rounded-lg hidden md:block" />
+          <h1 className="md:hidden absolute inset-0 flex items-center justify-center text-2xl font-bold text-center px-4 particle-text">
+            {text}
+          </h1>
+        </>
+      )}
     </div>
   );
 }
