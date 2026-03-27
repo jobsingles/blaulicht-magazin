@@ -60,8 +60,8 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
 
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto scroll-smooth px-6 pb-4 snap-x snap-mandatory scrollbar-hide"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex gap-5 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'max(1.5rem, calc((100vw - 72rem) / 2))', paddingRight: '1.5rem' }}
       >
         {items.map((item, i) => (
           <motion.a
