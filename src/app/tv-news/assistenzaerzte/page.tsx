@@ -6,15 +6,10 @@ export const metadata = {
 };
 
 export default async function Assistenzaerzte() {
-  const [allSeries, allArticles] = await Promise.all([
-    reader.collections.series.all(),
-    reader.collections.articles.all(),
-  ]);
-  const fromSeries = allSeries.filter((s) => s.entry.seriesId === 'assistenzaerzte');
-  const fromArticles = allArticles.filter(
-    (a) => a.entry.type === 'serie' && a.entry.series === 'assistenzaerzte' && a.entry.status !== 'draft'
+  const allSeries = await reader.collections.series.all();
+  const articles = allSeries.filter(
+    (s) => s.entry.seriesId === 'assistenzaerzte' && s.entry.status !== 'draft'
   );
-  const articles = [...fromSeries, ...fromArticles];
 
   return (
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">

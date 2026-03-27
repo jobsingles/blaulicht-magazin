@@ -9,23 +9,18 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateStaticParams() {
-  const [series, articles] = await Promise.all([
-    reader.collections.series.all(),
-    reader.collections.articles.all(),
-  ]);
-  const fromSeries = series.filter((s) => s.entry.seriesId === 'assistenzaerzte').map((s) => ({ slug: s.slug }));
-  const fromArticles = articles.filter((a) => a.entry.type === 'serie' && a.entry.series === 'assistenzaerzte' && a.entry.status !== 'draft').map((a) => ({ slug: a.slug }));
-  return [...fromSeries, ...fromArticles];
+  const series = await reader.collections.series.all();
+  return series
+    .filter((s) => s.entry.seriesId === 'assistenzaerzte' && s.entry.status !== 'draft')
+    .map((s) => ({ slug: s.slug }));
 }
 
 export default async function AssistenzaerzteArticle({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const seriesArticle = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
-  const articleEntry = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
-  const article = seriesArticle || articleEntry;
+  const article = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
-  if ('status' in article && article.status === 'draft') notFound();
+  if (article.status === 'draft') notFound();
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
 
