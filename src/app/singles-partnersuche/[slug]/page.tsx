@@ -65,7 +65,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           image: article.featuredImage || undefined,
           datePublished: article.publishedAt || undefined,
           authorName: author?.name,
-          authorUrl: author?.socialLinks?.find((l) => l.platform === 'Website')?.url,
+          authorUrl: author?.socialLinks?.find((l) => l.platform === 'Website')?.url ?? undefined,
         })}
       />
       {article.faqItems && article.faqItems.length > 0 && (
