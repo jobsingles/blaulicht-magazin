@@ -72,6 +72,14 @@ export default config({
         takeaways: fields.array(fields.text({ label: 'Punkt' }), {
           label: 'Das Wichtigste',
         }),
+        status: fields.select({
+          label: 'Status',
+          defaultValue: 'published',
+          options: [
+            { label: 'Draft', value: 'draft' },
+            { label: 'Published', value: 'published' },
+          ],
+        }),
         isNews: fields.checkbox({ label: 'News-Artikel (NewsArticle JSON-LD)', defaultValue: false }),
         tags: fields.array(fields.text({ label: 'Tag' }), { label: 'Tags' }),
         seoTitle: fields.text({ label: 'SEO Titel' }),

@@ -14,7 +14,7 @@ export async function generateStaticParams() {
     reader.collections.articles.all(),
   ]);
   const fromSeries = series.filter((s) => s.entry.seriesId === 'assistenzaerzte').map((s) => ({ slug: s.slug }));
-  const fromArticles = articles.filter((a) => a.entry.type === 'serie' && a.entry.series === 'assistenzaerzte').map((a) => ({ slug: a.slug }));
+  const fromArticles = articles.filter((a) => a.entry.type === 'serie' && a.entry.series === 'assistenzaerzte' && a.entry.status !== 'draft').map((a) => ({ slug: a.slug }));
   return [...fromSeries, ...fromArticles];
 }
 
@@ -22,8 +22,10 @@ export default async function AssistenzaerzteArticle({ params }: { params: Promi
   const { slug } = await params;
 
   const seriesArticle = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
-  const article = seriesArticle || await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
+  const articleEntry = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
+  const article = seriesArticle || articleEntry;
   if (!article) notFound();
+  if ('status' in article && article.status === 'draft') notFound();
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
 

@@ -18,7 +18,7 @@ export async function generateStaticParams() {
     .filter((s) => s.entry.seriesId === 'tatort-zuerich')
     .map((s) => ({ slug: s.slug }));
   const fromArticles = articles
-    .filter((a) => a.entry.type === 'serie' && a.entry.series === 'tatort-zuerich')
+    .filter((a) => a.entry.type === 'serie' && a.entry.series === 'tatort-zuerich' && a.entry.status !== 'draft')
     .map((a) => ({ slug: a.slug }));
   return [...fromSeries, ...fromArticles];
 }
@@ -45,8 +45,10 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
   const { slug } = await params;
 
   const seriesArticle = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
-  const article = seriesArticle || await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
+  const articleEntry = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
+  const article = seriesArticle || articleEntry;
   if (!article) notFound();
+  if ('status' in article && article.status === 'draft') notFound();
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
   const isNews = 'isNews' in article ? (article as any).isNews : false;
