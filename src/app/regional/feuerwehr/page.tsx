@@ -6,8 +6,12 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const metadata = {
   title: 'Singles Feuerwehr Schweiz — Alle Kantone',
-  description: 'Feuerwehr Singles & Bekanntschaften in allen Schweizer Kantonen. Dates und Partnersuche für Blaulicht-Singles.',
+  description: 'Feuerwehr Singles & Bekanntschaften in allen Schweizer Kantonen. Dates und Partnersuche für Blaulicht-Singles aus Berufs- und Milizfeuerwehr.',
 };
+
+function toAnchor(kanton: string) {
+  return kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue');
+}
 
 export default async function FeuerwehrRegional() {
   const all = await reader.collections.regional.all();
@@ -21,6 +25,8 @@ export default async function FeuerwehrRegional() {
     if (!byKanton.has(k)) byKanton.set(k, []);
     byKanton.get(k)!.push(entry);
   }
+
+  const kantone = Array.from(byKanton.keys());
 
   return (
     <>
@@ -36,17 +42,51 @@ export default async function FeuerwehrRegional() {
           { label: 'Feuerwehr', href: '/regional/feuerwehr' },
         ]} />
 
+        {/* SEO Intro */}
+        <div className="mb-12 mt-4 max-w-3xl">
+          <h1 className="text-3xl font-bold mb-4">Singles Feuerwehr Schweiz</h1>
+          <p className="text-foreground/70 leading-relaxed mb-3">
+            Ob Berufsfeuerwehr oder Milizfeuerwehr — der Korpsgeist verbindet. Unregelmässige Pikettdienste,
+            Übungen am Wochenende und Einsätze, die man nicht einfach beschreiben kann: Feuerwehr-Singles
+            suchen jemanden, der das versteht. Auf <strong>blaulichtsingles.ch</strong> findest du genau diese Menschen.
+          </p>
+          <p className="text-foreground/70 leading-relaxed">
+            {kantone.length} Kantone abgedeckt. Spring direkt zu deiner Region oder scrolle durch alle Kantone.
+          </p>
+        </div>
+
+        {/* Kanton Quick-Nav */}
+        {kantone.length > 0 && (
+          <nav className="mb-12" aria-label="Kantone Navigation">
+            <p className="text-xs uppercase tracking-widest text-foreground/40 mb-3 font-semibold">Direkt zum Kanton</p>
+            <div className="flex flex-wrap gap-2">
+              {kantone.map((kanton) => (
+                <a
+                  key={kanton}
+                  href={`#${toAnchor(kanton)}`}
+                  className="px-3 py-1.5 text-sm rounded-full bg-surface-dark border border-brand-orange/20 hover:border-brand-orange hover:text-brand-orange transition-colors"
+                >
+                  {kanton}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+
+        {/* Kanton Sections */}
         {Array.from(byKanton.entries()).map(([kanton, kantonsEntries]) => (
           <ScrollReveal key={kanton}>
-            <div className="mb-12">
-              <h2 className="text-xl font-bold mb-4 border-b border-brand-orange/30 pb-2">{kanton}</h2>
+            <div className="mb-14" id={toAnchor(kanton)}>
+              <h2 className="text-xl font-bold mb-4 border-b border-brand-orange/30 pb-2 scroll-mt-24">
+                Feuerwehr Singles {kanton}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {kantonsEntries.map((entry) => (
                   <ArticleCard
                     key={entry.slug}
                     title={entry.entry.title}
                     excerpt={entry.entry.excerpt}
-                    href={`/regional/${entry.entry.kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')}/${entry.slug}`}
+                    href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
                     image={entry.entry.featuredImage || undefined}
                     category={entry.entry.city || kanton}
                     date={entry.entry.publishedAt || undefined}
