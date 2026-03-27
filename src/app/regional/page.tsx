@@ -1,75 +1,73 @@
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
-import { ArticleCard } from '@/components/content/ArticleCard';
-import { RegionalProgress } from '@/components/ui/RegionalProgress';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const metadata = {
   title: 'Regional',
-  description: 'Blaulicht-Dating in deinem Kanton — regionale Tipps und lokale Singles.',
+  description: 'Blaulicht-Dating in deinem Kanton — regionale Tipps und lokale Singles für Polizei, Sanität und Feuerwehr.',
 };
 
-export default async function Regional() {
-  const allRegional = await reader.collections.regional.all();
+const BERUFE = [
+  {
+    id: 'polizei',
+    label: 'Polizei',
+    description: 'Kantonspolizei, Stadtpolizei, Gemeindepolizei — Singles in deinem Kanton.',
+    href: '/regional/polizei',
+    icon: '🚔',
+  },
+  {
+    id: 'sanitaet',
+    label: 'Sanität',
+    description: 'Rettungsdienst, Sanitäter, Notfallsanitäter — Singles in deinem Kanton.',
+    href: '/regional/sanitaet',
+    icon: '🚑',
+  },
+  {
+    id: 'feuerwehr',
+    label: 'Feuerwehr',
+    description: 'Berufsfeuerwehr und Milizfeuerwehr — Singles in deinem Kanton.',
+    href: '/regional/feuerwehr',
+    icon: '🚒',
+  },
+] as const;
 
-  const kantons = new Map<string, typeof allRegional>();
-  for (const entry of allRegional) {
-    const k = entry.entry.kanton;
-    if (!kantons.has(k)) kantons.set(k, []);
-    kantons.get(k)!.push(entry);
-  }
+export default async function Regional() {
+  const all = await reader.collections.regional.all();
+
+  const counts = {
+    polizei: all.filter((r) => r.entry.beruf === 'polizei').length,
+    sanitaet: all.filter((r) => r.entry.beruf === 'sanitaet').length,
+    feuerwehr: all.filter((r) => r.entry.beruf === 'feuerwehr').length,
+  };
 
   return (
     <>
       <PillarHero
         title="Regional"
-        texts={[
-          "Liebe Dialekt",
-          "Singles vor Ort",
-          "Dein Kanton",
-          "Nähe verbindet",
-          "Regional",
-        ]}
+        texts={['Liebe Dialekt', 'Singles vor Ort', 'Dein Kanton', 'Nähe verbindet', 'Regional']}
         subtitle="Blaulicht-Singles in deinem Kanton — regionale Tipps, lokale Orte, echte Verbindungen."
       />
 
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        {/* Kanton overview */}
-        {kantons.size > 0 && (
-          <ScrollReveal>
-            <div className="max-w-md mb-16">
-              {Array.from(kantons.entries()).map(([kanton, entries]) => (
-                <RegionalProgress
-                  key={kanton}
-                  label={kanton}
-                  value={entries.length}
-                  max={Math.max(...Array.from(kantons.values()).map((e) => e.length))}
-                />
-              ))}
-            </div>
-          </ScrollReveal>
-        )}
-
-        {Array.from(kantons.entries()).map(([kanton, entries]) => (
-          <ScrollReveal key={kanton}>
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold mb-6">{kanton}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {entries.map((entry) => (
-                  <ArticleCard
-                    key={entry.slug}
-                    title={entry.entry.title}
-                    excerpt={entry.entry.excerpt}
-                    href={`/regional/${entry.entry.kanton.toLowerCase().replace(/\s+/g, '-')}/${entry.slug}`}
-                    image={entry.entry.featuredImage || undefined}
-                    category={entry.entry.city || entry.entry.kanton}
-                    date={entry.entry.publishedAt || undefined}
-                  />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        ))}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {BERUFE.map((beruf) => (
+            <ScrollReveal key={beruf.id}>
+              <a
+                href={beruf.href}
+                className="block bg-surface-dark rounded-xl p-8 hover:ring-2 hover:ring-brand-orange transition-all group"
+              >
+                <div className="text-4xl mb-4">{beruf.icon}</div>
+                <h2 className="text-2xl font-bold mb-2 group-hover:text-brand-orange transition-colors">
+                  {beruf.label}
+                </h2>
+                <p className="text-foreground/60 text-sm mb-4">{beruf.description}</p>
+                <span className="text-xs font-semibold text-brand-orange">
+                  {counts[beruf.id]} {counts[beruf.id] === 1 ? 'Kanton' : 'Kantone'} →
+                </span>
+              </a>
+            </ScrollReveal>
+          ))}
+        </div>
       </section>
     </>
   );
