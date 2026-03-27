@@ -130,6 +130,15 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        beruf: fields.select({
+          label: 'Beruf',
+          defaultValue: 'polizei',
+          options: [
+            { label: 'Polizei', value: 'polizei' },
+            { label: 'Sanität', value: 'sanitaet' },
+            { label: 'Feuerwehr', value: 'feuerwehr' },
+          ],
+        }),
         kanton: fields.text({ label: 'Kanton' }),
         city: fields.text({ label: 'Stadt (optional)' }),
         excerpt: fields.text({ label: 'Auszug', multiline: true }),

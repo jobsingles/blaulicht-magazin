@@ -2,27 +2,47 @@ import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export async function generateStaticParams() {
   const all = await reader.collections.regional.all();
-  const kantons = new Set(all.map((r) => r.entry.kanton.toLowerCase().replace(/\s+/g, '-')));
-  return Array.from(kantons).map((kanton) => ({ kanton }));
+  const kantons = new Set(
+    all.map((r) => r.entry.kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue'))
+  );
+  // Statische Beruf-Routen ausschliessen
+  const STATIC = new Set(['polizei', 'sanitaet', 'feuerwehr']);
+  return Array.from(kantons)
+    .filter((k) => !STATIC.has(k))
+    .map((kanton) => ({ kanton }));
 }
+
+const BERUF_LABELS: Record<string, string> = {
+  polizei: 'Polizei',
+  sanitaet: 'Sanität',
+  feuerwehr: 'Feuerwehr',
+};
 
 export default async function KantonPage({ params }: { params: Promise<{ kanton: string }> }) {
   const { kanton } = await params;
   const allRegional = await reader.collections.regional.all();
   const entries = allRegional.filter(
-    (r) => r.entry.kanton.toLowerCase().replace(/\s+/g, '-') === kanton
+    (r) => r.entry.kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue') === kanton
   );
 
   const kantonName = entries[0]?.entry.kanton || kanton;
+
+  const byBeruf = new Map<string, typeof entries>();
+  for (const entry of entries) {
+    const b = entry.entry.beruf ?? 'polizei';
+    if (!byBeruf.has(b)) byBeruf.set(b, []);
+    byBeruf.get(b)!.push(entry);
+  }
 
   return (
     <>
       <PillarHero
         title={`Kanton ${kantonName}`}
-        subtitle={`Blaulicht-Singles im Kanton ${kantonName}.`}
+        subtitle={`Blaulicht-Singles im Kanton ${kantonName} — Polizei, Sanität und Feuerwehr.`}
       />
 
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -31,19 +51,32 @@ export default async function KantonPage({ params }: { params: Promise<{ kanton:
           { label: kantonName, href: `/regional/${kanton}` },
         ]} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {entries.map((entry) => (
-            <ArticleCard
-              key={entry.slug}
-              title={entry.entry.title}
-              excerpt={entry.entry.excerpt}
-              href={`/regional/${kanton}/${entry.slug}`}
-              image={entry.entry.featuredImage || undefined}
-              category={entry.entry.city || kantonName}
-              date={entry.entry.publishedAt || undefined}
-            />
-          ))}
-        </div>
+        {['polizei', 'sanitaet', 'feuerwehr'].map((beruf) => {
+          const berufsEntries = byBeruf.get(beruf);
+          if (!berufsEntries?.length) return null;
+          return (
+            <ScrollReveal key={beruf}>
+              <div className="mb-12">
+                <h2 className="text-xl font-bold mb-4 border-b border-brand-orange/30 pb-2">
+                  {BERUF_LABELS[beruf]}
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {berufsEntries.map((entry) => (
+                    <ArticleCard
+                      key={entry.slug}
+                      title={entry.entry.title}
+                      excerpt={entry.entry.excerpt}
+                      href={`/regional/${kanton}/${entry.slug}`}
+                      image={entry.entry.featuredImage || undefined}
+                      category={entry.entry.city || kantonName}
+                      date={entry.entry.publishedAt || undefined}
+                    />
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          );
+        })}
       </div>
     </>
   );
