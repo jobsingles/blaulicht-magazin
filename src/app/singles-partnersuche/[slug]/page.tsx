@@ -12,6 +12,21 @@ import { CarouselCards } from '@/components/ui/CarouselCards';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = await reader.collections.articles.read(slug);
+  if (!article) return {};
+  return {
+    title: article.seoTitle || article.title,
+    description: article.seoDescription || article.excerpt,
+    openGraph: {
+      title: article.seoTitle || article.title,
+      description: article.seoDescription || article.excerpt,
+      images: article.featuredImage ? [article.featuredImage] : [],
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const articles = await reader.collections.articles.all();
   return articles
