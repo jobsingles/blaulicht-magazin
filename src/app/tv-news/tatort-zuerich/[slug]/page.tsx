@@ -10,26 +10,18 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateStaticParams() {
-  const [series, articles] = await Promise.all([
-    reader.collections.series.all(),
-    reader.collections.articles.all(),
-  ]);
-  const fromSeries = series
-    .filter((s) => s.entry.seriesId === 'tatort-zuerich')
+  const series = await reader.collections.series.all();
+  return series
+    .filter((s) => s.entry.seriesId === 'tatort-zuerich' && s.entry.status !== 'draft')
     .map((s) => ({ slug: s.slug }));
-  const fromArticles = articles
-    .filter((a) => a.entry.type === 'serie' && a.entry.series === 'tatort-zuerich' && a.entry.status !== 'draft')
-    .map((a) => ({ slug: a.slug }));
-  return [...fromSeries, ...fromArticles];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const seriesArticle = await reader.collections.series.read(slug);
-  const article = seriesArticle || await reader.collections.articles.read(slug);
+  const article = await reader.collections.series.read(slug);
   if (!article) return {};
-  const seoTitle = 'seoTitle' in article ? article.seoTitle : undefined;
-  const seoDescription = 'seoDescription' in article ? article.seoDescription : undefined;
+  const seoTitle = article.seoTitle;
+  const seoDescription = article.seoDescription;
   return {
     title: seoTitle || article.title,
     description: seoDescription || article.excerpt,
@@ -44,11 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function TatortArticle({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const seriesArticle = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
-  const articleEntry = await reader.collections.articles.read(slug, { resolveLinkedFiles: true });
-  const article = seriesArticle || articleEntry;
+  const article = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
-  if ('status' in article && article.status === 'draft') notFound();
+  if (article.status === 'draft') notFound();
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
   const isNews = 'isNews' in article ? (article as any).isNews : false;

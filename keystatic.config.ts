@@ -165,6 +165,14 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        status: fields.select({
+          label: 'Status',
+          defaultValue: 'published',
+          options: [
+            { label: 'Draft', value: 'draft' },
+            { label: 'Published', value: 'published' },
+          ],
+        }),
         seriesId: fields.select({
           label: 'Serie',
           defaultValue: 'assistenzaerzte',
@@ -173,13 +181,37 @@ export default config({
             { label: 'Tatort Zürich (SRF)', value: 'tatort-zuerich' },
           ],
         }),
+        isNews: fields.checkbox({ label: 'News-Artikel (NewsArticle JSON-LD)', defaultValue: false }),
+        theme: fields.select({
+          label: 'Theme',
+          defaultValue: 'dark',
+          options: [
+            { label: 'Dark', value: 'dark' },
+            { label: 'Light', value: 'light' },
+          ],
+        }),
+        author: fields.relationship({ label: 'Autor', collection: 'authors' }),
         excerpt: fields.text({ label: 'Auszug', multiline: true }),
         featuredImage: fields.image({
           label: 'Bild',
-          directory: 'public/images/series',
-          publicPath: '/images/series/',
+          directory: 'public/images/articles',
+          publicPath: '/images/articles/',
         }),
+        calloutQuestion: fields.text({ label: 'Callout Frage' }),
+        calloutAnswer: fields.text({ label: 'Callout Antwort', multiline: true }),
         content: fields.markdoc({ label: 'Inhalt' }),
+        faqItems: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Frage' }),
+            answer: fields.text({ label: 'Antwort', multiline: true }),
+          }),
+          {
+            label: 'FAQ',
+            itemLabel: (props) => props.fields.question.value,
+          }
+        ),
+        takeaways: fields.array(fields.text({ label: 'Punkt' }), { label: 'Das Wichtigste' }),
+        tags: fields.array(fields.text({ label: 'Tag' }), { label: 'Tags' }),
         seoTitle: fields.text({ label: 'SEO Titel' }),
         seoDescription: fields.text({ label: 'SEO Beschreibung' }),
         publishedAt: fields.date({ label: 'Veröffentlicht am' }),
