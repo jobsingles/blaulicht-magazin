@@ -85,6 +85,29 @@ export default async function HomePage() {
         </section>
       </ScrollReveal>
 
+      {/* Erfolgsgeschichten */}
+      {stories.length > 0 && (
+        <ScrollReveal>
+          <section className="max-w-6xl mx-auto px-6 py-16">
+            <h2 className="text-3xl font-bold mb-8">Erfolgsgeschichten</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+              {stories.slice(0, 3).map((story, i) => (
+                <SuccessStory
+                  key={story.slug}
+                  title={story.entry.title}
+                  couple={story.entry.couple}
+                  location={story.entry.location}
+                  excerpt={story.entry.excerpt}
+                  href={`/erfolgsgeschichten/${story.slug}`}
+                  image={story.entry.featuredImage || undefined}
+                  rotation={rotations[i % 3]}
+                />
+              ))}
+            </div>
+          </section>
+        </ScrollReveal>
+      )}
+
       {/* Weitere Artikel — Carousel */}
       {carouselItems.length > 3 && (
         <ScrollReveal>
@@ -134,28 +157,6 @@ export default async function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* Erfolgsgeschichten */}
-      {stories.length > 0 && (
-        <ScrollReveal>
-          <section className="max-w-6xl mx-auto px-6 py-16">
-            <h2 className="text-3xl font-bold mb-8">Erfolgsgeschichten</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-              {stories.slice(0, 3).map((story, i) => (
-                <SuccessStory
-                  key={story.slug}
-                  title={story.entry.title}
-                  couple={story.entry.couple}
-                  location={story.entry.location}
-                  excerpt={story.entry.excerpt}
-                  href={`/erfolgsgeschichten/${story.slug}`}
-                  image={story.entry.featuredImage || undefined}
-                  rotation={rotations[i % 3]}
-                />
-              ))}
-            </div>
-          </section>
-        </ScrollReveal>
-      )}
     </>
   );
 }

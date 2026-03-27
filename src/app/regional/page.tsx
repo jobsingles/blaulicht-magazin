@@ -54,13 +54,13 @@ export default async function Regional() {
             <ScrollReveal key={beruf.id}>
               <a
                 href={beruf.href}
-                className="block bg-surface-dark rounded-xl p-8 hover:ring-2 hover:ring-brand-orange transition-all group"
+                className="block bg-surface-dark text-white rounded-xl p-8 hover:ring-2 hover:ring-brand-orange transition-all group"
               >
                 <div className="text-4xl mb-4">{beruf.icon}</div>
                 <h2 className="text-2xl font-bold mb-2 group-hover:text-brand-orange transition-colors">
                   {beruf.label}
                 </h2>
-                <p className="text-foreground/60 text-sm mb-4">{beruf.description}</p>
+                <p className="text-white/60 text-sm mb-4">{beruf.description}</p>
                 <span className="text-xs font-semibold text-brand-orange">
                   {counts[beruf.id]} {counts[beruf.id] === 1 ? 'Kanton' : 'Kantone'} →
                 </span>
