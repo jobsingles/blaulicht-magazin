@@ -58,14 +58,13 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
         </div>
       )}
 
+      <div className="max-w-6xl mx-auto px-6">
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide"
+        className="flex gap-5 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide justify-center"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
-          paddingLeft: 'max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem))',
-          paddingRight: '1.5rem',
         }}
       >
         {items.map((item, i) => (
@@ -101,6 +100,7 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
             </div>
           </motion.a>
         ))}
+      </div>
       </div>
     </section>
   );
