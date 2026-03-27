@@ -31,8 +31,9 @@ const testimonials = [
 ];
 
 export default async function HomePage() {
-  const articles = await reader.collections.articles.all();
+  const allArticles = await reader.collections.articles.all();
   const stories = await reader.collections.stories.all();
+  const articles = allArticles.filter((a) => a.entry.status !== 'draft');
 
   const carouselItems = articles.slice(0, 8).map((article) => ({
     title: article.entry.title,

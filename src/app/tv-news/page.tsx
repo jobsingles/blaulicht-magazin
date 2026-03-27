@@ -7,10 +7,20 @@ export const metadata = {
 };
 
 export default async function TVNews() {
-  const seriesArticles = await reader.collections.series.all();
+  const [seriesArticles, newsArticles] = await Promise.all([
+    reader.collections.series.all(),
+    reader.collections.articles.all(),
+  ]);
+  const published = newsArticles.filter((a) => a.entry.type === 'serie' && a.entry.status !== 'draft');
 
-  const assistenzaerzte = seriesArticles.filter((s) => s.entry.seriesId === 'assistenzaerzte');
-  const tatort = seriesArticles.filter((s) => s.entry.seriesId === 'tatort-zuerich');
+  const assistenzaerzte = [
+    ...seriesArticles.filter((s) => s.entry.seriesId === 'assistenzaerzte'),
+    ...published.filter((a) => a.entry.series === 'assistenzaerzte'),
+  ];
+  const tatort = [
+    ...seriesArticles.filter((s) => s.entry.seriesId === 'tatort-zuerich'),
+    ...published.filter((a) => a.entry.series === 'tatort-zuerich'),
+  ];
 
   return (
     <>
