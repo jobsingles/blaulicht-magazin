@@ -1,5 +1,6 @@
 import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { ArticleBody } from '@/components/content/ArticleBody';
 import { PolaroidCard } from '@/components/ui/PolaroidCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -8,6 +9,27 @@ import { JsonLd, articleJsonLd } from '@/components/seo/JsonLd';
 export async function generateStaticParams() {
   const stories = await reader.collections.stories.all();
   return stories.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const story = await reader.collections.stories.read(slug);
+  if (!story) return {};
+
+  const title = story.seoTitle || story.title;
+  const description = story.seoDescription || story.excerpt;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      url: `https://blaulichtsingles.ch/magazin/erfolgsgeschichten/${slug}`,
+      ...(story.featuredImage && { images: [{ url: story.featuredImage }] }),
+    },
+  };
 }
 
 export default async function StoryDetail({ params }: { params: Promise<{ slug: string }> }) {

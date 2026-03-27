@@ -276,6 +276,8 @@ export default config({
         }),
         content: fields.markdoc({ label: 'Geschichte' }),
         publishedAt: fields.date({ label: 'Veröffentlicht am' }),
+        seoTitle: fields.text({ label: 'SEO Titel' }),
+        seoDescription: fields.text({ label: 'SEO Beschreibung' }),
       },
     }),
 
