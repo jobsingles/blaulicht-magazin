@@ -1,12 +1,13 @@
 interface AuthorBioProps {
   name: string;
+  slug?: string;
   role?: string;
   bio?: string;
   avatar?: string;
   socialLinks?: ReadonlyArray<{ readonly platform: string; readonly url: string | null }>;
 }
 
-export function AuthorBio({ name, role, bio, avatar, socialLinks }: AuthorBioProps) {
+export function AuthorBio({ name, slug, role, bio, avatar, socialLinks }: AuthorBioProps) {
   return (
     <div className="flex gap-5 items-start p-6 rounded-2xl bg-surface ambient-shadow my-12">
       {avatar ? (
@@ -28,23 +29,29 @@ export function AuthorBio({ name, role, bio, avatar, socialLinks }: AuthorBioPro
           <p className="text-xs uppercase tracking-widest text-brand-orange font-bold mb-2">{role}</p>
         )}
         {bio && (
-          <p className="text-sm text-foreground/60 leading-relaxed">{bio}</p>
+          <p className="text-sm text-foreground/60 leading-relaxed line-clamp-3">{bio}</p>
         )}
-        {socialLinks && socialLinks.length > 0 && (
-          <div className="flex gap-3 mt-3">
-            {socialLinks.filter((link) => link.url).map((link) => (
-              <a
-                key={link.url}
-                href={link.url!}
-                className="text-xs text-foreground/40 hover:text-brand-orange transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.platform}
-              </a>
-            ))}
-          </div>
-        )}
+        <div className="flex flex-wrap gap-3 mt-3 items-center">
+          {slug && (
+            <a
+              href={`/autor/${slug}`}
+              className="text-xs font-semibold text-brand-orange hover:underline"
+            >
+              Mehr über {name} →
+            </a>
+          )}
+          {socialLinks && socialLinks.filter((link) => link.url).map((link) => (
+            <a
+              key={link.url}
+              href={link.url!}
+              className="text-xs text-foreground/40 hover:text-brand-orange transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.platform}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

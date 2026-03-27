@@ -116,6 +116,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
         {author && (
           <AuthorBio
             name={author.name}
+            slug={article.author || undefined}
             role={author.role}
             bio={author.bio}
             avatar={author.avatar || undefined}

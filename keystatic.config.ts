@@ -204,7 +204,8 @@ export default config({
       schema: {
         name: fields.slug({ name: { label: 'Name' } }),
         role: fields.text({ label: 'Rolle' }),
-        bio: fields.text({ label: 'Bio', multiline: true }),
+        bio: fields.text({ label: 'Kurz-Bio (Artikel-Box)', multiline: true }),
+        longBio: fields.text({ label: 'Ausführliche Bio (Autoren-Seite)', multiline: true }),
         avatar: fields.image({
           label: 'Profilbild',
           directory: 'public/images/authors',
