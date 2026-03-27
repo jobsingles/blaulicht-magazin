@@ -6,8 +6,12 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const metadata = {
   title: 'Singles Polizei Schweiz — Alle Kantone',
-  description: 'Polizei Singles & Bekanntschaften in allen Schweizer Kantonen. Dates und Partnersuche für Blaulicht-Singles.',
+  description: 'Polizei Singles & Bekanntschaften in allen Schweizer Kantonen. Dates und Partnersuche für Blaulicht-Singles mit Schichtdienst-Erfahrung.',
 };
+
+function toAnchor(kanton: string) {
+  return kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue');
+}
 
 export default async function PolizeiRegional() {
   const all = await reader.collections.regional.all();
@@ -21,6 +25,8 @@ export default async function PolizeiRegional() {
     if (!byKanton.has(k)) byKanton.set(k, []);
     byKanton.get(k)!.push(entry);
   }
+
+  const kantone = Array.from(byKanton.keys());
 
   return (
     <>
@@ -36,17 +42,52 @@ export default async function PolizeiRegional() {
           { label: 'Polizei', href: '/regional/polizei' },
         ]} />
 
+        {/* SEO Intro */}
+        <div className="mb-12 mt-4 max-w-3xl">
+          <h1 className="text-3xl font-bold mb-4">Singles Polizei Schweiz</h1>
+          <p className="text-foreground/70 leading-relaxed mb-3">
+            Polizei-Singles kennen das: Schichtdienst, unregelmässige Arbeitszeiten und ein Alltag, den
+            Aussenstehende kaum nachvollziehen können. Auf <strong>blaulichtsingles.ch</strong> findest du
+            Singles aus der Kantonspolizei, Stadtpolizei und Gemeindepolizei — in deinem Kanton und schweizweit.
+          </p>
+          <p className="text-foreground/70 leading-relaxed">
+            Alle {kantone.length} Deutschschweizer Kantone sind abgedeckt. Wähle deinen Kanton direkt unten
+            oder spring per Anker-Link zu deiner Region.
+          </p>
+        </div>
+
+        {/* Kanton Quick-Nav */}
+        {kantone.length > 0 && (
+          <nav className="mb-12" aria-label="Kantone Navigation">
+            <p className="text-xs uppercase tracking-widest text-foreground/40 mb-3 font-semibold">Direkt zum Kanton</p>
+            <div className="flex flex-wrap gap-2">
+              {kantone.map((kanton) => (
+                <a
+                  key={kanton}
+                  href={`#${toAnchor(kanton)}`}
+                  className="px-3 py-1.5 text-sm rounded-full bg-surface-dark border border-brand-orange/20 hover:border-brand-orange hover:text-brand-orange transition-colors"
+                >
+                  {kanton}
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
+
+        {/* Kanton Sections */}
         {Array.from(byKanton.entries()).map(([kanton, kantonsEntries]) => (
           <ScrollReveal key={kanton}>
-            <div className="mb-12">
-              <h2 className="text-xl font-bold mb-4 border-b border-brand-orange/30 pb-2">{kanton}</h2>
+            <div className="mb-14" id={toAnchor(kanton)}>
+              <h2 className="text-xl font-bold mb-4 border-b border-brand-orange/30 pb-2 scroll-mt-24">
+                Polizei Singles {kanton}
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {kantonsEntries.map((entry) => (
                   <ArticleCard
                     key={entry.slug}
                     title={entry.entry.title}
                     excerpt={entry.entry.excerpt}
-                    href={`/regional/${entry.entry.kanton.toLowerCase().replace(/[\s-]+/g, '-').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')}/${entry.slug}`}
+                    href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
                     image={entry.entry.featuredImage || undefined}
                     category={entry.entry.city || kanton}
                     date={entry.entry.publishedAt || undefined}
