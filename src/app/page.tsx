@@ -25,13 +25,13 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden min-h-[360px] md:min-h-[480px]">
+      <section className="relative overflow-hidden min-h-[420px] md:min-h-[560px]">
         <div className="absolute inset-0">
           <img
             src="/images/hero-startseite.webp"
             alt="Blaulicht-Singles — Polizei, Feuerwehr, Sanität und Ärzte auf einer Brücke in der Schweiz"
             className="w-full h-full object-cover"
-            style={{ objectPosition: '50% 100%' }}
+            style={{ objectPosition: '50% 15%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
         </div>
