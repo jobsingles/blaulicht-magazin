@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface AnimatedCounterProps {
   value: number;
@@ -11,40 +11,72 @@ interface AnimatedCounterProps {
 
 function Counter({ value, suffix = '', duration = 2000 }: Omit<AnimatedCounterProps, 'label'>) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
   const hasAnimated = useRef(false);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  const startAnimation = useCallback(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const start = performance.now();
-          const animate = (now: number) => {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // ease-out cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setCount(Math.round(eased * value));
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.3 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    let rafId: number;
+    const start = performance.now();
+
+    const animate = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * value));
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animate);
+      }
+    };
+    rafId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(rafId);
   }, [value, duration]);
+
+  // Callback ref — fires once when the DOM node mounts, avoids stale-ref issues
+  const callbackRef = useCallback(
+    (node: HTMLSpanElement | null) => {
+      // Clean up previous observer
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+
+      if (!node) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            startAnimation();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+      );
+
+      observer.observe(node);
+      observerRef.current = observer;
+    },
+    [startAnimation],
+  );
+
+  // Disconnect on unmount
+  useEffect(() => {
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   // Format Swiss-style with apostrophe
   const formatted = count.toLocaleString('de-CH');
 
   return (
-    <span ref={ref}>
+    <span ref={callbackRef} className="inline-block">
       {formatted}{suffix}
     </span>
   );
