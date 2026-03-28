@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 
 interface Episode {
   season: number;
@@ -60,7 +61,8 @@ export function SendetermineWidget({ seriesId }: Props) {
   const today = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="max-w-xl bg-surface rounded-xl border border-foreground/10 overflow-hidden">
+    <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="max-w-xl">
+    <div className="bg-surface rounded-xl overflow-hidden">
       <div className="flex items-center gap-2 px-5 py-3 bg-foreground/5 border-b border-foreground/10">
         <span className="text-base">📺</span>
         <h3 className="font-bold text-foreground text-xs uppercase tracking-wider">
@@ -106,5 +108,6 @@ export function SendetermineWidget({ seriesId }: Props) {
         {show.note && <span className="text-[10px] text-foreground/30">{show.note}</span>}
       </div>
     </div>
+    </AnimatedGradientBorder>
   );
 }
