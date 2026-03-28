@@ -25,8 +25,8 @@ const NAV_ITEMS: NavItem[] = [
     label: 'TV News',
     href: '/tv-news',
     dropdown: [
-      { label: 'Die Assistenzärzte (SRF)', href: '/tv-news/assistenzaerzte' },
-      { label: 'Tatort Zürich (SRF)', href: '/tv-news/tatort-zuerich' },
+      { label: 'Die Assistenzärzte (Schweizer Fernsehen)', href: '/tv-news/assistenzaerzte' },
+      { label: 'Tatort Zürich (Schweizer Fernsehen)', href: '/tv-news/tatort-zuerich' },
     ],
   },
   {

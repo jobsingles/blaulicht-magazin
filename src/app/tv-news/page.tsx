@@ -3,7 +3,7 @@ import { SeriesCard } from '@/components/content/SeriesCard';
 
 export const metadata = {
   title: 'TV News',
-  description: 'Serien-Artikel zu SRF-Sendungen — Die Assistenzärzte, Tatort Zürich und mehr.',
+  description: 'Serien-Artikel zu Sendungen im Schweizer Fernsehen — Die Assistenzärzte, Tatort Zürich und mehr.',
 };
 
 export default async function TVNews() {
@@ -26,7 +26,7 @@ export default async function TVNews() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold mb-6">Die Assistenzärzte (SRF)</h2>
+        <h2 className="text-2xl font-bold mb-6">Die Assistenzärzte (Schweizer Fernsehen)</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {assistenzaerzte.map((article, i) => (
             <SeriesCard
@@ -41,7 +41,7 @@ export default async function TVNews() {
           ))}
         </div>
 
-        <h2 className="text-2xl font-bold mb-6">Tatort Zürich (SRF)</h2>
+        <h2 className="text-2xl font-bold mb-6">Tatort Zürich (Schweizer Fernsehen)</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {tatort.map((article, i) => (
             <SeriesCard

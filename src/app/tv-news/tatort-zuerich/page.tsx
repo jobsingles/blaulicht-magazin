@@ -1,8 +1,8 @@
 import { reader } from '@/lib/keystatic';
 
 export const metadata = {
-  title: 'Tatort Zürich (SRF)',
-  description: 'Dating-Artikel rund um die SRF-Serie Tatort Zürich.',
+  title: 'Tatort Zürich (Schweizer Fernsehen)',
+  description: 'Dating-Artikel rund um die Schweizer Fernsehen-Serie Tatort Zürich.',
 };
 
 export default async function TatortZuerich() {
@@ -16,7 +16,7 @@ export default async function TatortZuerich() {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Tatort Zürich</h1>
-          <p className="text-foreground/80">SRF-Serie — Liebe und Verbrechen in Zürich.</p>
+          <p className="text-foreground/80">Schweizer Fernsehen-Serie — Liebe und Verbrechen in Zürich.</p>
         </div>
       </section>
       <section className="max-w-6xl mx-auto px-4 py-12">
