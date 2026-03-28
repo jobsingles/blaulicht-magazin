@@ -33,7 +33,7 @@ const faqItems = [
 
 export default function UeberUns() {
   return (
-    <div data-theme="dark" className="bg-background text-foreground min-h-screen">
+    <div data-theme="dark" className="min-h-screen" style={{ background: '#0F1318', color: '#E8E8E8' }}>
       <JsonLd data={faqJsonLd(faqItems)} />
 
       {/* Hero */}
