@@ -2,8 +2,17 @@ import { reader } from '@/lib/keystatic';
 import { SeriesCard } from '@/components/content/SeriesCard';
 
 export const metadata = {
-  title: 'TV News',
-  description: 'Das echte Leben der TV-Stars — Tatort Zürich, Der Bergdoktor und mehr. Was die Darsteller privat machen.',
+  title: 'TV News — Tatort Zürich & Der Bergdoktor',
+  description: 'Blaulicht-Singles TV News: Hintergrund-Storys zu Tatort Zürich und Der Bergdoktor — was die Darsteller privat machen, Drehorte und neue Folgen.',
+  openGraph: {
+    title: 'TV News — Tatort Zürich & Der Bergdoktor | Blaulicht-Singles Magazin',
+    description: 'Hintergrund-Storys zu Tatort Zürich und Der Bergdoktor — was die Darsteller privat machen, Drehorte und neue Folgen.',
+    images: [{ url: '/images/hero-tv-news.webp', width: 2940, height: 1626, alt: 'Tatort-Kommissar und Bergdoktor Rücken an Rücken — Zürich bei Regen und Schweizer Alpen im Sonnenlicht' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/images/hero-tv-news.webp'],
+  },
 };
 
 export default async function TVNews() {
@@ -15,12 +24,20 @@ export default async function TVNews() {
 
   return (
     <>
-      <section className="relative overflow-hidden py-20 md:py-32">
-        <div className="absolute inset-0 particle-overlay opacity-50" />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 particle-text">TV News</h1>
-          <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
-            Das echte Leben der TV-Stars — was die Darsteller aus «Tatort» Zürich und «Der Bergdoktor» privat machen.
+      <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-tv-news.webp"
+            alt="Tatort-Kommissar und Bergdoktor Rücken an Rücken — Zürich bei Regen und Schweizer Alpen im Sonnenlicht"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: '50% 20%' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col justify-end min-h-[320px] md:min-h-[440px] pb-10">
+          <h1 className="text-3xl md:text-5xl font-bold mb-3 text-white drop-shadow-lg">TV News</h1>
+          <p className="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+            Tatort Zürich & Der Bergdoktor — Hintergrund-Storys, Drehorte und was die Darsteller privat machen.
           </p>
         </div>
       </section>
