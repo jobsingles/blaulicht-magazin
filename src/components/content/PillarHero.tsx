@@ -22,7 +22,7 @@ export function PillarHero({ title, texts, subtitle, image, colors }: PillarHero
         )}
 
         <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <ParticleText text={title} texts={texts} colors={colors} className="w-full h-40 md:h-56 mb-4" />
+          <ParticleText text={title} texts={texts} colors={colors} className="w-full h-40 md:h-56 mb-0" />
           {subtitle && (
             <p className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto leading-relaxed">
               {subtitle}
