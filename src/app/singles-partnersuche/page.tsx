@@ -66,6 +66,9 @@ export default async function SinglesPartnersuche() {
           <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-2 drop-shadow-lg text-center">
             <span className="text-brand-orange">Singles</span> & Partnersuche
           </h1>
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed drop-shadow text-center">
+            Partnersuche für Blaulicht-Berufe — von Polizei bis Sanität. Dein Guide für die Liebe neben dem Dienst.
+          </p>
         </div>
       </section>
 
@@ -79,7 +82,6 @@ export default async function SinglesPartnersuche() {
           "Liebe Piepser",
           "Partnersuche",
         ]}
-        subtitle="Partnersuche für Blaulicht-Berufe — von Polizei bis Sanität. Dein Guide für die Liebe neben dem Dienst."
       />
 
       {/* Intro — AnimatedGradientBorder */}
