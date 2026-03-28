@@ -31,7 +31,7 @@ export default async function HomePage() {
             src="/images/hero-startseite.webp"
             alt="Blaulicht-Singles — Polizei, Feuerwehr, Sanität und Ärzte auf einer Brücke in der Schweiz"
             className="w-full h-full object-cover"
-            style={{ objectPosition: '50% 30%' }}
+            style={{ objectPosition: '50% 100%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
         </div>
