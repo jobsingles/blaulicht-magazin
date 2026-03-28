@@ -129,17 +129,20 @@ export default async function RegionalDetail({ params }: { params: Promise<{ kan
 
         <TableOfContents items={extractH2s(article.content)} />
 
-        {/* CTA oben */}
-        <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
-          <div className="p-6 text-center">
-            <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
-            <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-              Jetzt kostenfrei anmelden
-            </HeartButton>
-          </div>
-        </AnimatedGradientBorder>
-
-        <ArticleBody content={article.content} />
+        <ArticleBody
+          content={article.content}
+          insertAfterH2={2}
+          insertElement={
+            <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
+              <div className="p-6 text-center">
+                <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
+                <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+                  Jetzt kostenfrei anmelden
+                </HeartButton>
+              </div>
+            </AnimatedGradientBorder>
+          }
+        />
 
         <PillarBacklinkCard beruf={(article as any).beruf ?? 'polizei'} />
 
