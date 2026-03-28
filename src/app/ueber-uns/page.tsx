@@ -19,11 +19,11 @@ const faqItems = [
   },
   {
     question: 'Gehört BlaulichtSingles.ch zu einem grösseren Netzwerk?',
-    answer: 'Ja. BlaulichtSingles.ch ist Teil des Jobsingles-Netzwerks mit über 15 berufsspezifischen Dating-Portalen, darunter FarmerSingles.de, MedicSingles.de und SingleBuure.ch. Seit 2018 läuft die Technik über den bewährten Icony-Verbund mit Schweizer Servern.',
+    answer: 'Ja. BlaulichtSingles.ch ist Teil des Jobsingles-Netzwerks mit über 15 berufsspezifischen Dating-Portalen, darunter FarmerSingles.de, MedicSingles.de und SingleBuure.ch. Seit 2018 läuft die Technik über den bewährten Icony-Verbund mit deutschen Servern.',
   },
   {
     question: 'Wie schützt BlaulichtSingles.ch meine Daten?',
-    answer: 'Alle Daten liegen auf Schweizer Servern und sind DSGVO-konform geschützt. Profile sind nicht öffentlich einsehbar, und du entscheidest selbst, welche Informationen du teilst. Gerade für Blaulicht-Berufe ist Diskretion besonders wichtig — das respektieren wir.',
+    answer: 'Alle Daten liegen auf deutschen Servern und sind DSGVO-konform geschützt. Profile sind nicht öffentlich einsehbar, und du entscheidest selbst, welche Informationen du teilst. Gerade für Blaulicht-Berufe ist Diskretion besonders wichtig — das respektieren wir.',
   },
   {
     question: 'Was kostet BlaulichtSingles.ch?',
@@ -110,7 +110,7 @@ export default function UeberUns() {
               <strong>BlaulichtSingles.ch</strong> ist anders. Hier treffen sich Menschen, die wissen, was es heisst, um 3 Uhr morgens einen Notruf zu beantworten. Die verstehen, warum ein Wochenende nicht immer am Samstag beginnt. Die wissen, dass der beste Partner jemand ist, der diese Welt kennt.
             </p>
             <p>
-              <strong>Schweizer Server. DSGVO-konform. Diskret.</strong> Weil gerade Blaulicht-Berufe besonderen Schutz verdienen.
+              <strong>Deutsche Server. DSGVO-konform. Diskret.</strong> Weil gerade Blaulicht-Berufe besonderen Schutz verdienen.
             </p>
           </div>
         </section>
