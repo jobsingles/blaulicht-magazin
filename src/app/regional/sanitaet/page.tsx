@@ -3,6 +3,7 @@ import { PillarHero } from '@/components/content/PillarHero';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import type { Metadata } from 'next';
 
 const BASE_URL = 'https://blaulichtsingles.ch/magazin';
@@ -89,28 +90,30 @@ export default async function SanitaetRegional() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {entries.map((entry) => (
             <ScrollReveal key={entry.slug}>
-              <a
-                href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
-                className="flex gap-3 items-center rounded-xl bg-surface hover-lift p-3 border border-foreground/5 hover:ring-2 hover:ring-brand-orange transition-all group"
-                id={toAnchor(entry.entry.kanton)}
-              >
-                {entry.entry.featuredImage ? (
-                  <img
-                    src={entry.entry.featuredImage}
-                    alt={entry.entry.title}
-                    className="w-16 h-16 rounded-lg object-cover flex-none"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-16 h-16 rounded-lg bg-surface-dark flex-none flex items-center justify-center text-2xl">🚑</div>
-                )}
-                <div className="min-w-0">
-                  <p className="font-bold text-sm text-foreground group-hover:text-brand-orange transition-colors truncate">
-                    {entry.entry.city || entry.entry.kanton}
-                  </p>
-                  <p className="text-xs text-foreground/50 truncate">{entry.entry.kanton}</p>
-                </div>
-              </a>
+              <AnimatedGradientBorder borderRadius={12} borderWidth={2}>
+                <a
+                  href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
+                  className="flex gap-3 items-center p-3 hover-lift transition-all group"
+                  id={toAnchor(entry.entry.kanton)}
+                >
+                  {entry.entry.featuredImage ? (
+                    <img
+                      src={entry.entry.featuredImage}
+                      alt={entry.entry.title}
+                      className="w-16 h-16 rounded-lg object-cover flex-none"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-lg bg-surface-dark flex-none flex items-center justify-center text-2xl">🚑</div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="font-bold text-sm text-foreground group-hover:text-brand-orange transition-colors truncate">
+                      {entry.entry.city || entry.entry.kanton}
+                    </p>
+                    <p className="text-xs text-foreground/50 truncate">{entry.entry.kanton}</p>
+                  </div>
+                </a>
+              </AnimatedGradientBorder>
             </ScrollReveal>
           ))}
         </div>
