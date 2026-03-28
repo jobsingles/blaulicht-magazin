@@ -39,7 +39,6 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
-  { label: 'Über uns', href: '/ueber-uns' },
 ];
 
 export function MenuHoverNav() {
