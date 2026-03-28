@@ -11,7 +11,7 @@ export const metadata = {
 const faqItems = [
   {
     question: 'Wer steckt hinter BlaulichtSingles.ch?',
-    answer: 'BlaulichtSingles.ch wurde von Thomas Honold gegründet. Er ist gelernter Koch und Küchenmeister, war Marine-Koch bei der Bundeswehr und hat 2008 das Jobsingles-Netzwerk ins Leben gerufen — Deutschlands und der Schweiz grösstes Berufs-Dating-Netzwerk.',
+    answer: 'BlaulichtSingles.ch wurde von Thomas Honold gegründet. Er ist gelernter Koch und Küchenmeister, war CEO des Online-Bewertungssiegels Ausgezeichnet.org und hat 2008 das Jobsingles-Netzwerk ins Leben gerufen. Heute betreibt er zusätzlich seeside.ai — KI-Agentenlösungen für Solopreneure und Unternehmen.',
   },
   {
     question: 'Warum eine Dating-Plattform speziell für Blaulicht-Berufe?',
@@ -93,7 +93,7 @@ export default function UeberUns() {
               Von 2018 bis 2022 war Thomas zusätzlich <strong>Geschäftsführer (CEO) der Aubii GmbH</strong> — dem Unternehmen hinter <strong>Ausgezeichnet.org</strong>, einem der führenden Online-Bewertungssiegel im deutschsprachigen Raum. Dort baute er das B2B-Geschäft auf, führte ein Team und lernte, wie man digitale Plattformen skaliert.
             </p>
             <p>
-              Heute widmet sich Thomas vollständig dem Ausbau des Jobsingles-Netzwerks — mit dem Ziel, dass jeder Mensch im Schichtdienst einen Partner finden kann, der das Leben wirklich versteht.
+              Heute baut Thomas nicht nur das Jobsingles-Netzwerk weiter aus, sondern betreibt mit <strong><a href="https://seeside.ai" target="_blank" rel="noopener" className="text-brand-orange hover:underline">seeside.ai</a></strong> auch KI-Agentenlösungen für Solopreneure und Unternehmen. Die gesamte Infrastruktur hinter BlaulichtSingles.ch — von der automatisierten Content-Erstellung bis zur SEO-Optimierung — läuft auf seiner eigenen KI-Plattform.
             </p>
           </div>
         </section>
