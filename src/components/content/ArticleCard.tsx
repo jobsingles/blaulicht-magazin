@@ -21,6 +21,7 @@ export function ArticleCard({ title, excerpt, href, image, category, date }: Art
               src={image}
               alt={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: '50% 20%' }}
               loading="lazy"
             />
           </div>

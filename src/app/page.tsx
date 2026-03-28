@@ -74,6 +74,7 @@ export default async function HomePage() {
                     src={articles[0].entry.featuredImage}
                     alt={articles[0].entry.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ objectPosition: '50% 20%' }}
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
