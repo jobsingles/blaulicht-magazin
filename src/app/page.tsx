@@ -61,8 +61,8 @@ export default async function HomePage() {
 
       {/* Neueste Artikel — Bento Grid */}
       <ScrollReveal>
-        <section className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-bold mb-8">Neueste Artikel</h2>
+        <section className="max-w-6xl mx-auto px-6 pt-4 pb-12">
+          <h2 className="text-3xl font-bold mb-6">Neueste Artikel</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles.length > 0 && (
               <a
