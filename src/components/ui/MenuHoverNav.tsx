@@ -30,7 +30,7 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: 'Regional',
+    label: 'Singles Regional',
     href: '/regional',
     dropdown: [
       { label: 'Polizei', href: '/regional/polizei', description: 'Singles aus allen Polizei-Kantonen' },
