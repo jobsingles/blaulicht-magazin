@@ -41,12 +41,18 @@ export function SpotlightCard({
       className={`relative rounded-2xl bg-surface overflow-hidden ambient-shadow transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >
       <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-300"
+        className="pointer-events-none absolute transition-opacity duration-300 text-[80px] leading-none select-none"
         style={{
           opacity,
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
+          left: position.x,
+          top: position.y,
+          transform: 'translate(-50%, -50%)',
+          color: 'rgba(255, 50, 50, 0.10)',
+          textShadow: '0 0 60px rgba(255, 50, 50, 0.15)',
         }}
-      />
+      >
+        ❤
+      </div>
       <div className="relative">{children}</div>
     </div>
   );
