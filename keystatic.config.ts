@@ -172,6 +172,40 @@ export default config({
       },
     }),
 
+    bekanntschaften: collection({
+      label: 'Bekanntschaften',
+      slugField: 'title',
+      path: 'content/bekanntschaften/*',
+      format: { contentField: 'content' },
+      schema: {
+        title: fields.slug({ name: { label: 'Titel' } }),
+        city: fields.text({ label: 'Stadt' }),
+        excerpt: fields.text({ label: 'Auszug', multiline: true }),
+        featuredImage: fields.image({
+          label: 'Stadtbild',
+          directory: 'public/images/bekanntschaften',
+          publicPath: '/images/bekanntschaften/',
+        }),
+        content: fields.markdoc({ label: 'Inhalt' }),
+        faqItems: fields.array(
+          fields.object({
+            question: fields.text({ label: 'Frage' }),
+            answer: fields.text({ label: 'Antwort', multiline: true }),
+          }),
+          {
+            label: 'FAQ',
+            itemLabel: (props) => props.fields.question.value,
+          }
+        ),
+        takeaways: fields.array(fields.text({ label: 'Punkt' }), {
+          label: 'Das Wichtigste',
+        }),
+        seoTitle: fields.text({ label: 'SEO Titel' }),
+        seoDescription: fields.text({ label: 'SEO Beschreibung' }),
+        publishedAt: fields.date({ label: 'Veröffentlicht am' }),
+      },
+    }),
+
     series: collection({
       label: 'TV News',
       slugField: 'title',
