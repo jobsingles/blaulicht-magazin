@@ -57,6 +57,10 @@ export default async function Bergdoktor() {
           </p>
         </div>
 
+        <div className="flex justify-center mt-8 mb-12">
+          <SendetermineWidget seriesId="bergdoktor" />
+        </div>
+
         <h2 className="text-xl font-bold mb-6">Alle Artikel</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {articles.map((article) => (
@@ -69,9 +73,6 @@ export default async function Bergdoktor() {
               seriesLabel="Der Bergdoktor"
             />
           ))}
-        </div>
-        <div className="mt-12">
-          <SendetermineWidget seriesId="bergdoktor" />
         </div>
         <div className="mt-8">
           <Link href="/tv-news" className="text-brand-orange font-semibold hover:underline text-sm">

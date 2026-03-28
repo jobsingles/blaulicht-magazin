@@ -57,6 +57,10 @@ export default async function TatortZuerich() {
           </p>
         </div>
 
+        <div className="flex justify-center mt-8 mb-12">
+          <SendetermineWidget seriesId="tatort-zuerich" />
+        </div>
+
         <h2 className="text-xl font-bold mb-6">Alle Artikel</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {articles.map((article) => (
@@ -69,9 +73,6 @@ export default async function TatortZuerich() {
               seriesLabel="Tatort Zürich"
             />
           ))}
-        </div>
-        <div className="mt-12">
-          <SendetermineWidget seriesId="tatort-zuerich" />
         </div>
         <div className="mt-8">
           <Link href="/tv-news" className="text-brand-orange font-semibold hover:underline text-sm">
