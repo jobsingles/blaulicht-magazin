@@ -9,6 +9,7 @@ import { TakeawayBox } from '@/components/ui/TakeawayBox';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
 import { HeartButton } from '@/components/ui/HeartButton';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
 function toId(text: string) {
@@ -121,6 +122,8 @@ export default async function BergdoktorArticle({ params }: { params: Promise<{ 
             <FAQAccordion items={(article as any).faqItems} />
           </>
         )}
+
+        <PillarBacklinkCard variant="tv-news" seriesId="bergdoktor" />
 
         <div className="text-center py-8">
           <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
