@@ -106,7 +106,7 @@ export function Footer() {
                 <a href="https://blaulichtsingles.ch/datenschutz" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Datenschutz
                 </a>
-                <a href="https://blaulichtsingles.ch/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                <a href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Über uns
                 </a>
               </nav>
