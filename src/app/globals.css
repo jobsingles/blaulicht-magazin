@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* === Heart Cursor === */
+*, *::before, *::after {
+  cursor: url('/heart-cursor.svg') 14 14, auto;
+}
+a, button, [role="button"], input, select, textarea, label {
+  cursor: url('/heart-cursor.svg') 14 14, pointer;
+}
+
 /* === Blaulicht Design System === */
 
 :root {
