@@ -12,6 +12,7 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { AuthorBio } from '@/components/ui/AuthorBio';
 import { CarouselCards } from '@/components/ui/CarouselCards';
 import { MatchQuiz } from '@/components/ui/MatchQuiz';
+import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
@@ -120,14 +121,30 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
         )}
 
         {/* CTA top — dezenter Banner */}
-        <div className="my-8 rounded-xl bg-brand-orange/10 border border-brand-orange/20 p-6 text-center">
-          <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
-          <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-            Jetzt kostenfrei anmelden
-          </HeartButton>
-        </div>
+        <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
+          <div className="p-6 text-center">
+            <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
+            <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+              Jetzt kostenfrei anmelden
+            </HeartButton>
+          </div>
+        </AnimatedGradientBorder>
 
-        <ArticleBody content={article.content} />
+        <ArticleBody
+          content={article.content}
+          insertAfterH2={3}
+          insertElement={
+            <AnimatedGradientBorder borderRadius={16} borderWidth={2} className="my-12">
+              <div className="py-10 px-6 bg-surface-dark text-white text-center">
+                <p className="text-lg font-bold mb-2">Genug gelesen?</p>
+                <p className="text-white/60 text-sm mb-5">Finde Singles, die deinen Alltag verstehen.</p>
+                <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+                  Jetzt kostenfrei mitmachen
+                </HeartButton>
+              </div>
+            </AnimatedGradientBorder>
+          }
+        />
 
         {['polizei', 'sanitaet', 'feuerwehr'].includes(article.category) && (
           <PillarBacklinkCard
@@ -136,24 +153,17 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           />
         )}
 
-        {/* CTA mid-article — visueller Break */}
-        <div className="my-12 py-10 px-6 rounded-2xl bg-surface-dark text-white text-center">
-          <p className="text-lg font-bold mb-2">Genug gelesen?</p>
-          <p className="text-white/60 text-sm mb-5">Finde Singles, die deinen Alltag verstehen.</p>
-          <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-            Jetzt kostenfrei mitmachen
-          </HeartButton>
-        </div>
-
         {article.takeaways && article.takeaways.length > 0 && (
           <TakeawayBox items={article.takeaways} />
         )}
 
         {/* Mini Quiz */}
-        <div className="my-12 py-8 px-6 rounded-2xl border border-foreground/10">
-          <p className="text-center text-sm font-bold text-foreground/50 uppercase tracking-widest mb-4">Finde deinen Match-Typ</p>
-          <MatchQuiz />
-        </div>
+        <AnimatedGradientBorder borderRadius={16} borderWidth={2} className="my-12">
+          <div className="py-8 px-6">
+            <p className="text-center text-sm font-bold text-foreground/50 uppercase tracking-widest mb-4">Finde deinen Match-Typ</p>
+            <MatchQuiz />
+          </div>
+        </AnimatedGradientBorder>
 
         {article.faqItems && article.faqItems.length > 0 && (
           <>
