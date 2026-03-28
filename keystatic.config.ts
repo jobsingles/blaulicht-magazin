@@ -74,8 +74,8 @@ export default config({
           defaultValue: '',
           options: [
             { label: 'Keine', value: '' },
-            { label: 'Die Assistenzärzte (SRF)', value: 'assistenzaerzte' },
-            { label: 'Tatort Zürich (SRF)', value: 'tatort-zuerich' },
+            { label: 'Die Assistenzärzte (Schweizer Fernsehen)', value: 'assistenzaerzte' },
+            { label: 'Tatort Zürich (Schweizer Fernsehen)', value: 'tatort-zuerich' },
           ],
         }),
         excerpt: fields.text({ label: 'Auszug', multiline: true }),
@@ -123,33 +123,6 @@ export default config({
           options: [
             { label: 'Dark', value: 'dark' },
             { label: 'Light', value: 'light' },
-          ],
-        }),
-      },
-    }),
-
-    pillars: collection({
-      label: 'Pillar-Seiten',
-      slugField: 'title',
-      path: 'content/pillars/*',
-      format: { contentField: 'content' },
-      schema: {
-        title: fields.slug({ name: { label: 'Titel' } }),
-        excerpt: fields.text({ label: 'Auszug', multiline: true }),
-        featuredImage: fields.image({
-          label: 'Hero-Bild',
-          directory: 'public/images/pillars',
-          publicPath: '/images/pillars/',
-        }),
-        content: fields.markdoc({ label: 'Inhalt' }),
-        seoTitle: fields.text({ label: 'SEO Titel' }),
-        seoDescription: fields.text({ label: 'SEO Beschreibung' }),
-        theme: fields.select({
-          label: 'Theme',
-          defaultValue: 'light',
-          options: [
-            { label: 'Light', value: 'light' },
-            { label: 'Dark', value: 'dark' },
           ],
         }),
       },
@@ -218,8 +191,8 @@ export default config({
           label: 'Serie',
           defaultValue: 'assistenzaerzte',
           options: [
-            { label: 'Die Assistenzärzte (SRF)', value: 'assistenzaerzte' },
-            { label: 'Tatort Zürich (SRF)', value: 'tatort-zuerich' },
+            { label: 'Die Assistenzärzte (Schweizer Fernsehen)', value: 'assistenzaerzte' },
+            { label: 'Tatort Zürich (Schweizer Fernsehen)', value: 'tatort-zuerich' },
           ],
         }),
         isNews: fields.checkbox({ label: 'News-Artikel (NewsArticle JSON-LD)', defaultValue: false }),
