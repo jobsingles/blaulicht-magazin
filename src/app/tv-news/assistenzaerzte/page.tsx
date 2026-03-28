@@ -1,8 +1,8 @@
 import { reader } from '@/lib/keystatic';
 
 export const metadata = {
-  title: 'Die Assistenzärzte (SRF)',
-  description: 'Dating-Artikel rund um die SRF-Serie Die Assistenzärzte.',
+  title: 'Die Assistenzärzte (Schweizer Fernsehen)',
+  description: 'Dating-Artikel rund um die Schweizer Fernsehen-Serie Die Assistenzärzte.',
 };
 
 export default async function Assistenzaerzte() {
@@ -16,7 +16,7 @@ export default async function Assistenzaerzte() {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Die Assistenzärzte</h1>
-          <p className="text-foreground/80">SRF-Serie — Dating-Perspektiven aus dem Spital-Alltag.</p>
+          <p className="text-foreground/80">Schweizer Fernsehen-Serie — Dating-Perspektiven aus dem Spital-Alltag.</p>
         </div>
       </section>
       <section className="max-w-6xl mx-auto px-4 py-12">
