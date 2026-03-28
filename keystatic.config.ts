@@ -173,7 +173,7 @@ export default config({
     }),
 
     series: collection({
-      label: 'Serien',
+      label: 'TV News',
       slugField: 'title',
       path: 'content/series/*',
       format: { contentField: 'content' },

@@ -36,7 +36,6 @@ export default async function TVNews() {
               href={`/tv-news/tatort-zuerich/${article.slug}`}
               image={article.entry.featuredImage || undefined}
               seriesLabel="Tatort Zürich"
-              episodeNumber={i + 1}
             />
           ))}
         </div>
@@ -51,7 +50,6 @@ export default async function TVNews() {
               href={`/tv-news/bergdoktor/${article.slug}`}
               image={article.entry.featuredImage || undefined}
               seriesLabel="Der Bergdoktor"
-              episodeNumber={i + 1}
             />
           ))}
         </div>

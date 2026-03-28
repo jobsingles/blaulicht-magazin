@@ -8,10 +8,9 @@ interface SeriesCardProps {
   href: string;
   image?: string;
   seriesLabel?: string;
-  episodeNumber?: number;
 }
 
-export function SeriesCard({ title, excerpt, href, image, seriesLabel, episodeNumber }: SeriesCardProps) {
+export function SeriesCard({ title, excerpt, href, image, seriesLabel }: SeriesCardProps) {
   return (
     <SpotlightCard>
       <a href={href} className="block group">
@@ -23,11 +22,6 @@ export function SeriesCard({ title, excerpt, href, image, seriesLabel, episodeNu
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
-            {episodeNumber && (
-              <span className="absolute top-3 left-3 bg-brand-orange text-white text-xs font-bold px-2 py-1 rounded">
-                Ep. {episodeNumber}
-              </span>
-            )}
           </div>
         )}
         <div className="p-5">
