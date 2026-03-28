@@ -38,7 +38,8 @@ const NAV_ITEMS: NavItem[] = [
       { label: 'Feuerwehr', href: '/regional/feuerwehr', description: 'Berufs- & Milizfeuerwehr regional' },
     ],
   },
-  { label: 'Erfolgsgeschichten ❤️', href: '/erfolgsgeschichten' },
+  { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
+  { label: 'Über uns', href: '/ueber-uns' },
 ];
 
 export function MenuHoverNav() {
