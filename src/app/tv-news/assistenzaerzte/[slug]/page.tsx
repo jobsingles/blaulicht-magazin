@@ -93,7 +93,7 @@ export default async function AssistenzaerzteArticle({ params }: { params: Promi
 
         {hasFaq && (
           <>
-            <h2 className="text-2xl font-bold mt-16 mb-2">Häufige Fragen</h2>
+            <h2 id="haeufige-fragen" className="text-2xl font-bold mt-16 mb-2 scroll-mt-24">Häufige Fragen</h2>
             <FAQAccordion items={(article as any).faqItems} />
           </>
         )}

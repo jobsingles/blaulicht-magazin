@@ -9,17 +9,21 @@ interface TocItem {
 
 interface Props {
   items: TocItem[];
+  showFaq?: boolean;
 }
 
-export function StickyTOC({ items }: Props) {
+export function StickyTOC({ items, showFaq = true }: Props) {
+  const allItems = showFaq
+    ? [...items, { label: 'Häufige Fragen', id: 'haeufige-fragen' }]
+    : items;
   const [activeId, setActiveId] = useState('');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (items.length === 0) return;
+    if (allItems.length === 0) return;
 
     function checkVisibility() {
-      const firstH2 = document.getElementById(items[0]?.id);
+      const firstH2 = document.getElementById(allItems[0]?.id);
       if (!firstH2) return;
       const rect = firstH2.getBoundingClientRect();
       // Show only when first H2 has scrolled past the top third of the viewport
@@ -41,7 +45,7 @@ export function StickyTOC({ items }: Props) {
       { rootMargin: '-100px 0px -60% 0px', threshold: 0 }
     );
 
-    items.forEach((item) => {
+    allItems.forEach((item) => {
       const el = document.getElementById(item.id);
       if (el) observer.observe(el);
     });
@@ -50,15 +54,15 @@ export function StickyTOC({ items }: Props) {
       observer.disconnect();
       window.removeEventListener('scroll', checkVisibility);
     };
-  }, [items]);
+  }, [allItems]);
 
-  if (items.length === 0 || !visible) return null;
+  if (allItems.length === 0 || !visible) return null;
 
   return (
     <nav className={`hidden xl:block fixed left-[max(1rem,calc((100vw-48rem)/2-14rem))] top-28 w-48 text-xs transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       <p className="font-semibold text-foreground/40 uppercase tracking-widest mb-3">Inhalt</p>
       <ol className="space-y-2 border-l border-foreground/10">
-        {items.map((item) => (
+        {allItems.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}

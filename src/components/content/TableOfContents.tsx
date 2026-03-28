@@ -7,10 +7,14 @@ interface TocItem {
 
 interface Props {
   items: TocItem[];
+  showFaq?: boolean;
 }
 
-export function TableOfContents({ items }: Props) {
-  if (items.length === 0) return null;
+export function TableOfContents({ items, showFaq = true }: Props) {
+  const allItems = showFaq
+    ? [...items, { label: 'Häufige Fragen', id: 'haeufige-fragen' }]
+    : items;
+  if (allItems.length === 0) return null;
 
   return (
     <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="mb-8">
@@ -19,7 +23,7 @@ export function TableOfContents({ items }: Props) {
           Inhaltsverzeichnis
         </p>
         <ol className="space-y-1 list-none pl-0">
-          {items.map((item, i) => (
+          {allItems.map((item, i) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
