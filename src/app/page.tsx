@@ -2,6 +2,7 @@ import { reader } from '@/lib/keystatic';
 import { getArticleUrl } from '@/lib/routes';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { SuccessStory } from '@/components/content/SuccessStory';
+import { PillarHero } from '@/components/content/PillarHero';
 import { HeartButton } from '@/components/ui/HeartButton';
 import { CarouselCards } from '@/components/ui/CarouselCards';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -44,6 +45,20 @@ export default async function HomePage() {
           </p>
         </div>
       </section>
+
+      <PillarHero
+        title="Blaulichtsingles"
+        texts={[
+          "Held sucht Herz",
+          "Notruf Liebe",
+          "Einsatz Herz",
+          "Dein Match",
+          "Blaulicht Herz",
+          "Frei. Verliebt.",
+          "Blaulicht Singles",
+        ]}
+        subtitle="Das Magazin für Singles bei Polizei, Feuerwehr und Sanität"
+      />
 
       {/* Neueste Artikel — Grid */}
       <ScrollReveal>
