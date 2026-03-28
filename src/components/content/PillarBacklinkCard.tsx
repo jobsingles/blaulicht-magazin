@@ -82,7 +82,7 @@ export function PillarBacklinkCard({ beruf, seriesId, variant = 'regional' }: Pr
   }
 
   if (variant === 'partnersuche') {
-    const c = PARTNERSUCHE[beruf] ?? PARTNERSUCHE.polizei;
+    const c = PARTNERSUCHE[beruf as keyof typeof PARTNERSUCHE] ?? PARTNERSUCHE.polizei;
     return (
       <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="mt-12 mb-8">
         <div className="p-6">
@@ -96,7 +96,7 @@ export function PillarBacklinkCard({ beruf, seriesId, variant = 'regional' }: Pr
     );
   }
 
-  const c = REGIONAL[beruf] ?? REGIONAL.polizei;
+  const c = REGIONAL[beruf as keyof typeof REGIONAL] ?? REGIONAL.polizei;
   return (
     <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="mt-12 mb-8">
       <div className="p-6">
