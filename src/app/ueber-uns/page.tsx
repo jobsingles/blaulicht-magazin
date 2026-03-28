@@ -116,45 +116,42 @@ export default function UeberUns() {
         </section>
       </ScrollReveal>
 
-      {/* Steckbrief */}
+      {/* Netzwerk-Übersicht */}
       <ScrollReveal>
         <section className="max-w-3xl mx-auto px-6 py-8">
-          <h2 className="text-2xl font-bold mb-6">Thomas Honold — Steckbrief</h2>
-          <div className="rounded-2xl p-6 md:p-8 border border-foreground/10" style={{ background: 'rgba(255,255,255,0.05)' }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-white">
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Name</p>
-                <p className="font-semibold">Thomas Honold</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Rolle</p>
-                <p className="font-semibold">Gründer & CEO Jobsingles-Netzwerk</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Ausbildung</p>
-                <p className="font-semibold">Koch & Küchenmeister (IHK)</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Militär</p>
-                <p className="font-semibold">Marine-Koch & Feldkoch (Bundeswehr)</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Stationen</p>
-                <p className="font-semibold">Traube Tonbach · Hummer Bar Zürich · Mettnaustube</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Netzwerk seit</p>
-                <p className="font-semibold">2008 — 15+ Dating-Portale</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Kontakt</p>
-                <p className="font-semibold">jobsingles@gmail.com</p>
-              </div>
-              <div>
-                <p className="text-brand-orange text-xs uppercase tracking-wide mb-1">Standort</p>
-                <p className="font-semibold">Radolfzell am Bodensee</p>
-              </div>
-            </div>
+          <h2 className="text-2xl font-bold mb-6">Das Jobsingles-Netzwerk</h2>
+          <p className="text-foreground/70 mb-8">
+            Seit 2008 verbinden wir Menschen nach Beruf — mit spezialisierten Dating-Portalen für jede Branche. Alle Portale laufen auf der bewährten Icony-Technologie mit deutschen Servern und DSGVO-konformem Datenschutz.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { name: 'Jobsingles.de', desc: 'Das Netzwerk — Partnersuche nach Beruf', url: 'https://jobsingles.de' },
+              { name: 'FarmerSingles.de', desc: 'Singles in der Landwirtschaft', url: 'https://farmersingles.de' },
+              { name: 'SingleBuure.ch', desc: 'Bauern-Singles in der Schweiz', url: 'https://singlebuure.ch' },
+              { name: 'BlaulichtSingles.ch', desc: 'Polizei, Feuerwehr & Sanität', url: 'https://blaulichtsingles.ch' },
+              { name: 'MedicSingles.de', desc: 'Ärzte & Medizin-Singles', url: 'https://medicsingles.de' },
+              { name: 'GastroSingles.de', desc: 'Gastronomie & Hotellerie', url: 'https://gastrosingles.de' },
+              { name: 'HandwerkSingles.de', desc: 'Handwerker-Singles', url: 'https://handwerksingles.de' },
+              { name: 'BäckerSingles.de', desc: 'Bäcker & Konditoren', url: 'https://baeckersingles.de' },
+              { name: 'MetzgerSingles.de', desc: 'Fleischer & Metzger', url: 'https://metzgersingles.de' },
+              { name: 'MediaSingles.de', desc: 'Medien & Kreativbranche', url: 'https://mediasingles.de' },
+              { name: 'PolizeiSingles.de', desc: 'Polizei-Singles Deutschland', url: 'https://polizeisingles.de' },
+            ].map((site) => (
+              <a
+                key={site.name}
+                href={site.url}
+                rel="nofollow noopener"
+                target="_blank"
+                className="flex items-center gap-3 rounded-xl p-4 border border-foreground/10 hover:border-brand-orange/50 transition-all group"
+                style={{ background: 'rgba(255,255,255,0.03)' }}
+              >
+                <div className="w-2 h-2 rounded-full bg-brand-orange shrink-0" />
+                <div>
+                  <p className="font-semibold text-sm text-white group-hover:text-brand-orange transition-colors">{site.name}</p>
+                  <p className="text-xs text-foreground/50">{site.desc}</p>
+                </div>
+              </a>
+            ))}
           </div>
         </section>
       </ScrollReveal>
