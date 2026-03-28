@@ -34,10 +34,17 @@ export default async function TVNews() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         </div>
-        <div className="relative max-w-4xl mx-auto px-6 flex flex-col justify-end min-h-[320px] md:min-h-[440px] pb-10">
-          <h1 className="text-3xl md:text-5xl font-bold mb-3 text-white drop-shadow-lg">TV News</h1>
-          <p className="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
-            Tatort Zürich & Der Bergdoktor — Hintergrund-Storys, Drehorte und was die Darsteller privat machen.
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col justify-end min-h-[320px] md:min-h-[440px] pb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-2 drop-shadow-lg text-center">
+            <span className="text-brand-orange">TV</span> News
+          </h1>
+          <div className="flex justify-center gap-8 mb-2">
+            <span className="text-sm md:text-base font-semibold text-white/90 uppercase tracking-widest drop-shadow">Tatort Zürich</span>
+            <span className="text-white/40">·</span>
+            <span className="text-sm md:text-base font-semibold text-white/90 uppercase tracking-widest drop-shadow">Der Bergdoktor</span>
+          </div>
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed drop-shadow text-center">
+            Hintergrund-Storys, Drehorte und was die Darsteller privat machen.
           </p>
         </div>
       </section>
