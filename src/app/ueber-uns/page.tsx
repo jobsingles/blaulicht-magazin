@@ -90,7 +90,7 @@ export default function UeberUns() {
               Was als kleines Projekt begann, wuchs zu <strong>Deutschlands und der Schweiz grösstem berufsspezifischen Dating-Netzwerk</strong> — mit über 15 spezialisierten Portalen: FarmerSingles.de, MedicSingles.de, SingleBuure.ch und eben BlaulichtSingles.ch.
             </p>
             <p>
-              Von 2018 bis 2022 war Thomas zusätzlich <strong>Geschäftsführer (CEO) der Aubii GmbH</strong> — dem Unternehmen hinter <strong>Ausgezeichnet.org</strong>, einem der führenden Online-Bewertungsportale im deutschsprachigen Raum. Dort baute er das B2B-Geschäft auf, führte ein Team und lernte, wie man digitale Plattformen skaliert.
+              Von 2018 bis 2022 war Thomas zusätzlich <strong>Geschäftsführer (CEO) der Aubii GmbH</strong> — dem Unternehmen hinter <strong>Ausgezeichnet.org</strong>, einem der führenden Online-Bewertungssiegel im deutschsprachigen Raum. Dort baute er das B2B-Geschäft auf, führte ein Team und lernte, wie man digitale Plattformen skaliert.
             </p>
             <p>
               Heute widmet sich Thomas vollständig dem Ausbau des Jobsingles-Netzwerks — mit dem Ziel, dass jeder Mensch im Schichtdienst einen Partner finden kann, der das Leben wirklich versteht.
