@@ -56,13 +56,15 @@ export default async function Regional() {
           <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-2 drop-shadow-lg text-center">
             <span className="text-brand-orange">Singles</span> Regional finden
           </h1>
+          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed drop-shadow text-center">
+            Blaulicht-Singles in deinem Kanton — regionale Tipps, lokale Orte, echte Verbindungen.
+          </p>
         </div>
       </section>
 
       <PillarHero
         title="Regional"
         texts={['Liebe Dialekt', 'Singles vor Ort', 'Dein Kanton', 'Nähe verbindet', 'Regional']}
-        subtitle="Blaulicht-Singles in deinem Kanton — regionale Tipps, lokale Orte, echte Verbindungen."
       />
 
       <section className="max-w-5xl mx-auto px-6 py-16">
