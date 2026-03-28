@@ -2,10 +2,12 @@ import Link from 'next/link';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 
 type Beruf = 'polizei' | 'sanitaet' | 'feuerwehr';
-type Variant = 'regional' | 'partnersuche';
+type SeriesId = 'tatort-zuerich' | 'bergdoktor';
+type Variant = 'regional' | 'partnersuche' | 'tv-news';
 
 interface Props {
-  beruf: Beruf;
+  beruf?: Beruf;
+  seriesId?: SeriesId;
   variant?: Variant;
 }
 
@@ -39,7 +41,46 @@ const PARTNERSUCHE = {
   },
 };
 
-export function PillarBacklinkCard({ beruf, variant = 'regional' }: Props) {
+const TV_NEWS: Record<SeriesId, { heading: string; text: string; seriesHref: string; seriesCta: string; pillarHref: string; pillarCta: string }> = {
+  'tatort-zuerich': {
+    heading: 'Tatort Zürich — alle Artikel',
+    text: 'Neue Folgen, Drehorte an der Limmat und das Privatleben der Ermittler Grandjean und Ott.',
+    seriesHref: '/tv-news/tatort-zuerich',
+    seriesCta: 'Alle Tatort-Artikel →',
+    pillarHref: '/tv-news',
+    pillarCta: 'Zurück zu TV News →',
+  },
+  'bergdoktor': {
+    heading: 'Der Bergdoktor — alle Artikel',
+    text: 'Hans Sigl, Ronja Forcher und das Privatleben der Stars aus den Tiroler Bergen.',
+    seriesHref: '/tv-news/bergdoktor',
+    seriesCta: 'Alle Bergdoktor-Artikel →',
+    pillarHref: '/tv-news',
+    pillarCta: 'Zurück zu TV News →',
+  },
+};
+
+export function PillarBacklinkCard({ beruf, seriesId, variant = 'regional' }: Props) {
+  if (variant === 'tv-news' && seriesId) {
+    const c = TV_NEWS[seriesId];
+    return (
+      <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="mt-12 mb-8">
+        <div className="p-6">
+          <p className="font-bold text-foreground mb-1">{c.heading}</p>
+          <p className="text-sm text-foreground/70 mb-3">{c.text}</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href={c.seriesHref} className="text-brand-orange font-semibold hover:underline text-sm">
+              {c.seriesCta}
+            </Link>
+            <Link href={c.pillarHref} className="text-foreground/60 font-semibold hover:underline text-sm">
+              {c.pillarCta}
+            </Link>
+          </div>
+        </div>
+      </AnimatedGradientBorder>
+    );
+  }
+
   if (variant === 'partnersuche') {
     const c = PARTNERSUCHE[beruf] ?? PARTNERSUCHE.polizei;
     return (
