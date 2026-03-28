@@ -18,28 +18,16 @@ export function StickyTOC({ items }: Props) {
   useEffect(() => {
     if (items.length === 0) return;
 
-    // Show TOC only when first H2 is near viewport
-    const firstH2 = document.getElementById(items[0]?.id);
-    if (!firstH2) return;
-
-    const visObserver = new IntersectionObserver(
-      ([entry]) => {
-        // Show when article content is in view, hide when scrolled back to hero
-        if (entry.boundingClientRect.top < window.innerHeight) {
-          setVisible(true);
-        }
-      },
-      { rootMargin: '0px 0px 0px 0px', threshold: 0 }
-    );
-    visObserver.observe(firstH2);
-
-    // Track scroll to hide when back at top
-    function onScroll() {
+    function checkVisibility() {
+      const firstH2 = document.getElementById(items[0]?.id);
       if (!firstH2) return;
       const rect = firstH2.getBoundingClientRect();
-      setVisible(rect.top < window.innerHeight + 200);
+      // Show only when first H2 has scrolled past the top third of the viewport
+      setVisible(rect.top < window.innerHeight * 0.6);
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    checkVisibility();
 
     // Track active heading
     const observer = new IntersectionObserver(
@@ -59,16 +47,15 @@ export function StickyTOC({ items }: Props) {
     });
 
     return () => {
-      visObserver.disconnect();
       observer.disconnect();
-      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', checkVisibility);
     };
   }, [items]);
 
   if (items.length === 0 || !visible) return null;
 
   return (
-    <nav className="hidden xl:block fixed left-[max(1rem,calc((100vw-48rem)/2-14rem))] top-28 w-48 text-xs transition-opacity duration-300">
+    <nav className={`hidden xl:block fixed left-[max(1rem,calc((100vw-48rem)/2-14rem))] top-28 w-48 text-xs transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
       <p className="font-semibold text-foreground/40 uppercase tracking-widest mb-3">Inhalt</p>
       <ol className="space-y-2 border-l border-foreground/10">
         {items.map((item) => (
