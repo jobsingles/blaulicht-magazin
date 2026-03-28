@@ -5,12 +5,13 @@ import { getArticleUrl } from '@/lib/routes';
 const BASE = 'https://blaulichtsingles.ch/magazin';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, regional, series, stories, authors] = await Promise.all([
+  const [articles, regional, series, stories, authors, bekanntschaften] = await Promise.all([
     reader.collections.articles.all(),
     reader.collections.regional.all(),
     reader.collections.series.all(),
     reader.collections.stories.all(),
     reader.collections.authors.all(),
+    reader.collections.bekanntschaften.all(),
   ]);
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -24,6 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/tv-news/bergdoktor`, priority: 0.7, changeFrequency: 'weekly' },
     { url: `${BASE}/ueber-uns`, priority: 0.6, changeFrequency: 'monthly' },
     { url: `${BASE}/regional`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE}/regional/bekanntschaften`, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE}/erfolgsgeschichten`, priority: 0.6, changeFrequency: 'monthly' },
   ];
 
@@ -63,6 +65,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'yearly',
   }));
 
+  const bekanntschaftenPages: MetadataRoute.Sitemap = bekanntschaften.map((b) => ({
+    url: `${BASE}/regional/bekanntschaften/${b.slug}`,
+    lastModified: b.entry.publishedAt ? new Date(b.entry.publishedAt) : undefined,
+    priority: 0.7,
+    changeFrequency: 'monthly',
+  }));
+
   const authorPages: MetadataRoute.Sitemap = authors.map((a) => ({
     url: `${BASE}/autor/${a.slug}`,
     priority: 0.6,
@@ -75,6 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...kantonPages,
     ...regionalPages,
     ...seriesPages,
+    ...bekanntschaftenPages,
     ...storyPages,
     ...authorPages,
   ];

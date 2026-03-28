@@ -36,6 +36,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: 'Polizei', href: '/regional/polizei', description: 'Singles aus allen Polizei-Kantonen' },
       { label: 'Sanität', href: '/regional/sanitaet', description: 'Rettungsdienst in deinem Kanton' },
       { label: 'Feuerwehr', href: '/regional/feuerwehr', description: 'Berufs- & Milizfeuerwehr regional' },
+      { label: 'Bekanntschaften', href: '/regional/bekanntschaften', description: 'Blaulicht-Singles in deiner Stadt' },
     ],
   },
   { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
