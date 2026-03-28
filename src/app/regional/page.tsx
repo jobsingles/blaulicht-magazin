@@ -67,7 +67,7 @@ export default async function Regional() {
         texts={['Liebe Dialekt', 'Singles vor Ort', 'Dein Kanton', 'Nähe verbindet', 'Regional']}
       />
 
-      <section className="max-w-5xl mx-auto px-6 py-16">
+      <section className="max-w-5xl mx-auto px-6 pt-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {BERUFE.map((beruf) => (
             <ScrollReveal key={beruf.id}>

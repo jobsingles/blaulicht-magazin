@@ -86,7 +86,7 @@ export default async function SinglesPartnersuche() {
 
       {/* Intro — AnimatedGradientBorder */}
       <ScrollReveal>
-        <section className="max-w-3xl mx-auto px-6 py-12">
+        <section className="max-w-3xl mx-auto px-6 pt-4 pb-8">
           <AnimatedGradientBorder borderRadius={20} borderWidth={2}>
             <div className="bg-gray-900 rounded-[18px] p-8 text-gray-100">
               <h2 className="text-xl font-bold mb-4 text-white">Dating mit Blaulicht — anders, aber nicht schlechter</h2>
