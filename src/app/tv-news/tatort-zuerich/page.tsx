@@ -1,6 +1,7 @@
 import { reader } from '@/lib/keystatic';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { SendetermineWidget } from '@/components/content/SendetermineWidget';
 
 export const metadata = {
   title: 'Tatort Zürich — News & Hintergründe',
@@ -55,6 +56,9 @@ export default async function TatortZuerich() {
               <p className="text-foreground/60 mt-2">{article.entry.excerpt}</p>
             </a>
           ))}
+        </div>
+        <div className="mt-12">
+          <SendetermineWidget seriesId="tatort-zuerich" />
         </div>
         <div className="mt-8">
           <Link href="/tv-news" className="text-brand-orange font-semibold hover:underline text-sm">
