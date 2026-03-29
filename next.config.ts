@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // basePath wird später via ICONY Reverse Proxy gesetzt
+  basePath: '/magazin',
   images: {
     remotePatterns: [
       {
