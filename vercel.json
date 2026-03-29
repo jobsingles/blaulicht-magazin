@@ -259,5 +259,15 @@
       "destination": "/magazin/singles-partnersuche/feuerwehr",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/keystatic/:path*",
+      "destination": "/magazin/api/keystatic/:path*"
+    },
+    {
+      "source": "/keystatic/:path*",
+      "destination": "/magazin/keystatic/:path*"
+    }
   ]
 }
