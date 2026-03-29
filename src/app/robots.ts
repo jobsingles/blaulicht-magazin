@@ -19,6 +19,9 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/keystatic/'],
     },
-    sitemap: 'https://blaulichtsingles.ch/magazin/sitemap.xml',
+    sitemap: [
+      'https://blaulichtsingles.ch/magazin/sitemap.xml',
+      'https://blaulichtsingles.ch/magazin/news-sitemap.xml',
+    ],
   };
 }
