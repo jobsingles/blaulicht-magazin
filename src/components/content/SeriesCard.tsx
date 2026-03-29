@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
 interface SeriesCardProps {
@@ -13,14 +15,15 @@ interface SeriesCardProps {
 export function SeriesCard({ title, excerpt, href, image, seriesLabel }: SeriesCardProps) {
   return (
     <SpotlightCard>
-      <a href={href} className="block group">
+      <Link href={href} className="block group">
         {image && (
           <div className="aspect-video overflow-hidden relative">
-            <img
+            <Image
               src={image}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           </div>
         )}
@@ -35,7 +38,7 @@ export function SeriesCard({ title, excerpt, href, image, seriesLabel }: SeriesC
           </h3>
           <p className="text-sm text-foreground/60 line-clamp-2">{excerpt}</p>
         </div>
-      </a>
+      </Link>
     </SpotlightCard>
   );
 }

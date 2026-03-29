@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -58,18 +59,18 @@ export function Footer() {
                 Magazin
               </h4>
               <nav className="flex flex-col gap-2">
-                <a href="/singles-partnersuche" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                <Link href="/singles-partnersuche" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Singles & Partnersuche
-                </a>
-                <a href="/tv-news" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                </Link>
+                <Link href="/tv-news" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   TV News
-                </a>
-                <a href="/regional" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                </Link>
+                <Link href="/regional" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Regional
-                </a>
-                <a href="/erfolgsgeschichten" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                </Link>
+                <Link href="/erfolgsgeschichten" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Erfolgsgeschichten
-                </a>
+                </Link>
               </nav>
             </div>
 
@@ -103,9 +104,9 @@ export function Footer() {
                 <a href="https://blaulichtsingles.ch/datenschutz" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Datenschutz
                 </a>
-                <a href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                <Link href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Über uns
-                </a>
+                </Link>
               </nav>
             </div>
           </div>

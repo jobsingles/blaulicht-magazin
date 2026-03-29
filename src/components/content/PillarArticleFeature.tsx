@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
 interface PillarArticleFeatureProps {
@@ -17,7 +18,7 @@ export function PillarArticleFeature({
 }: PillarArticleFeatureProps) {
   return (
     <SpotlightCard className="hover-lift">
-      <a href={href} className="block group p-6 md:p-8">
+      <Link href={href} className="block group p-6 md:p-8">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white text-xl"
           style={{ background: accentColor }}
@@ -34,7 +35,7 @@ export function PillarArticleFeature({
         >
           Weiterlesen →
         </span>
-      </a>
+      </Link>
     </SpotlightCard>
   );
 }

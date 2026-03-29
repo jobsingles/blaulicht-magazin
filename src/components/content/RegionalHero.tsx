@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface RegionalHeroProps {
   title: string;
   kanton: string;
@@ -12,7 +14,7 @@ export function RegionalHero({ title, kanton, city, excerpt, image }: RegionalHe
       {/* Background Image */}
       {image && (
         <div className="absolute inset-0">
-          <img src={image} alt={`Blaulicht-Singles ${city || kanton}, Schweiz — Partnersuche und Dating`} className="w-full h-full object-cover" style={{ objectPosition: '50% 25%' }} />
+          <Image src={image} alt={`Blaulicht-Singles ${city || kanton}, Schweiz — Partnersuche und Dating`} fill className="object-cover" style={{ objectPosition: '50% 25%' }} sizes="100vw" />
           {/* Dark scrim for text contrast in both light + dark mode */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10" />
         </div>

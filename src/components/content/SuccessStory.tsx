@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import { PolaroidCard } from '@/components/ui/PolaroidCard';
 
 interface SuccessStoryProps {
@@ -12,15 +14,18 @@ interface SuccessStoryProps {
 
 export function SuccessStory({ title, couple, location, excerpt, href, image, rotation = 'slight' }: SuccessStoryProps) {
   return (
-    <a href={href} className="block group">
+    <Link href={href} className="block group">
       <PolaroidCard rotation={rotation}>
         {image && (
-          <img
-            src={image}
-            alt={couple}
-            className="w-full aspect-square object-cover"
-            loading="lazy"
-          />
+          <div className="relative w-full aspect-square">
+            <Image
+              src={image}
+              alt={couple}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+            />
+          </div>
         )}
         <div className="p-3 pt-4 text-center">
           <h3 className="font-bold text-sm text-gray-900 group-hover:text-brand-orange transition-colors">
@@ -32,6 +37,6 @@ export function SuccessStory({ title, couple, location, excerpt, href, image, ro
           <p className="text-xs text-gray-600 mt-2 line-clamp-2">{excerpt}</p>
         </div>
       </PolaroidCard>
-    </a>
+    </Link>
   );
 }

@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 interface CarouselCard {
@@ -68,37 +70,39 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
       >
         <div className="flex gap-5 mx-auto">
         {items.map((item, i) => (
-          <motion.a
+          <motion.div
             key={i}
-            href={item.href}
-            className="group flex-none w-72 md:w-80 snap-start"
+            className="flex-none w-72 md:w-80 snap-start"
             whileHover={{ y: -4 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="rounded-2xl overflow-hidden bg-surface ambient-shadow h-full">
-              {item.image && (
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-              )}
-              <div className="p-5">
-                {item.category && (
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange mb-2 block">
-                    {item.category}
-                  </span>
+            <Link href={item.href} className="group block">
+              <div className="rounded-2xl overflow-hidden bg-surface ambient-shadow h-full">
+                {item.image && (
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="320px"
+                    />
+                  </div>
                 )}
-                <h3 className="font-bold text-foreground leading-tight mb-2 group-hover:text-brand-orange transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-foreground/60 line-clamp-2">{item.excerpt}</p>
+                <div className="p-5">
+                  {item.category && (
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange mb-2 block">
+                      {item.category}
+                    </span>
+                  )}
+                  <h3 className="font-bold text-foreground leading-tight mb-2 group-hover:text-brand-orange transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-foreground/60 line-clamp-2">{item.excerpt}</p>
+                </div>
               </div>
-            </div>
-          </motion.a>
+            </Link>
+          </motion.div>
         ))}
         </div>
       </div>
