@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
 
 interface ArticleCardProps {
@@ -14,15 +16,16 @@ interface ArticleCardProps {
 export function ArticleCard({ title, excerpt, href, image, category, date }: ArticleCardProps) {
   return (
     <SpotlightCard className="hover-lift">
-      <a href={href} className="block group">
+      <Link href={href} className="block group">
         {image && (
-          <div className="aspect-[16/10] overflow-hidden">
-            <img
+          <div className="aspect-[16/10] overflow-hidden relative">
+            <Image
               src={image}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
               style={{ objectPosition: '50% 20%' }}
-              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         )}
@@ -42,7 +45,7 @@ export function ArticleCard({ title, excerpt, href, image, category, date }: Art
           </h3>
           <p className="text-sm text-foreground/60 line-clamp-2">{excerpt}</p>
         </div>
-      </a>
+      </Link>
     </SpotlightCard>
   );
 }

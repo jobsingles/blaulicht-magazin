@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import { reader } from '@/lib/keystatic';
 import { getArticleUrl } from '@/lib/routes';
 import { ArticleCard } from '@/components/content/ArticleCard';
@@ -30,11 +32,14 @@ export default async function HomePage() {
     <>
       <section className="relative overflow-hidden min-h-[420px] md:min-h-[560px]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/hero-startseite.webp"
             alt="Blaulicht-Singles — Polizei, Feuerwehr, Sanität und Ärzte auf einer Brücke in der Schweiz"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             style={{ objectPosition: '50% 15%' }}
+            sizes="100vw"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         </div>
@@ -67,16 +72,18 @@ export default async function HomePage() {
           <h2 className="text-3xl font-bold mb-6">Neueste Artikel</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles.length > 0 && (
-              <a
+              <Link
                 href={getArticleUrl(articles[0].slug, articles[0].entry.type, articles[0].entry.series)}
                 className="group md:col-span-2 relative rounded-2xl overflow-hidden min-h-[320px] hover:shadow-xl transition-all"
               >
                 {articles[0].entry.featuredImage && (
-                  <img
+                  <Image
                     src={articles[0].entry.featuredImage}
                     alt={articles[0].entry.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     style={{ objectPosition: '50% 20%' }}
+                    sizes="100vw"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -89,7 +96,7 @@ export default async function HomePage() {
                   </h3>
                   <p className="text-white/70 line-clamp-2 max-w-2xl">{articles[0].entry.excerpt}</p>
                 </div>
-              </a>
+              </Link>
             )}
             {articles.slice(1, 3).map((article) => (
               <ArticleCard
@@ -105,7 +112,7 @@ export default async function HomePage() {
             {articles.length === 0 && (
               <p className="text-foreground/50 col-span-2 text-center py-12">
                 Noch keine Artikel. Erstelle welche unter{' '}
-                <a href="/keystatic" className="text-brand-orange underline">/keystatic</a>
+                <Link href="/keystatic" className="text-brand-orange underline">/keystatic</Link>
               </p>
             )}
           </div>
@@ -154,24 +161,25 @@ export default async function HomePage() {
           <section className="max-w-6xl mx-auto px-6 py-12">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-3xl font-bold">TV News</h2>
-              <a href="/tv-news" className="text-brand-orange hover:underline text-sm font-semibold">
+              <Link href="/tv-news" className="text-brand-orange hover:underline text-sm font-semibold">
                 Alle TV News &rarr;
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {tvNews.map((article) => (
-                <a
+                <Link
                   key={article.slug}
                   href={`/tv-news/${article.entry.seriesId}/${article.slug}`}
                   className="group relative rounded-2xl overflow-hidden min-h-[240px] hover:shadow-xl transition-all"
                 >
                   {article.entry.featuredImage && (
-                    <img
+                    <Image
                       src={article.entry.featuredImage}
                       alt={article.entry.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: '50% 20%' }}
-                      loading="lazy"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -184,7 +192,7 @@ export default async function HomePage() {
                     </h3>
                     <p className="text-white/60 text-sm line-clamp-2">{article.entry.excerpt}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </section>

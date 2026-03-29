@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { JsonLd, breadcrumbJsonLd } from './JsonLd';
 
 interface BreadcrumbItem {
@@ -29,9 +30,9 @@ export function Breadcrumbs({ items, baseUrl = 'https://blaulichtsingles.ch/maga
             <li key={item.href} className="flex items-center gap-1.5">
               {i > 0 && <span>›</span>}
               {i < allItems.length - 1 ? (
-                <a href={item.href} className="hover:text-brand-orange transition-colors">
+                <Link href={item.href} className="hover:text-brand-orange transition-colors">
                   {item.label}
-                </a>
+                </Link>
               ) : (
                 <span className="text-foreground/60">{item.label}</span>
               )}

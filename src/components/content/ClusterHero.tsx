@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface ClusterHeroProps {
   title: string;
   excerpt?: string;
@@ -23,7 +25,7 @@ export function ClusterHero({ title, excerpt, category, image, date }: ClusterHe
   return (
     <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
       <div className="absolute inset-0">
-        <img src={image} alt={title} className="w-full h-full object-cover" style={{ objectPosition: '50% 20%' }} />
+        <Image src={image} alt={title} fill className="object-cover" style={{ objectPosition: '50% 20%' }} sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
       </div>
       <div className="relative max-w-4xl mx-auto px-6 flex flex-col justify-end min-h-[320px] md:min-h-[440px] pb-6">

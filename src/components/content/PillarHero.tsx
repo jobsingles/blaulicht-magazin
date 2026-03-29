@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ParticleText } from '@/components/ui/ParticleText';
 import { SpotlightHero } from '@/components/ui/SpotlightHero';
 
@@ -17,7 +18,7 @@ export function PillarHero({ title, texts, subtitle, image, colors }: PillarHero
         <div className="absolute inset-0 particle-overlay opacity-50" />
         {image && (
           <div className="absolute inset-0">
-            <img src={image} alt="" className="w-full h-full object-cover opacity-15" />
+            <Image src={image} alt="" fill className="object-cover opacity-15" sizes="100vw" />
           </div>
         )}
 
