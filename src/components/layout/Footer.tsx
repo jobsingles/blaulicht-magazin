@@ -113,24 +113,22 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-5 border-t border-white/10 text-center">
+        <div className="mt-8 pt-5 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/40">
             © {currentYear} Blaulichtsingles.ch — Alle Rechte vorbehalten.
           </p>
+          <p className="text-xs text-white/40">
+            Made with <span className="text-brand-orange">❤</span> by{' '}
+            <a
+              href="https://seeside.ai"
+              target="_blank"
+              rel="noopener"
+              className="text-white/60 hover:text-brand-orange transition-colors"
+            >
+              seeside.ai
+            </a>
+          </p>
         </div>
-
-        {/* Made with love */}
-        <p className="mt-6 pt-4 border-t border-white/5 text-center text-xs text-white/30">
-          Made with <span className="text-brand-orange">❤</span> by{' '}
-          <a
-            href="https://seeside.ai"
-            target="_blank"
-            rel="noopener"
-            className="text-white/50 hover:text-brand-orange transition-colors"
-          >
-            seeside.ai
-          </a>
-        </p>
       </div>
 
     </footer>
