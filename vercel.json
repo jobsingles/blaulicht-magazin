@@ -15,225 +15,216 @@
       "destination": "/magazin/erfolgsgeschichten/erfolgsgeschichte-sabine-peter-blaulichtsingles",
       "permanent": true
     },
-
     {
-      "source": "/magazin/allgemein/feuerwehr-dating-schweiz/",
+      "source": "/magazin/allgemein/feuerwehr-dating-schweiz",
       "destination": "/magazin/singles-partnersuche/feuerwehr-partnersuche-schweiz",
       "permanent": true
     },
     {
-      "source": "/magazin/allgemein/polizei-dating-schweiz/",
+      "source": "/magazin/allgemein/polizei-dating-schweiz",
       "destination": "/magazin/singles-partnersuche/polizei-dating-schweiz",
       "permanent": true
     },
     {
-      "source": "/magazin/allgemein/sanitaet-dating-schweiz/",
+      "source": "/magazin/allgemein/sanitaet-dating-schweiz",
       "destination": "/magazin/singles-partnersuche/sanitaet",
       "permanent": true
     },
     {
-      "source": "/magazin/allgemein/dating-guide-polizei-sanitaet-feuerwehr/",
+      "source": "/magazin/allgemein/dating-guide-polizei-sanitaet-feuerwehr",
       "destination": "/magazin/singles-partnersuche",
       "permanent": true
     },
-
     {
-      "source": "/magazin/feuerwehr/mini-guide-brandheisse-dates-vom-einsatzort-zum-romantischen-dinner/",
+      "source": "/magazin/feuerwehr/mini-guide-brandheisse-dates-vom-einsatzort-zum-romantischen-dinner",
       "destination": "/magazin/singles-partnersuche/grillabend-lagerfeuer-date-ideen",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/mit-humor-zum-herz-so-punktet-man-als-feuerwehrmann-beim-date/",
+      "source": "/magazin/feuerwehr/mit-humor-zum-herz-so-punktet-man-als-feuerwehrmann-beim-date",
       "destination": "/magazin/singles-partnersuche/feuerwehrmann-sucht-frau",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/durchs-feuer-fuer-die-liebe-herausforderungen-im-feuerwehrda/",
+      "source": "/magazin/feuerwehr/durchs-feuer-fuer-die-liebe-herausforderungen-im-feuerwehrda",
       "destination": "/magazin/singles-partnersuche/nach-dem-brand-einsatz-beziehung-belastet",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/mehr-als-nur-ein-held-die-person-hinter-der-uniform-entdecken/",
+      "source": "/magazin/feuerwehr/mehr-als-nur-ein-held-die-person-hinter-der-uniform-entdecken",
       "destination": "/magazin/singles-partnersuche/feuerwehr-partnersuche-schweiz",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/vom-einsatz-traumatisiert-wie-feuerwehrleute-mit-belastungen-umgehen/",
+      "source": "/magazin/feuerwehr/vom-einsatz-traumatisiert-wie-feuerwehrleute-mit-belastungen-umgehen",
       "destination": "/magazin/singles-partnersuche/nach-dem-brand-einsatz-beziehung-belastet",
       "permanent": true
     },
-
     {
-      "source": "/magazin/polizei/kreative-date-ideen-fuer-polizisten-in-der-schweiz/",
+      "source": "/magazin/polizei/kreative-date-ideen-fuer-polizisten-in-der-schweiz",
       "destination": "/magazin/singles-partnersuche/kreative-date-ideen-polizisten-schweiz",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/mini-guide-erstes-date-nach-der-nachtschicht-was-wirklich-funktioniert/",
+      "source": "/magazin/polizei/mini-guide-erstes-date-nach-der-nachtschicht-was-wirklich-funktioniert",
       "destination": "/magazin/singles-partnersuche/erstes-date-nach-nachtschicht",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/kapo-zuerich-bis-kapo-waadt-partnersuche-in-den-kantonspolizeien/",
+      "source": "/magazin/polizei/kapo-zuerich-bis-kapo-waadt-partnersuche-in-den-kantonspolizeien",
       "destination": "/magazin/singles-partnersuche/liebe-ueber-kantonsgrenzen-polizei",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/work-life-balance-als-polizist-raum-fuer-liebe-schaffen/",
+      "source": "/magazin/polizei/work-life-balance-als-polizist-raum-fuer-liebe-schaffen",
       "destination": "/magazin/singles-partnersuche/ueberstunden-polizei-paare-zeit-finden",
       "permanent": true
     },
-
     {
-      "source": "/magazin/sanitaet/mini-guide-date-ideen-fuer-gestresste-notfallmediziner-in-der-schweiz/",
+      "source": "/magazin/sanitaet/mini-guide-date-ideen-fuer-gestresste-notfallmediziner-in-der-schweiz",
       "destination": "/magazin/singles-partnersuche/date-ideen-notfallmediziner-schweiz",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/blaulicht-beziehung-wenn-der-beruf-das-liebesleben-beeinflusst/",
+      "source": "/magazin/sanitaet/blaulicht-beziehung-wenn-der-beruf-das-liebesleben-beeinflusst",
       "destination": "/magazin/singles-partnersuche/blaulicht-single",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/stress-im-job-glueck-in-der-liebe-so-gelingt-die-balance-2/",
+      "source": "/magazin/sanitaet/stress-im-job-glueck-in-der-liebe-so-gelingt-die-balance-2",
       "destination": "/magazin/singles-partnersuche/sanitaet",
       "permanent": true
     },
-
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-aargauer-mittelland-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-aargauer-mittelland-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/aargau/feuerwehr-singles-aargau",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-thurgau-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-thurgau-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/thurgau/feuerwehr-singles-thurgau",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-waadt-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-waadt-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/waadt/feuerwehr-singles-waadt",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-wallis-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-wallis-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/wallis/feuerwehr-singles-wallis",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/polizei-singles-emmen-dates-finden-und-partnersuche/",
+      "source": "/magazin/polizei/polizei-singles-emmen-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/luzern/polizei-singles-luzern",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/polizei-singles-solothurn-dates-finden-und-partnersuche/",
+      "source": "/magazin/polizei/polizei-singles-solothurn-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/solothurn/polizei-singles-solothurn",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/polizei-singles-wallis-dates-finden-und-partnersuche/",
+      "source": "/magazin/polizei/polizei-singles-wallis-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/wallis/polizei-singles-wallis",
       "permanent": true
     },
     {
-      "source": "/magazin/regional/feuerwehr-singles-biel-dates-finden-und-partnersuche/",
+      "source": "/magazin/regional/feuerwehr-singles-biel-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/bern/feuerwehr-singles-biel",
       "permanent": true
     },
     {
-      "source": "/magazin/regional/feuerwehr-singles-uster-dates-finden-und-partnersuche/",
+      "source": "/magazin/regional/feuerwehr-singles-uster-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/zuerich/feuerwehr-singles-zuerich",
       "permanent": true
     },
     {
-      "source": "/magazin/regional/polizei-singles-biel-dates-finden-und-partnersuche/",
+      "source": "/magazin/regional/polizei-singles-biel-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/bern/polizei-singles-biel",
       "permanent": true
     },
-
     {
-      "source": "/magazin/polizei/polizei-singles-bern-dates-finden-und-partnersuche/",
+      "source": "/magazin/polizei/polizei-singles-bern-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/bern/polizei-singles-bern",
       "permanent": true
     },
     {
-      "source": "/magazin/polizei/polizei-singles-st-gallen-dates-finden-und-partnersuche/",
+      "source": "/magazin/polizei/polizei-singles-st-gallen-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/st.-gallen/polizei-singles-st-gallen",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-wettingen-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-wettingen-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/aargau/feuerwehr-singles-aargau",
       "permanent": true
     },
     {
-      "source": "/magazin/feuerwehr/feuerwehr-singles-zuerich-kanton-dates-finden-und-partnersuche/",
+      "source": "/magazin/feuerwehr/feuerwehr-singles-zuerich-kanton-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/zuerich/feuerwehr-singles-zuerich",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/sanitaet-singles-bulle-dates-finden-und-partnersuche/",
+      "source": "/magazin/sanitaet/sanitaet-singles-bulle-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/freiburg/sanitaet-singles-freiburg",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/sanitaet-singles-uster-dates-finden-und-partnersuche/",
+      "source": "/magazin/sanitaet/sanitaet-singles-uster-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/zuerich/sanitaet-singles-zuerich",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/sanitaet-singles-vernier-dates-finden-und-partnersuche/",
+      "source": "/magazin/sanitaet/sanitaet-singles-vernier-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/genf/sanitaet-singles-genf",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/sanitaet-singles-zuercher-oberland-dates-finden-und-partnersuche/",
+      "source": "/magazin/sanitaet/sanitaet-singles-zuercher-oberland-dates-finden-und-partnersuche",
       "destination": "/magazin/regional/zuerich/sanitaet-singles-zuerich",
       "permanent": true
     },
     {
-      "source": "/magazin/sanitaet/mehr-als-nur-ein-pflaster-partnersuche-fuer-rettungssanitaeterinnen/",
+      "source": "/magazin/sanitaet/mehr-als-nur-ein-pflaster-partnersuche-fuer-rettungssanitaeterinnen",
       "destination": "/magazin/singles-partnersuche/partnersuche-rettungssanitaeter-hf",
       "permanent": true
     },
-
     {
-      "source": "/magazin/tag/genf/",
+      "source": "/magazin/tag/genf",
       "destination": "/magazin/regional",
       "permanent": true
     },
     {
-      "source": "/magazin/tag/nidwalden/",
+      "source": "/magazin/tag/nidwalden",
       "destination": "/magazin/regional/nidwalden",
       "permanent": true
     },
     {
-      "source": "/magazin/tag/polizei-dating/",
+      "source": "/magazin/tag/polizei-dating",
       "destination": "/magazin/singles-partnersuche/polizei",
       "permanent": true
     },
     {
-      "source": "/magazin/tag/aargau/",
+      "source": "/magazin/tag/aargau",
       "destination": "/magazin/regional/aargau",
       "permanent": true
     },
     {
-      "source": "/magazin/tag/neuenburg/",
+      "source": "/magazin/tag/neuenburg",
       "destination": "/magazin/regional",
       "permanent": true
     },
     {
-      "source": "/magazin/tag/thun/",
+      "source": "/magazin/tag/thun",
       "destination": "/magazin/regional/bern",
       "permanent": true
     },
-
     {
       "source": "/magazin/magazin/:path*",
       "destination": "/magazin/:path*",
       "permanent": true
     },
-
     {
       "source": "/magazin/allgemein/:slug*",
       "destination": "/magazin/singles-partnersuche",
