@@ -107,7 +107,7 @@
     },
     {
       "source": "/magazin/feuerwehr/feuerwehr-singles-waadt-dates-finden-und-partnersuche",
-      "destination": "/magazin/regional/waadt/feuerwehr-singles-waadt",
+      "destination": "/magazin/regional/feuerwehr",
       "permanent": true
     },
     {
@@ -177,7 +177,7 @@
     },
     {
       "source": "/magazin/sanitaet/sanitaet-singles-vernier-dates-finden-und-partnersuche",
-      "destination": "/magazin/regional/genf/sanitaet-singles-genf",
+      "destination": "/magazin/regional/sanitaet",
       "permanent": true
     },
     {
