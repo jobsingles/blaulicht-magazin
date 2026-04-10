@@ -127,6 +127,19 @@ export function Footer() {
             blaulichtsingles.ch
           </a>
         </div>
+
+        {/* Made with love */}
+        <p className="mt-6 pt-4 border-t border-white/5 text-center text-xs text-white/30">
+          Made with <span className="text-brand-orange">❤</span> by{' '}
+          <a
+            href="https://seeside.ai"
+            target="_blank"
+            rel="noopener"
+            className="text-white/50 hover:text-brand-orange transition-colors"
+          >
+            seeside.ai
+          </a>
+        </p>
       </div>
 
     </footer>
