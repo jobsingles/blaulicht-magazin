@@ -65,9 +65,9 @@ export function articleJsonLd({
       url: 'https://blaulichtsingles.ch/magazin',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://blaulichtsingles.ch/magazin/wp-content/uploads/2025/02/cropped-cropped-cropped-cropped-JS-logo-Menu-orange-2-e1740614328941-3.png',
-        width: 512,
-        height: 512,
+        url: 'https://blaulichtsingles.ch/magazin/logos/jobsingles-logo.png',
+        width: 200,
+        height: 200,
       },
     },
     inLanguage: 'de-CH',
