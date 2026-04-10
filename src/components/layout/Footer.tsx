@@ -104,10 +104,10 @@ export function Footer() {
                 <a href="https://blaulichtsingles.ch/kontakt/kündigen/" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Premium-Mitgliedschaft kündigen
                 </a>
-                <a href="https://blaulichtsingles.ch/datenschutz.html" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch/datenschutz.html" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Datenschutz / Cookies
                 </a>
-                <a href="https://blaulichtsingles.ch/impressum.html" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                <a href="https://blaulichtsingles.ch/impressum.html" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Impressum / AGB
                 </a>
                 <Link href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
