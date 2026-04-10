@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface AuthorBioProps {
   name: string;
   slug?: string;
@@ -33,12 +35,12 @@ export function AuthorBio({ name, slug, role, bio, avatar, socialLinks }: Author
         )}
         <div className="flex flex-wrap gap-3 mt-3 items-center">
           {slug && (
-            <a
+            <Link
               href={`/autor/${slug}`}
               className="text-xs font-semibold text-brand-orange hover:underline"
             >
               Mehr über {name} →
-            </a>
+            </Link>
           )}
           {socialLinks && socialLinks.filter((link) => link.url).map((link) => (
             <a

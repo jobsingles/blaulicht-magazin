@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -71,7 +72,7 @@ export default async function Regional() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {BERUFE.map((beruf) => (
             <ScrollReveal key={beruf.id}>
-              <a
+              <Link
                 href={beruf.href}
                 className="block bg-surface-dark text-white rounded-xl p-8 hover:ring-2 hover:ring-brand-orange transition-all group"
               >
@@ -83,7 +84,7 @@ export default async function Regional() {
                 <span className="text-xs font-semibold text-brand-orange">
                   {counts[beruf.id]} {counts[beruf.id] === 1 ? 'Kanton' : 'Kantone'} →
                 </span>
-              </a>
+              </Link>
             </ScrollReveal>
           ))}
         </div>
