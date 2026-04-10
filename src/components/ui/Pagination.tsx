@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -12,15 +14,15 @@ export function Pagination({ currentPage, totalPages, basePath }: PaginationProp
   return (
     <nav className="flex items-center justify-center gap-2 my-12" aria-label="Seitennavigation">
       {currentPage > 1 && (
-        <a
+        <Link
           href={currentPage === 2 ? basePath : `${basePath}?page=${currentPage - 1}`}
           className="px-3 py-2 rounded-lg text-sm font-bold text-foreground/60 hover:text-brand-orange transition-colors"
         >
           ←
-        </a>
+        </Link>
       )}
       {pages.map((page) => (
-        <a
+        <Link
           key={page}
           href={page === 1 ? basePath : `${basePath}?page=${page}`}
           className={`px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
@@ -30,15 +32,15 @@ export function Pagination({ currentPage, totalPages, basePath }: PaginationProp
           }`}
         >
           {page}
-        </a>
+        </Link>
       ))}
       {currentPage < totalPages && (
-        <a
+        <Link
           href={`${basePath}?page=${currentPage + 1}`}
           className="px-3 py-2 rounded-lg text-sm font-bold text-foreground/60 hover:text-brand-orange transition-colors"
         >
           →
-        </a>
+        </Link>
       )}
     </nav>
   );

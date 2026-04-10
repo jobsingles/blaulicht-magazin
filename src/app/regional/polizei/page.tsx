@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { ArticleCard } from '@/components/content/ArticleCard';
@@ -91,7 +92,7 @@ export default async function PolizeiRegional() {
           {entries.map((entry) => (
             <ScrollReveal key={entry.slug}>
               <AnimatedGradientBorder borderRadius={12} borderWidth={2}>
-                <a
+                <Link
                   href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
                   className="flex gap-3 items-center p-3 hover-lift transition-all group"
                   id={toAnchor(entry.entry.kanton)}
@@ -112,7 +113,7 @@ export default async function PolizeiRegional() {
                     </p>
                     <p className="text-xs text-foreground/50 truncate">{entry.entry.kanton}</p>
                   </div>
-                </a>
+                </Link>
               </AnimatedGradientBorder>
             </ScrollReveal>
           ))}

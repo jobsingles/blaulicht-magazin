@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
 import { getArticleUrl } from '@/lib/routes';
@@ -112,7 +113,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
           <ul className="divide-y divide-border/40">
             {authorArticles.map((a) => (
               <li key={a.slug} className="py-5">
-                <a
+                <Link
                   href={getArticleUrl(a.slug, a.entry.type, a.entry.series)}
                   className="group flex gap-4 items-start"
                 >
@@ -140,7 +141,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                       </p>
                     )}
                   </div>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
