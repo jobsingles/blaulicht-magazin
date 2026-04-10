@@ -92,17 +92,23 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Rechtliches */}
+            {/* Service */}
             <div>
               <h4 className="text-xs uppercase tracking-widest font-bold text-white/40 mb-4">
-                Rechtliches
+                Service
               </h4>
               <nav className="flex flex-col gap-2">
-                <a href="https://blaulichtsingles.ch/impressum" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
-                  Impressum
+                <a href="https://blaulichtsingles.ch/hilfe/" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                  Hilfe & Support
                 </a>
-                <a href="https://blaulichtsingles.ch/datenschutz" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
-                  Datenschutz
+                <a href="https://blaulichtsingles.ch/kontakt/kündigen/" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                  Premium-Mitgliedschaft kündigen
+                </a>
+                <a href="https://blaulichtsingles.ch/datenschutz.html" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                  Datenschutz / Cookies
+                </a>
+                <a href="https://blaulichtsingles.ch/impressum.html" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                  Impressum / AGB
                 </a>
                 <Link href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Über uns
