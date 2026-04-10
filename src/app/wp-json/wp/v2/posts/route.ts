@@ -3,13 +3,15 @@ import { reader } from '@/lib/keystatic';
 
 export const dynamic = 'force-dynamic';
 
+const SITE = 'https://blaulichtsingles.ch';
+
 export async function GET() {
   const [allArticles, allStories] = await Promise.all([
     reader.collections.articles.all(),
     reader.collections.stories.all(),
   ]);
 
-  // Featured Articles
+  // Featured Articles (manuell in Keystatic UI gepinnt, max 3)
   const featuredArticles = allArticles
     .filter((a) => a.entry.isFeatured && a.entry.status === 'published')
     .map((a) => {
@@ -18,9 +20,9 @@ export async function GET() {
       return {
         title: a.entry.title,
         excerpt: a.entry.excerpt || '',
-        url: `https://blaulichtsingles.ch/magazin/${categoryPath}/${a.slug}/`,
+        url: `${SITE}/magazin/${categoryPath}/${a.slug}/`,
         image: a.entry.featuredImage
-          ? `https://blaulichtsingles.ch/magazin${a.entry.featuredImage}`
+          ? `${SITE}/magazin${a.entry.featuredImage}`
           : '',
         date: a.entry.publishedAt || '2026-01-01',
       };
@@ -32,14 +34,16 @@ export async function GET() {
     .map((s) => ({
       title: s.entry.title,
       excerpt: s.entry.excerpt || '',
-      url: `https://blaulichtsingles.ch/magazin/erfolgsgeschichten/${s.slug}/`,
+      url: `${SITE}/magazin/erfolgsgeschichten/${s.slug}/`,
       image: s.entry.featuredImage
-        ? `https://blaulichtsingles.ch/magazin${s.entry.featuredImage}`
+        ? `${SITE}/magazin${s.entry.featuredImage}`
         : '',
       date: s.entry.publishedAt || '2026-01-01',
     }));
 
-  const featured = [...featuredArticles, ...featuredStories].slice(0, 3);
+  const featured = [...featuredArticles, ...featuredStories]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3);
 
   // WP REST API kompatibles Format
   const posts = featured.map((item, index) => ({
