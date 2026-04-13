@@ -284,6 +284,41 @@
       "source": "/magazin/kategorie/:slug*",
       "destination": "/magazin",
       "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/bergdoktor/bergdoktor-hans-sigl-mobbing-kindheit-2026-03-29",
+      "destination": "/magazin/tv-news/bergdoktor/bergdoktor-hans-sigl-mobbing-kindheit",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/bergdoktor/bergdoktor-hans-sigl-staffel-20-2026-03-30",
+      "destination": "/magazin/tv-news/bergdoktor/bergdoktor-hans-sigl-staffel-20",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/bergdoktor/bergdoktor-ronja-forcher-potsdam-2026-03-28",
+      "destination": "/magazin/tv-news/bergdoktor/bergdoktor-ronja-forcher-potsdam",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/bergdoktor/bergdoktor-ronja-forcher-verbotene-liebe-2026-03-29",
+      "destination": "/magazin/tv-news/bergdoktor/bergdoktor-ronja-forcher-verbotene-liebe",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-anna-pieri-zuercher-filmpreis-2026-03-28",
+      "destination": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-anna-pieri-zuercher-filmpreis",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-anna-pieri-zuercher-freundschaft-2026-03-28",
+      "destination": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-anna-pieri-zuercher-freundschaft",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-franz-kafka-2026-03-30",
+      "destination": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-franz-kafka",
+      "permanent": true
     }
   ],
   "rewrites": [
