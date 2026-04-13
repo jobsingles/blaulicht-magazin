@@ -249,6 +249,41 @@
       "source": "/magazin/feuerwehr/:slug*",
       "destination": "/magazin/singles-partnersuche/feuerwehr",
       "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/allgemein",
+      "destination": "/magazin/singles-partnersuche",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/tv-news",
+      "destination": "/magazin/tv-news",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/erfolgsgeschichten",
+      "destination": "/magazin/erfolgsgeschichten",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/polizei",
+      "destination": "/magazin/singles-partnersuche/polizei",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/feuerwehr",
+      "destination": "/magazin/singles-partnersuche/feuerwehr",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/sanitaet",
+      "destination": "/magazin/singles-partnersuche/sanitaet",
+      "permanent": true
+    },
+    {
+      "source": "/magazin/kategorie/:slug*",
+      "destination": "/magazin",
+      "permanent": true
     }
   ],
   "rewrites": [
