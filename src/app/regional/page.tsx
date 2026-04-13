@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
@@ -45,11 +46,13 @@ export default async function Regional() {
     <>
       <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/hero-regional.webp"
             alt="Blaulicht-Singles Regional — Polizei, Feuerwehr, Sanität und Ärzte vor Schweizer Alpenpanorama"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             style={{ objectPosition: '50% 15%' }}
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         </div>

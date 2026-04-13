@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { reader } from '@/lib/keystatic';
 import { SeriesCard } from '@/components/content/SeriesCard';
 
@@ -26,11 +27,13 @@ export default async function TVNews() {
     <>
       <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/hero-tv-news.webp"
             alt="Tatort-Kommissar und Bergdoktor Rücken an Rücken — Zürich bei Regen und Schweizer Alpen im Sonnenlicht"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             style={{ objectPosition: '50% 20%' }}
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         </div>
