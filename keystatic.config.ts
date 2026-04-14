@@ -48,6 +48,10 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        focusKeyword: fields.text({
+          label: 'Focus-Keyword',
+          description: 'Haupt-Keyword fuer SEO-Check (z.B. "Hans Sigl Bergdoktor"). Aktiviert 7 Yoast-Style-Checks im SEO-Score-Widget.',
+        }),
         category: fields.select({
           label: 'Kategorie',
           defaultValue: 'polizei',
@@ -87,10 +91,6 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Beitragsbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Beispiel: "Hans Sigl im weißen Arztkittel vor Bergpanorama". Falls leer, wird der Artikel-Titel als Fallback genutzt.',
-        }),
-        focusKeyword: fields.text({
-          label: 'Focus-Keyword',
-          description: 'Haupt-Keyword für SEO-Check (z.B. \"Hans Sigl Bergdoktor\"). Wird auf Titel, Slug, SEO-Felder, Excerpt, erster Absatz und Content-Dichte geprüft.',
         }),
         author: fields.relationship({
           label: 'Autor',
@@ -144,6 +144,10 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        focusKeyword: fields.text({
+          label: 'Focus-Keyword',
+          description: 'Haupt-Keyword fuer SEO-Check (z.B. "Hans Sigl Bergdoktor"). Aktiviert 7 Yoast-Style-Checks im SEO-Score-Widget.',
+        }),
         beruf: fields.select({
           label: 'Beruf',
           defaultValue: 'polizei',
@@ -164,10 +168,6 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Ortsbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
-        }),
-        focusKeyword: fields.text({
-          label: 'Focus-Keyword',
-          description: 'Haupt-Keyword für SEO-Check (z.B. \"Hans Sigl Bergdoktor\"). Wird auf Titel, Slug, SEO-Felder, Excerpt, erster Absatz und Content-Dichte geprüft.',
         }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
@@ -196,6 +196,10 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        focusKeyword: fields.text({
+          label: 'Focus-Keyword',
+          description: 'Haupt-Keyword fuer SEO-Check (z.B. "Hans Sigl Bergdoktor"). Aktiviert 7 Yoast-Style-Checks im SEO-Score-Widget.',
+        }),
         city: fields.text({ label: 'Stadt' }),
         excerpt: fields.text({ label: 'Auszug', multiline: true }),
         featuredImage: fields.image({
@@ -206,10 +210,6 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Stadtbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
-        }),
-        focusKeyword: fields.text({
-          label: 'Focus-Keyword',
-          description: 'Haupt-Keyword für SEO-Check (z.B. \"Hans Sigl Bergdoktor\"). Wird auf Titel, Slug, SEO-Felder, Excerpt, erster Absatz und Content-Dichte geprüft.',
         }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
@@ -238,6 +238,10 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        focusKeyword: fields.text({
+          label: 'Focus-Keyword',
+          description: 'Haupt-Keyword fuer SEO-Check (z.B. "Hans Sigl Bergdoktor"). Aktiviert 7 Yoast-Style-Checks im SEO-Score-Widget.',
+        }),
         status: fields.select({
           label: 'Status',
           defaultValue: 'published',
@@ -274,10 +278,6 @@ export default config({
           label: 'Alt-Text Bild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
         }),
-        focusKeyword: fields.text({
-          label: 'Focus-Keyword',
-          description: 'Haupt-Keyword für SEO-Check (z.B. \"Hans Sigl Bergdoktor\"). Wird auf Titel, Slug, SEO-Felder, Excerpt, erster Absatz und Content-Dichte geprüft.',
-        }),
         calloutQuestion: fields.text({ label: 'Callout Frage' }),
         calloutAnswer: fields.text({ label: 'Callout Antwort', multiline: true }),
         content: fields.markdoc({ label: 'Inhalt' }),
@@ -306,6 +306,10 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
+        focusKeyword: fields.text({
+          label: 'Focus-Keyword',
+          description: 'Haupt-Keyword fuer SEO-Check (z.B. "Hans Sigl Bergdoktor"). Aktiviert 7 Yoast-Style-Checks im SEO-Score-Widget.',
+        }),
         couple: fields.text({ label: 'Paar-Namen' }),
         location: fields.text({ label: 'Ort' }),
         excerpt: fields.text({ label: 'Auszug', multiline: true }),
@@ -317,10 +321,6 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Paar-Foto',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
-        }),
-        focusKeyword: fields.text({
-          label: 'Focus-Keyword',
-          description: 'Haupt-Keyword für SEO-Check (z.B. \"Hans Sigl Bergdoktor\"). Wird auf Titel, Slug, SEO-Felder, Excerpt, erster Absatz und Content-Dichte geprüft.',
         }),
         content: fields.markdoc({ label: 'Geschichte' }),
         isFeatured: fields.checkbox({ label: 'Auf ICONY-Startseite anzeigen (max. 3)', defaultValue: false }),
