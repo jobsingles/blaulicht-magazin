@@ -70,6 +70,7 @@ export default async function TatortZuerich() {
               excerpt={article.entry.excerpt}
               href={`/tv-news/tatort-zuerich/${article.slug}`}
               image={article.entry.featuredImage || undefined}
+              imageAlt={article.entry.featuredImageAlt || undefined}
               seriesLabel="Tatort Zürich"
             />
           ))}

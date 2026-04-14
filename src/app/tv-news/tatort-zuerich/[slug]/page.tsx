@@ -90,6 +90,7 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
         excerpt={article.excerpt}
         category="Tatort Zürich"
         image={article.featuredImage || undefined}
+        imageAlt={article.featuredImageAlt || undefined}
         date={article.publishedAt || undefined}
       />
 

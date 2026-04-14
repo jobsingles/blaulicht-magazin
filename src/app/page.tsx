@@ -105,6 +105,7 @@ export default async function HomePage() {
                 excerpt={article.entry.excerpt}
                 href={getArticleUrl(article.slug, article.entry.type, article.entry.series)}
                 image={article.entry.featuredImage || undefined}
+                imageAlt={article.entry.featuredImageAlt || undefined}
                 category={article.entry.category}
                 date={article.entry.publishedAt || undefined}
               />
@@ -147,6 +148,7 @@ export default async function HomePage() {
                   excerpt={story.entry.excerpt}
                   href={`/erfolgsgeschichten/${story.slug}`}
                   image={story.entry.featuredImage || undefined}
+                  imageAlt={story.entry.featuredImageAlt || undefined}
                   rotation={rotations[i % 3]}
                 />
               ))}

@@ -68,6 +68,7 @@ export default async function KantonPage({ params }: { params: Promise<{ kanton:
                       excerpt={entry.entry.excerpt}
                       href={`/regional/${kanton}/${entry.slug}`}
                       image={entry.entry.featuredImage || undefined}
+                      imageAlt={entry.entry.featuredImageAlt || undefined}
                       category={entry.entry.city || kantonName}
                       date={entry.entry.publishedAt || undefined}
                     />

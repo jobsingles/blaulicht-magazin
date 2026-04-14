@@ -34,6 +34,7 @@ export default async function Erfolgsgeschichten() {
               excerpt={story.entry.excerpt}
               href={`/erfolgsgeschichten/${story.slug}`}
               image={story.entry.featuredImage || undefined}
+              imageAlt={story.entry.featuredImageAlt || undefined}
               rotation={rotations[i % 3]}
             />
           ))}

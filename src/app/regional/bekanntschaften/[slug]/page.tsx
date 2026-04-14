@@ -81,6 +81,7 @@ export default async function BekanntschaftenArticle({ params }: { params: Promi
         excerpt={article.excerpt}
         category={`Bekanntschaften ${article.city || ''}`}
         image={article.featuredImage || undefined}
+        imageAlt={article.featuredImageAlt || undefined}
         date={article.publishedAt || undefined}
       />
 

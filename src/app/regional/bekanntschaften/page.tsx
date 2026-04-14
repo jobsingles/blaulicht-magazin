@@ -50,6 +50,7 @@ export default async function BekanntschaftenPillar() {
               excerpt={article.entry.excerpt}
               href={`/regional/bekanntschaften/${article.slug}`}
               image={article.entry.featuredImage || undefined}
+              imageAlt={article.entry.featuredImageAlt || undefined}
               category={article.entry.city || 'Schweiz'}
               date={article.entry.publishedAt || undefined}
             />

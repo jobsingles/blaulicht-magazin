@@ -62,6 +62,7 @@ export default async function TVNews() {
               excerpt={article.entry.excerpt}
               href={`/tv-news/tatort-zuerich/${article.slug}`}
               image={article.entry.featuredImage || undefined}
+              imageAlt={article.entry.featuredImageAlt || undefined}
               seriesLabel="Tatort Zürich"
             />
           ))}
@@ -76,6 +77,7 @@ export default async function TVNews() {
               excerpt={article.entry.excerpt}
               href={`/tv-news/bergdoktor/${article.slug}`}
               image={article.entry.featuredImage || undefined}
+              imageAlt={article.entry.featuredImageAlt || undefined}
               seriesLabel="Der Bergdoktor"
             />
           ))}
