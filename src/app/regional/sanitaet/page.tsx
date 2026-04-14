@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
+import { PillarLongIntro } from '@/components/content/PillarLongIntro';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -127,6 +128,7 @@ export default async function SanitaetRegional() {
           <p className="text-foreground/50 text-center py-12">Noch keine Artikel. Bald verfügbar.</p>
         )}
       </div>
+      <PillarLongIntro beruf="sanitaet" />
     </>
   );
 }
