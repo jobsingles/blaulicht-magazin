@@ -18,7 +18,7 @@ export default async function BekanntschaftenPillar() {
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">
       <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
         <div className="absolute inset-0">
-          <img
+          <img width="600" height="400"
             src="/images/hero-bekanntschaften.webp"
             alt="Blaulicht-Singles treffen sich in einer Schweizer Stadt"
             className="w-full h-full object-cover"

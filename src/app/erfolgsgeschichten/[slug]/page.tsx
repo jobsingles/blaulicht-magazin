@@ -61,7 +61,7 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
         {story.featuredImage && (
           <div className="flex justify-center mb-12">
             <PolaroidCard rotation="slight" tape="center">
-              <img
+              <img width="600" height="400"
                 src={story.featuredImage}
                 alt={story.couple}
                 className="w-full max-w-sm aspect-square object-cover"
