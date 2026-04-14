@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { withBasePath } from '@/lib/url';
 
 interface AuthorBioProps {
   name: string;
@@ -14,7 +15,7 @@ export function AuthorBio({ name, slug, role, bio, avatar, socialLinks }: Author
     <div className="flex gap-5 items-start p-6 rounded-2xl bg-surface ambient-shadow my-12">
       {avatar ? (
         <img width="600" height="400"
-          src={avatar}
+          src={withBasePath(avatar)}
           alt={name}
           className="w-16 h-16 rounded-full object-cover shrink-0 ring-2 ring-brand-orange/20"
         />

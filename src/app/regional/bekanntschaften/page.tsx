@@ -2,6 +2,7 @@ import { reader } from '@/lib/keystatic';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { withBasePath } from '@/lib/url';
 
 export const metadata = {
   title: 'Bekanntschaften in der Schweiz — Blaulicht-Singles finden',

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { SeriesCard } from '@/components/content/SeriesCard';
 import { SendetermineWidget } from '@/components/content/SendetermineWidget';
+import { withBasePath } from '@/lib/url';
 
 export const metadata = {
   title: 'Tatort Zürich — News & Hintergründe',

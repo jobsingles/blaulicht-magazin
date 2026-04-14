@@ -3,6 +3,7 @@ import { reader } from '@/lib/keystatic';
 import { notFound } from 'next/navigation';
 import { getArticleUrl } from '@/lib/routes';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { withBasePath } from '@/lib/url';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -62,7 +63,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center sm:items-start">
           {author.avatar ? (
             <img width="600" height="400"
-              src={author.avatar}
+              src={withBasePath(author.avatar)}
               alt={author.name}
               className="w-28 h-28 rounded-full object-cover shrink-0 ring-4 ring-brand-orange/20"
             />
@@ -119,7 +120,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                 >
                   {a.entry.featuredImage && (
                     <img width="600" height="400"
-                      src={a.entry.featuredImage}
+                      src={withBasePath(a.entry.featuredImage)}
                       alt={a.entry.featuredImageAlt || a.entry.title}
                       className="w-20 h-14 object-cover rounded-lg shrink-0 opacity-80 group-hover:opacity-100 transition-opacity"
                     />

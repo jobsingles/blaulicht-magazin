@@ -12,6 +12,7 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ArticleByline } from '@/components/content/ArticleByline';
 import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
+import { AuthorBio } from '@/components/ui/AuthorBio';
 
 function toId(text: string) {
   return text.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -64,6 +65,10 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
 
   const article = await reader.collections.series.read(slug, { resolveLinkedFiles: true });
   if (!article) notFound();
+
+  const author = (article as any).author
+    ? await reader.collections.authors.read((article as any).author)
+    : null;
   if (article.status === 'draft') notFound();
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
@@ -125,6 +130,17 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
             <h2 id="haeufige-fragen" className="text-2xl font-bold mt-16 mb-2 scroll-mt-24">Häufige Fragen</h2>
             <FAQAccordion items={(article as any).faqItems} />
           </>
+        )}
+
+        {author && (
+          <AuthorBio
+            name={author.name}
+            slug={(article as any).author || undefined}
+            role={author.role}
+            bio={author.bio}
+            avatar={author.avatar || undefined}
+            socialLinks={author.socialLinks}
+          />
         )}
 
         <PillarBacklinkCard variant="tv-news" seriesId="tatort-zuerich" />

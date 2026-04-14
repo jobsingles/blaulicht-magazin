@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { withBasePath } from '@/lib/url';
 
 interface Testimonial {
   quote: string;
@@ -48,7 +49,7 @@ export function CircularTestimonials({ items, interval = 5000 }: CircularTestimo
             <div className="flex items-center justify-center gap-3">
               {items[current].avatar ? (
                 <img width="600" height="400"
-                  src={items[current].avatar}
+                  src={withBasePath(items[current].avatar)}
                   alt={items[current].name}
                   className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-orange/20"
                 />
