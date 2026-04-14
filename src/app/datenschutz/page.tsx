@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DatenschutzPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 pt-24 pb-20 prose prose-neutral">
+    <section className="max-w-3xl mx-auto px-6 pt-24 pb-20 prose prose-neutral">
       <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">Datenschutz Magazin</h1>
       <p className="text-lg text-foreground/70 mb-10">
         Diese Seite bezieht sich auf das redaktionelle Magazin unter <code>blaulichtsingles.ch/magazin</code>. Die vollständige
@@ -94,6 +94,6 @@ export default function DatenschutzPage() {
       </p>
 
       <p className="text-sm text-foreground/45 mt-12">Stand: 14. April 2026</p>
-    </main>
+    </section>
   );
 }

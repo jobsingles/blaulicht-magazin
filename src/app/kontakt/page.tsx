@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function KontaktPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+    <section className="max-w-3xl mx-auto px-6 pt-24 pb-20">
       <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
         Kontakt zum Blaulicht-Magazin
       </h1>
@@ -105,6 +105,6 @@ export default function KontaktPage() {
       <p className="text-sm text-foreground/45 mt-12">
         Antwortzeit: typischerweise 24–48 Stunden, in Ausnahmefällen länger.
       </p>
-    </main>
+    </section>
   );
 }
