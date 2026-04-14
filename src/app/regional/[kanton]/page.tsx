@@ -96,6 +96,32 @@ export default async function KantonPage({ params }: { params: Promise<{ kanton:
           );
         })}
       </div>
+
+      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-foreground/10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">Blaulicht-Singles im Kanton {kantonName}</h2>
+        <div className="space-y-4 text-foreground/75 leading-relaxed">
+          <p>
+            Der Kanton {kantonName} bringt eigene Realitäten mit — unterschiedliche Einsatzstrukturen, regionale Korps-Kulturen
+            und lokale Treffpunkte, an denen sich Singles aus Polizei, Feuerwehr und Sanität natürlicher begegnen als in einer
+            generischen Dating-App. Diese Übersicht bündelt alle regionalen Beiträge zu {kantonName} an einem Ort.
+          </p>
+          <p>
+            Partnersuche im Blaulicht-Umfeld läuft anders als im Durchschnitt. Schichtdienst, Wochenend-Pikett, emotional
+            fordernde Einsätze — wer das lebt, braucht eine Gegenseite, die es einordnen kann. Die Beiträge für {kantonName}
+            gehen auf lokale Date-Ideen, Treffpunkte nach der Schicht und auf die Besonderheiten der kantonalen Einsatzrealität
+            ein. So wird aus einem Dating-Profil ein Gespräch, das nicht bei „Was machst du beruflich?" hängen bleibt.
+          </p>
+          <p>
+            Nutzer in {kantonName} profitieren zusätzlich von der gesamtschweizerischen Reichweite der Plattform: wer im
+            Grenzverkehr arbeitet (etwa zwischen {kantonName} und Nachbarkantonen), findet über die Regionalsuche auch
+            dort Profile, ohne extra reisen zu müssen.
+          </p>
+          <p>
+            Alle Beiträge sind redaktionell gepflegt, mit Quellen, Autor-Bio und Veröffentlichungsdatum versehen — damit
+            du weisst, wann ein Text entstanden ist und wer dahintersteht.
+          </p>
+        </div>
+      </section>
     </>
   );
 }

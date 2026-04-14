@@ -93,6 +93,33 @@ export default async function Regional() {
           ))}
         </div>
       </section>
+
+      <section className="max-w-3xl mx-auto px-6 py-12 border-t border-foreground/10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">Regional Singles finden — warum die Kantonsfilter wichtig sind</h2>
+        <div className="space-y-4 text-foreground/75 leading-relaxed">
+          <p>
+            Die Schweiz ist im Blaulicht-Bereich föderal organisiert. 26 Kantonspolizeien, über 300 Gemeindepolizeien, rund
+            1&apos;500 Feuerwehr-Einheiten (Berufs- und Miliz) und eine Vielzahl regionaler Rettungsdienste — jede Einheit
+            hat eigene Strukturen, Dienstzeiten und Dialekte. Wer auf Partnersuche ist, profitiert davon, wenn das regional
+            eingegrenzt wird.
+          </p>
+          <p>
+            Diese Übersicht sortiert dich direkt zu den Kantonen, in denen es aktive Profile und Artikel gibt. Ob Kanton
+            Zürich mit städtischer Dichte, Kanton Graubünden mit Alpenregionen oder kleinere Kantone wie Appenzell
+            Innerrhoden — jede Region hat eine eigene Dating-Realität. Lange Wege, dünne Bevölkerung, enge Korps-Kulturen
+            oder dichte urbane Szene mit vielen Kollegen, die sich privat kennen.
+          </p>
+          <p>
+            Dazu kommen die drei Berufsgruppen — Polizei, Feuerwehr und Sanität — mit jeweils eigenen Besonderheiten.
+            Polizeidienst mit Schichtrhythmus, Milizfeuerwehr mit Doppelbelastung neben dem Hauptberuf, und
+            Rettungsdienst mit intensiver emotionaler Belastung. Wer hier passt, weiss was der andere aushält.
+          </p>
+          <p>
+            Nutze die Navigation oben, um direkt in deinen Kanton zu springen, oder filtere nach Beruf, wenn dir die
+            Region weniger wichtig ist als das gemeinsame Einsatzumfeld.
+          </p>
+        </div>
+      </section>
     </>
   );
 }
