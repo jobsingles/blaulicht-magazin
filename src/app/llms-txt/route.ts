@@ -14,10 +14,10 @@ export async function GET() {
 
   const published = {
     articles: articles.filter((a) => a.entry.status !== 'draft'),
-    regional: regional.filter((r) => r.entry.status !== 'draft'),
+    regional,
     series: series.filter((s) => s.entry.status !== 'draft'),
-    stories: stories.filter((s) => s.entry.status !== 'draft'),
-    bekanntschaften: bekanntschaften.filter((b) => b.entry.status !== 'draft'),
+    stories,
+    bekanntschaften,
   };
 
   const lines: string[] = [];
