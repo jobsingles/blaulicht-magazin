@@ -273,6 +273,34 @@ body {
   margin-bottom: 0.75rem;
 }
 
+/* === Inline Links in Article Prose ===
+   Tailwind preflight killt <a>-Styles — hier wiederherstellen.
+   brand-orange-text = WCAG-AA safe shade für Light-Mode.
+   Dark-Mode: volles brand-orange (genug Kontrast auf dunklem BG). */
+.prose article a {
+  color: var(--brand-orange-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease, text-decoration-thickness 0.15s ease;
+}
+
+.prose article a:hover,
+.prose article a:focus-visible {
+  color: var(--brand-orange);
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="dark"] .prose article a {
+  color: var(--brand-orange);
+}
+
+[data-theme="dark"] .prose article a:hover,
+[data-theme="dark"] .prose article a:focus-visible {
+  color: #ffa547;
+}
+
 /* === Drop Cap — first paragraph in article prose === */
 .prose > p:first-of-type::first-letter {
   float: left;
