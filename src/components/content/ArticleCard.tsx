@@ -37,12 +37,12 @@ export function ArticleCard({ title, excerpt, href, image, imageAlt, category, d
         <div className="p-5">
           <div className="flex items-center gap-3 mb-3">
             {category && (
-              <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-text">
                 {category}
               </span>
             )}
             {date && (
-              <span className="text-[10px] text-foreground/40">{date}</span>
+              <span className="text-[10px] text-foreground/70">{date}</span>
             )}
           </div>
           <h3 className="font-bold text-lg text-foreground leading-tight mb-2 group-hover:text-brand-orange transition-colors">
