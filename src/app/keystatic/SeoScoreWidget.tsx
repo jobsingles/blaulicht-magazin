@@ -55,7 +55,10 @@ export function SeoScoreWidget() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/magazin/api/seo-check/${ctx.type}/${encodeURIComponent(ctx.slug)}`);
+      const res = await fetch(
+        `/magazin/api/seo-check/${ctx.type}/${encodeURIComponent(ctx.slug)}?_cb=${Date.now()}`,
+        { cache: 'no-store' }
+      );
       const data = await res.json();
       if (!res.ok) setError(data.error ?? `HTTP ${res.status}`);
       else setResult(data);
@@ -145,6 +148,10 @@ export function SeoScoreWidget() {
                 ✕
               </button>
             </div>
+          </div>
+
+          <div style={{ fontSize: 11, opacity: 0.55, marginBottom: 8, lineHeight: 1.4 }}>
+            ⚠️ Score liest vom letzten Vercel-Build. Nach Speichern ~90s warten + dann ↻ klicken, sonst zeigt's alte Werte.
           </div>
 
           {error && <div style={{ color: '#ef4444', fontSize: 12 }}>{error}</div>}
