@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { PillarLongIntro } from '@/components/content/PillarLongIntro';
@@ -102,9 +103,11 @@ export default async function FeuerwehrRegional() {
                   {...(isFirstOfKanton ? { id: toAnchor(entry.entry.kanton) } : {})}
                 >
                   {entry.entry.featuredImage ? (
-                    <img width="600" height="400"
+                    <Image
                       src={entry.entry.featuredImage}
                       alt={entry.entry.featuredImageAlt || entry.entry.title}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 rounded-lg object-cover flex-none"
                       loading="lazy"
                     />
