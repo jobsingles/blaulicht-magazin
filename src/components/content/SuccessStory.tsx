@@ -18,12 +18,13 @@ export function SuccessStory({ title, couple, location, excerpt, href, image, im
     <Link href={href} className="block group">
       <PolaroidCard rotation={rotation}>
         {image && (
-          <div className="relative w-full aspect-square">
+          <div className="w-full aspect-square overflow-hidden">
             <Image
               src={image}
               alt={imageAlt || couple}
-              fill
-              className="object-cover"
+              width={600}
+              height={600}
+              className="w-full h-full object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           </div>
