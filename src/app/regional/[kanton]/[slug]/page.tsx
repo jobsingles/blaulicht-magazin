@@ -119,6 +119,7 @@ export default async function RegionalDetail({ params }: { params: Promise<{ kan
         city={article.city}
         excerpt={article.excerpt}
         image={article.featuredImage || undefined}
+        imageAlt={article.featuredImageAlt || undefined}
       />
 
       <StickyTOC items={extractH2s(article.content)} />

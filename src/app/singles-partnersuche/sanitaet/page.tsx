@@ -131,6 +131,7 @@ export default async function SanitaetPillar() {
                 excerpt={article.entry.excerpt}
                 href={getArticleUrl(article.slug, article.entry.type, article.entry.series)}
                 image={article.entry.featuredImage || undefined}
+                imageAlt={article.entry.featuredImageAlt || undefined}
                 category={article.entry.category}
                 date={article.entry.publishedAt || undefined}
               />

@@ -70,6 +70,7 @@ export default async function Bergdoktor() {
               excerpt={article.entry.excerpt}
               href={`/tv-news/bergdoktor/${article.slug}`}
               image={article.entry.featuredImage || undefined}
+              imageAlt={article.entry.featuredImageAlt || undefined}
               seriesLabel="Der Bergdoktor"
             />
           ))}

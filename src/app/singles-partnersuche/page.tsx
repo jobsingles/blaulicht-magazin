@@ -167,6 +167,7 @@ export default async function SinglesPartnersuche() {
                   excerpt={article.entry.excerpt}
                   href={`/singles-partnersuche/${article.slug}`}
                   image={article.entry.featuredImage || undefined}
+                  imageAlt={article.entry.featuredImageAlt || undefined}
                   category={article.entry.category}
                   date={article.entry.publishedAt || undefined}
                 />
