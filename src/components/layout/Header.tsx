@@ -18,7 +18,7 @@ export function Header() {
             className="rounded-lg"
           />
           <span className="font-bold text-xl text-foreground tracking-tight">
-            Blaulicht<span className="text-brand-orange"> Magazin</span>
+            Blaulicht<span className="text-brand-orange-text"> Magazin</span>
           </span>
         </Link>
 

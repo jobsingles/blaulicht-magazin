@@ -11,7 +11,7 @@ export function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
         {/* Inner content area — slightly lighter surface */}
-        <div className="relative rounded-2xl p-8 md:p-10" style={{ background: 'rgba(255,255,255,0.06)' }}>
+        <div className="relative rounded-2xl p-8 md:p-10" style={{ background: '#2B4669' }}>
           {/* Tape left — fast senkrecht, zerrissene Ränder, dunkelgrau */}
           <div
             className="absolute -top-10 left-24 w-9 h-20 hidden md:block z-10"
@@ -47,7 +47,7 @@ export function Footer() {
                   Blaulicht<span className="text-brand-orange"> Magazin</span>
                 </h3>
               </div>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="text-sm text-white/75 leading-relaxed">
                 Das Magazin für Singles bei Polizei, Feuerwehr und Sanität.
                 Partnersuche, Erfolgsgeschichten und regionale Tipps.
               </p>
@@ -55,7 +55,7 @@ export function Footer() {
 
             {/* Magazin */}
             <div>
-              <h4 className="text-xs uppercase tracking-widest font-bold text-white/40 mb-4">
+              <h4 className="text-xs uppercase tracking-widest font-bold text-white/70 mb-4">
                 Magazin
               </h4>
               <nav className="flex flex-col gap-2">
@@ -76,7 +76,7 @@ export function Footer() {
 
             {/* Netzwerk */}
             <div>
-              <h4 className="text-xs uppercase tracking-widest font-bold text-white/40 mb-4">
+              <h4 className="text-xs uppercase tracking-widest font-bold text-white/70 mb-4">
                 Netzwerk
               </h4>
               <nav className="flex flex-col gap-2">
@@ -87,14 +87,14 @@ export function Footer() {
                   Jobsingles.de — Das Netzwerk
                 </a>
               </nav>
-              <p className="text-[10px] text-white/30 mt-3">
+              <p className="text-[10px] text-white/65 mt-3">
                 Teil des Jobsingles-Netzwerks mit 15+ Berufs-Dating-Portalen
               </p>
             </div>
 
             {/* Service */}
             <div>
-              <h4 className="text-xs uppercase tracking-widest font-bold text-white/40 mb-4">
+              <h4 className="text-xs uppercase tracking-widest font-bold text-white/70 mb-4">
                 Service
               </h4>
               <nav className="flex flex-col gap-2">
@@ -126,10 +126,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 pt-5 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/70">
             © {currentYear} Blaulichtsingles.ch — Alle Rechte vorbehalten.
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/70">
             Made with <span className="text-brand-orange">❤</span> by{' '}
             <a
               href="https://seeside.ai"
