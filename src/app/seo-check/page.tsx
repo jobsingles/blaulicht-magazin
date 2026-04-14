@@ -73,7 +73,7 @@ export default function SeoCheckPage() {
   }, []);
 
   return (
-    <main className="max-w-3xl mx-auto px-6 pt-24 pb-20">
+    <section className="max-w-3xl mx-auto px-6 pt-24 pb-20">
       <h1 className="text-3xl font-bold mb-2">SEO-Check</h1>
       <p className="text-foreground/60 mb-2">Live-Score für Keystatic-Artikel — direkt aus dem Repo gelesen.</p>
       <details className="mb-6">
@@ -158,6 +158,6 @@ export default function SeoCheckPage() {
           </ul>
         </>
       )}
-    </main>
+    </section>
   );
 }
