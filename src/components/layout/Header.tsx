@@ -14,6 +14,7 @@ export function Header() {
             alt="Jobsingles Network"
             width={44}
             height={44}
+            priority
             className="rounded-lg"
           />
           <span className="font-bold text-xl text-foreground tracking-tight">

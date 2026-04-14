@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         hostname: 'blaulichtsingles.ch',
       },
     ],
+    // Reduzierte Device-Sizes → weniger srcset-Varianten pro Bild → kleiner byte-weight
+    deviceSizes: [640, 828, 1200, 1920],
+    imageSizes: [96, 256, 600],
+    formats: ['image/webp'],
+    // Default-quality: aggressiver
+    qualities: [60, 75, 85],
   },
   async headers() {
     const securityHeaders = [
