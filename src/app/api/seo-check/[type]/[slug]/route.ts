@@ -43,17 +43,48 @@ function normalize(s: string): string {
   return s.toLowerCase().replace(/[äöüß]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue', ß: 'ss' })[c] ?? c);
 }
 
-function containsKeyword(haystack: string | undefined | null, keyword: string): boolean {
-  if (!haystack || !keyword) return false;
-  return normalize(haystack).includes(normalize(keyword));
+function tokenize(keyword: string): string[] {
+  return normalize(keyword)
+    .split(/[\s\-_.,;:!?()/\\]+/)
+    .map((t) => t.trim())
+    .filter((t) => t.length >= 2);
 }
 
-function keywordDensity(text: string, keyword: string): number {
-  if (!text || !keyword) return 0;
-  const words = text.split(/\s+/).filter(Boolean).length;
-  if (words === 0) return 0;
-  const occurrences = (normalize(text).match(new RegExp(normalize(keyword).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) ?? []).length;
-  return (occurrences / words) * 100;
+function tokenMatch(haystack: string | undefined | null, keyword: string): { ok: boolean; found: string[]; missing: string[] } {
+  const tokens = tokenize(keyword);
+  if (!haystack || tokens.length === 0) return { ok: false, found: [], missing: tokens };
+  const norm = normalize(haystack);
+  const found: string[] = [];
+  const missing: string[] = [];
+  for (const t of tokens) {
+    if (norm.includes(t)) found.push(t);
+    else missing.push(t);
+  }
+  return { ok: missing.length === 0, found, missing };
+}
+
+function tokenDensity(text: string, keyword: string): { density: number; totalHits: number } {
+  const tokens = tokenize(keyword);
+  if (!text || tokens.length === 0) return { density: 0, totalHits: 0 };
+  const norm = normalize(text);
+  const words = norm.split(/\s+/).filter(Boolean).length;
+  if (words === 0) return { density: 0, totalHits: 0 };
+  let total = 0;
+  for (const t of tokens) {
+    const re = new RegExp(`\\b${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
+    total += (norm.match(re) ?? []).length;
+  }
+  return { density: (total / words) * 100, totalHits: total };
+}
+
+function tokenCheck(label: string, weight: number, haystack: string | undefined | null, keyword: string): Check {
+  const r = tokenMatch(haystack, keyword);
+  return {
+    ok: r.ok,
+    weight,
+    label,
+    hint: r.ok ? undefined : r.missing.length > 0 ? `Fehlt: ${r.missing.join(', ')}` : 'Kein Wort gefunden',
+  };
 }
 
 function keywordChecks(entry: any, slug: string, contentText: string, firstPara: string): Check[] {
@@ -61,16 +92,23 @@ function keywordChecks(entry: any, slug: string, contentText: string, firstPara:
   if (!kw) {
     return [{ ok: false, weight: 5, label: 'Focus-Keyword fehlt', hint: 'Setze ein Focus-Keyword im Backend, dann werden 7 Keyword-Checks aktiviert' }];
   }
-  const density = keywordDensity(contentText, kw);
+  const tokens = tokenize(kw);
+  const tokensTxt = tokens.join(', ');
+  const { density, totalHits } = tokenDensity(contentText, kw);
   const densityOk = density >= 0.5 && density <= 3.0;
   return [
-    { ok: containsKeyword(entry.title, kw), weight: 8, label: `Keyword "${kw}" im Titel`, hint: `Im Artikel-Titel verwenden` },
-    { ok: containsKeyword(slug, kw.replace(/\s+/g, '-')), weight: 6, label: `Keyword im Slug`, hint: `Slug enthält Keyword (mit Bindestrichen)` },
-    { ok: containsKeyword(entry.seoTitle, kw), weight: 6, label: `Keyword im SEO-Titel`, hint: `SEO-Titel enthält das Keyword` },
-    { ok: containsKeyword(entry.seoDescription, kw), weight: 6, label: `Keyword in SEO-Beschreibung`, hint: `Meta-Description enthält das Keyword` },
-    { ok: containsKeyword(entry.excerpt, kw), weight: 4, label: `Keyword im Auszug`, hint: `Auszug erwähnt das Keyword` },
-    { ok: containsKeyword(firstPara, kw), weight: 5, label: `Keyword im ersten Absatz`, hint: `Keyword in den ersten ~100 Wörtern` },
-    { ok: densityOk, weight: 5, label: `Keyword-Dichte ${density.toFixed(2)}%`, hint: densityOk ? undefined : `Optimal 0.5–3.0% (aktuell ${density.toFixed(2)}%)` },
+    tokenCheck(`Keyword im Titel — "${kw}" (${tokens.length} Wörter: ${tokensTxt})`, 8, entry.title, kw),
+    tokenCheck(`Keyword im Slug`, 6, slug, kw),
+    tokenCheck(`Keyword im SEO-Titel`, 6, entry.seoTitle, kw),
+    tokenCheck(`Keyword in SEO-Beschreibung`, 6, entry.seoDescription, kw),
+    tokenCheck(`Keyword im Auszug`, 4, entry.excerpt, kw),
+    tokenCheck(`Keyword im ersten Absatz`, 5, firstPara, kw),
+    {
+      ok: densityOk,
+      weight: 5,
+      label: `Keyword-Dichte ${density.toFixed(2)}% (${totalHits} Treffer)`,
+      hint: densityOk ? undefined : `Optimal 0.5–3.0% (aktuell ${density.toFixed(2)}%)`,
+    },
   ];
 }
 
