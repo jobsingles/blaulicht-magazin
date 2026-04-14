@@ -113,6 +113,9 @@ export function Footer() {
                 <Link href="/ueber-uns" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Über uns
                 </Link>
+                <Link href="/kontakt" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
+                  Kontakt
+                </Link>
               </nav>
             </div>
           </div>

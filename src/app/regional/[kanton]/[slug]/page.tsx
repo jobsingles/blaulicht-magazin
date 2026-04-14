@@ -11,6 +11,7 @@ import { MatchQuiz } from '@/components/ui/MatchQuiz';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { StickyTOC } from '@/components/content/StickyTOC';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ArticleByline } from '@/components/content/ArticleByline';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 import type { Metadata } from 'next';
 
@@ -130,6 +131,8 @@ export default async function RegionalDetail({ params }: { params: Promise<{ kan
           { label: article.kanton, href: `/regional/${toSlug(article.kanton)}` },
           { label: article.title, href: `/regional/${toSlug(article.kanton)}/${slug}` },
         ]} />
+
+        <ArticleByline publishedAt={article.publishedAt || undefined} />
 
         <TableOfContents items={extractH2s(article.content)} />
 

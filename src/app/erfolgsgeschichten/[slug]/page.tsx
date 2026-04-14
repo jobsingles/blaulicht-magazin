@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { ArticleBody } from '@/components/content/ArticleBody';
 import { PolaroidCard } from '@/components/ui/PolaroidCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ArticleByline } from '@/components/content/ArticleByline';
 import { JsonLd, articleJsonLd } from '@/components/seo/JsonLd';
 
 export async function generateStaticParams() {
@@ -54,6 +55,8 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
           { label: 'Erfolgsgeschichten', href: '/erfolgsgeschichten' },
           { label: story.title, href: `/erfolgsgeschichten/${slug}` },
         ]} />
+
+        <ArticleByline publishedAt={story.publishedAt || undefined} />
 
         {story.featuredImage && (
           <div className="flex justify-center mb-12">
