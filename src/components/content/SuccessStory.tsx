@@ -9,10 +9,11 @@ interface SuccessStoryProps {
   excerpt: string;
   href: string;
   image?: string;
+  imageAlt?: string;
   rotation?: 'left' | 'right' | 'slight';
 }
 
-export function SuccessStory({ title, couple, location, excerpt, href, image, rotation = 'slight' }: SuccessStoryProps) {
+export function SuccessStory({ title, couple, location, excerpt, href, image, imageAlt, rotation = 'slight' }: SuccessStoryProps) {
   return (
     <Link href={href} className="block group">
       <PolaroidCard rotation={rotation}>
@@ -20,7 +21,7 @@ export function SuccessStory({ title, couple, location, excerpt, href, image, ro
           <div className="relative w-full aspect-square">
             <Image
               src={image}
-              alt={couple}
+              alt={imageAlt || couple}
               fill
               className="object-cover"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
