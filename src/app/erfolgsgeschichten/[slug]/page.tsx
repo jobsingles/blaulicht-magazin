@@ -6,6 +6,7 @@ import { PolaroidCard } from '@/components/ui/PolaroidCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ArticleByline } from '@/components/content/ArticleByline';
 import { JsonLd, articleJsonLd } from '@/components/seo/JsonLd';
+import { withBasePath } from '@/lib/url';
 
 export async function generateStaticParams() {
   const stories = await reader.collections.stories.all();
@@ -62,7 +63,7 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
           <div className="flex justify-center mb-12">
             <PolaroidCard rotation="slight" tape="center">
               <img width="600" height="400"
-                src={story.featuredImage}
+                src={withBasePath(story.featuredImage)}
                 alt={story.couple}
                 className="w-full max-w-sm aspect-square object-cover"
               />
