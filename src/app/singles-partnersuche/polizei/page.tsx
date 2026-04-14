@@ -7,10 +7,14 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
+import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = {
-  title: 'Polizei Dating Schweiz — Singles bei Kapo, Stadtpolizei & Fedpol',
-  description: 'Partnersuche für Polizistinnen und Polizisten in der Schweiz. Date-Ideen, Schichtdienst-Tipps und echte Erfolgsgeschichten.',
+  title: 'Polizei Dating Schweiz: 18\'000 Singles verstehen deinen Dienst',
+  description: 'Partnersuche für Kapo, Stadtpolizei & Fedpol. Singles die Pikett, Schichtdienst und Einsätze verstehen — ohne Erklärungen. Jetzt kostenfrei dabei.',
+  alternates: {
+    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/polizei',
+  },
 };
 
 const POLIZEI_COLORS = [
@@ -95,8 +99,32 @@ export default async function PolizeiPillar() {
       .filter(Boolean) as typeof articles;
   }
 
+  const allSectionSlugs = [...SECTIONS, ...SECTIONS_AFTER_CTA].flatMap((s) => s.slugs);
+  const schemaItems = allSectionSlugs
+    .map((slug) => articles.find((a) => a.slug === slug))
+    .filter(Boolean)
+    .map((a) => ({
+      name: a!.entry.title,
+      url: `https://blaulichtsingles.ch/magazin${getArticleUrl(a!.slug, a!.entry.type, a!.entry.series)}`,
+    }));
+
   return (
     <>
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: 'Polizei Dating Schweiz — Singles bei Kapo, Stadtpolizei & Fedpol',
+          description: 'Partnersuche für Polizistinnen und Polizisten in der Schweiz. Date-Ideen, Schichtdienst-Tipps und echte Erfolgsgeschichten.',
+          url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/polizei',
+          items: schemaItems,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Magazin', url: 'https://blaulichtsingles.ch/magazin' },
+          { name: 'Singles & Partnersuche', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche' },
+          { name: 'Polizei Dating', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/polizei' },
+        ])}
+      />
       <PillarHero
         title="Polizei Singles"
         texts={[

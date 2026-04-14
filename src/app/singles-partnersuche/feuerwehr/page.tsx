@@ -7,10 +7,14 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
+import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = {
-  title: 'Feuerwehr Dating Schweiz — Singles bei Miliz- & Berufsfeuerwehr',
-  description: 'Partnersuche für Feuerwehrleute in der Schweiz. Pikett, Kameradschaft und echte Liebe — finde dein Match bei der Feuerwehr.',
+  title: 'Feuerwehr Dating Schweiz: 85% Miliz verstehen den Piepser',
+  description: 'Singles bei Miliz- und Berufsfeuerwehr. Partnersuche mit Menschen, die «Du musst wieder weg?» kennen und mitmachen. Jetzt kostenfrei dabei.',
+  alternates: {
+    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr',
+  },
 };
 
 const FEUERWEHR_COLORS = [
@@ -90,8 +94,32 @@ export default async function FeuerwehrPillar() {
 
   const midIndex = Math.floor(SECTIONS.length / 2); // after section index 1 (Date-Ideen = index 2)
 
+  const allSectionSlugs = SECTIONS.flatMap((s) => s.slugs);
+  const schemaItems = allSectionSlugs
+    .map((slug) => articles.find((a) => a.slug === slug))
+    .filter(Boolean)
+    .map((a) => ({
+      name: a!.entry.title,
+      url: `https://blaulichtsingles.ch/magazin${getArticleUrl(a!.slug, a!.entry.type, a!.entry.series)}`,
+    }));
+
   return (
     <>
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: 'Feuerwehr Dating Schweiz — Singles bei Miliz- & Berufsfeuerwehr',
+          description: 'Partnersuche für Feuerwehrleute in der Schweiz. Pikett, Kameradschaft und echte Liebe.',
+          url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr',
+          items: schemaItems,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Magazin', url: 'https://blaulichtsingles.ch/magazin' },
+          { name: 'Singles & Partnersuche', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche' },
+          { name: 'Feuerwehr Dating', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr' },
+        ])}
+      />
       <PillarHero
         title="Feuerwehr Singles"
         texts={[

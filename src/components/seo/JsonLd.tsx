@@ -98,3 +98,68 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
     })),
   };
 }
+
+export function collectionPageJsonLd({
+  name,
+  description,
+  url,
+  items,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  items: { name: string; url: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name,
+    description,
+    url,
+    inLanguage: 'de-CH',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Blaulicht Magazin',
+      url: 'https://blaulichtsingles.ch/magazin',
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: items.length,
+      itemListElement: items.map((it, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: it.name,
+        url: it.url,
+      })),
+    },
+  };
+}
+
+export function placeJsonLd({
+  name,
+  description,
+  url,
+  kanton,
+}: {
+  name: string;
+  description: string;
+  url: string;
+  kanton: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name,
+    description,
+    url,
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: kanton,
+      addressCountry: 'CH',
+    },
+    containedInPlace: {
+      '@type': 'Country',
+      name: 'Schweiz',
+    },
+  };
+}

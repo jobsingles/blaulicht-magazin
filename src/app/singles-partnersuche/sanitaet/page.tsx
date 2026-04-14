@@ -8,10 +8,14 @@ import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { AnimatedStats } from '@/components/ui/AnimatedCounter';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = {
-  title: 'Sanität Dating Schweiz — Singles bei SRK, Rettungsdienst & Spital',
-  description: 'Partnersuche für Rettungssanitäter, Notfallmediziner und Pflegefachkräfte. Wer versteht Pikett-Leben besser als jemand vom Fach?',
+  title: 'Sanität Dating Schweiz: Pikett-Partner finden — SRK, Spital, REGA',
+  description: 'Singles bei Rettungssanitätern, Notfallmedizinern und Pflege. Nach 12h Schicht keine Erklärungen, sondern echte Verbindung. Jetzt kostenfrei starten.',
+  alternates: {
+    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet',
+  },
 };
 
 const SANITAET_COLORS = [
@@ -142,8 +146,32 @@ export default async function SanitaetPillar() {
     );
   }
 
+  const allSlugs = [...SECTIONS, ...SECTIONS_AFTER_CTA].flatMap((s) => s.slugs);
+  const schemaItems = allSlugs
+    .map((slug) => bySlug[slug])
+    .filter(Boolean)
+    .map((a) => ({
+      name: a.entry.title,
+      url: `https://blaulichtsingles.ch/magazin${getArticleUrl(a.slug, a.entry.type, a.entry.series)}`,
+    }));
+
   return (
     <>
+      <JsonLd
+        data={collectionPageJsonLd({
+          name: 'Sanität Dating Schweiz — Singles bei SRK, Rettungsdienst & Spital',
+          description: 'Partnersuche für Rettungssanitäter, Notfallmediziner und Pflegefachkräfte in der Schweiz.',
+          url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet',
+          items: schemaItems,
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: 'Magazin', url: 'https://blaulichtsingles.ch/magazin' },
+          { name: 'Singles & Partnersuche', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche' },
+          { name: 'Sanität Dating', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet' },
+        ])}
+      />
       {/* 1. PillarHero */}
       <PillarHero
         title="Sanität Singles"
