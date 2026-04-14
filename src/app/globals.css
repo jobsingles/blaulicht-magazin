@@ -301,6 +301,31 @@ body {
   color: #ffa547;
 }
 
+/* Pillar Long-Intro: gleiche Link-Styles wie Prose-Articles */
+.pillar-long-intro a {
+  color: var(--brand-orange-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease, text-decoration-thickness 0.15s ease;
+}
+
+.pillar-long-intro a:hover,
+.pillar-long-intro a:focus-visible {
+  color: var(--brand-orange);
+  text-decoration-thickness: 2px;
+}
+
+[data-theme="dark"] .pillar-long-intro a {
+  color: var(--brand-orange);
+}
+
+[data-theme="dark"] .pillar-long-intro a:hover,
+[data-theme="dark"] .pillar-long-intro a:focus-visible {
+  color: #ffa547;
+}
+
 /* === Drop Cap — first paragraph in article prose === */
 .prose > p:first-of-type::first-letter {
   float: left;
