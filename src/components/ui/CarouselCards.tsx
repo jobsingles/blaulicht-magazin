@@ -92,7 +92,7 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
                 )}
                 <div className="p-5">
                   {item.category && (
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange mb-2 block">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange-text mb-2 block">
                       {item.category}
                     </span>
                   )}

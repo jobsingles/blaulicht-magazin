@@ -54,19 +54,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <PillarHero
-        title="Blaulichtsingles"
-        texts={[
-          "Held sucht Herz",
-          "Notruf Liebe",
-          "Einsatz Herz",
-          "Dein Match",
-          "Blaulicht Herz",
-          "Frei. Verliebt.",
-          "Blaulicht Singles",
-        ]}
-      />
-
       {/* Neueste Artikel — Bento Grid */}
       <ScrollReveal>
         <section className="max-w-6xl mx-auto px-6 pt-4 pb-12">
@@ -134,6 +121,22 @@ export default async function HomePage() {
             ]}
           />
         </section>
+      </ScrollReveal>
+
+      {/* Particle Hero — below the fold so it doesn't block LCP */}
+      <ScrollReveal>
+        <PillarHero
+          title="Blaulichtsingles"
+          texts={[
+            "Held sucht Herz",
+            "Notruf Liebe",
+            "Einsatz Herz",
+            "Dein Match",
+            "Blaulicht Herz",
+            "Frei. Verliebt.",
+            "Blaulicht Singles",
+          ]}
+        />
       </ScrollReveal>
 
       {/* Erfolgsgeschichten */}

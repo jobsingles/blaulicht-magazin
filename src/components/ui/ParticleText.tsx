@@ -101,11 +101,32 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
   const textIdx = useRef(0);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasEl = canvasRef.current;
+    if (!canvasEl) return;
 
-    const parent = canvas.parentElement;
-    if (!parent) return;
+    const parentEl = canvasEl.parentElement;
+    if (!parentEl) return;
+
+    const canvas = canvasEl;
+    const parent = parentEl;
+
+    let started = false;
+    let interval: ReturnType<typeof setInterval> | null = null;
+    let visible = false;
+    let restartAnimate: (() => void) | null = null;
+
+    const io = new IntersectionObserver((entries) => {
+      visible = entries[0]?.isIntersecting ?? false;
+      if (visible && !started) {
+        started = true;
+        init();
+      } else if (visible && started && animRef.current === 0 && restartAnimate) {
+        restartAnimate();
+      }
+    }, { rootMargin: '100px' });
+    io.observe(parent);
+
+    function init() {
 
     const dpr = window.devicePixelRatio || 1;
     const rect = parent.getBoundingClientRect();
@@ -221,6 +242,10 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
     const bgColor = getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#FDFBF7';
 
     function animate() {
+      if (!visible) {
+        animRef.current = 0;
+        return;
+      }
       // Use page background with low opacity for trail effect
       const r = parseInt(bgColor.slice(1, 3), 16) || 253;
       const g = parseInt(bgColor.slice(3, 5), 16) || 251;
@@ -239,21 +264,25 @@ export function ParticleText({ text, texts, className = '', colors = BRAND_COLOR
       }
       animRef.current = requestAnimationFrame(animate);
     }
+    restartAnimate = animate;
 
     spawnText(allTexts[0]);
     textIdx.current = 1;
     animate();
 
-    // Re-trigger with next text + color every 8 seconds
-    const interval = setInterval(() => {
+    // Re-trigger with next text + color every 8 seconds — only while visible
+    interval = setInterval(() => {
+      if (!visible) return;
       const nextText = allTexts[textIdx.current % allTexts.length];
       textIdx.current++;
       spawnText(nextText);
     }, 8000);
+    }
 
     return () => {
+      io.disconnect();
       if (animRef.current) cancelAnimationFrame(animRef.current);
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
     };
   }, [allTexts, colors]);
 
