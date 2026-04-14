@@ -24,6 +24,7 @@ export default async function Erfolgsgeschichten() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="sr-only">Erfolgsgeschichten unserer Mitglieder</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {stories.map((story, i) => (
             <SuccessStory

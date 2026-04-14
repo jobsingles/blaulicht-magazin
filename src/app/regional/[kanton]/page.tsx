@@ -1,8 +1,25 @@
+import type { Metadata } from 'next';
 import { reader } from '@/lib/keystatic';
 import { PillarHero } from '@/components/content/PillarHero';
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+
+function kantonLabel(slug: string): string {
+  return slug
+    .replace(/-/g, ' ')
+    .replace(/\bae\b/g, 'ä').replace(/\boe\b/g, 'ö').replace(/\bue\b/g, 'ü')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ kanton: string }> }): Promise<Metadata> {
+  const { kanton } = await params;
+  const label = kantonLabel(kanton);
+  return {
+    title: `Singles ${label} — Blaulicht-Dating Kanton ${label}`,
+    description: `Polizei, Feuerwehr und Sanität: Singles im Kanton ${label} kennenlernen. Regionale Tipps, Treffpunkte und Bekanntschaften für Blaulicht-Singles aus ${label}.`,
+  };
+}
 
 export async function generateStaticParams() {
   const all = await reader.collections.regional.all();

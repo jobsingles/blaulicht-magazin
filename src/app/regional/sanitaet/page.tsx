@@ -88,14 +88,17 @@ export default async function SanitaetRegional() {
         )}
 
         {/* Kompaktes Kanton-Grid mit Mini-Bild */}
+        <h2 className="sr-only">Sanität-Singles nach Kanton</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {entries.map((entry) => (
+          {entries.map((entry, idx, arr) => {
+            const isFirstOfKanton = arr.findIndex((e) => e.entry.kanton === entry.entry.kanton) === idx;
+            return (
             <ScrollReveal key={entry.slug}>
               <AnimatedGradientBorder borderRadius={12} borderWidth={2}>
                 <Link
                   href={`/regional/${toAnchor(entry.entry.kanton)}/${entry.slug}`}
                   className="flex gap-3 items-center p-3 hover-lift transition-all group"
-                  id={toAnchor(entry.entry.kanton)}
+                  {...(isFirstOfKanton ? { id: toAnchor(entry.entry.kanton) } : {})}
                 >
                   {entry.entry.featuredImage ? (
                     <img
@@ -116,7 +119,8 @@ export default async function SanitaetRegional() {
                 </Link>
               </AnimatedGradientBorder>
             </ScrollReveal>
-          ))}
+          );
+          })}
         </div>
 
         {entries.length === 0 && (
