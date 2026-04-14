@@ -110,6 +110,7 @@ export default async function HomePage() {
                 imageAlt={article.entry.featuredImageAlt || undefined}
                 category={article.entry.category}
                 date={article.entry.publishedAt || undefined}
+                priority
               />
             ))}
             {articles.length === 0 && (
