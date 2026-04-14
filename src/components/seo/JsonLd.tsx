@@ -43,10 +43,7 @@ export function articleJsonLd({
     description,
     url,
     ...(image && {
-      image: {
-        '@type': 'ImageObject',
-        url: image,
-      },
+      image: image.startsWith('http') ? [image] : [`https://blaulichtsingles.ch${image.startsWith('/') ? '' : '/'}${image}`],
     }),
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
