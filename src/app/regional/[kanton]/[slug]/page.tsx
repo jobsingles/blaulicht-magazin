@@ -72,10 +72,16 @@ export async function generateMetadata({ params }: { params: Promise<{ kanton: s
     ? `${BASE_URL}${article.featuredImage}`
     : `${BASE_URL}/logos/jobsingles-logo.png`;
 
+  // Stadt-Variants (slug endet mit -stadt) → canonical auf Kanton-Variant (gleicher Beruf+Ort, weniger Cannibalization)
+  const isStadt = slug.endsWith('-stadt');
+  const canonicalUrl = isStadt
+    ? `${BASE_URL}/regional/${toSlug(kanton)}/${slug.replace(/-stadt$/, '')}`
+    : url;
+
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title,
       description,
