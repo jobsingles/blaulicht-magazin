@@ -17,9 +17,15 @@ export function PillarHero({ title, texts, subtitle, image, colors }: PillarHero
         {/* Background */}
         <div className="absolute inset-0 particle-overlay opacity-50" />
         {image && (
-          <div className="absolute inset-0">
-            <Image src={image} alt="" fill priority className="object-cover opacity-15" sizes="100vw" />
-          </div>
+          <Image
+            src={image}
+            alt=""
+            width={1920}
+            height={1080}
+            priority
+            className="absolute inset-0 w-full h-full object-cover opacity-15"
+            sizes="100vw"
+          />
         )}
 
         <div className="relative max-w-4xl mx-auto px-6 text-center">

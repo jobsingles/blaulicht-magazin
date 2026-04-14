@@ -26,7 +26,16 @@ export function ClusterHero({ title, excerpt, category, image, imageAlt, date }:
   return (
     <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
       <div className="absolute inset-0">
-        <Image src={image} alt={imageAlt || title} fill priority className="object-cover" style={{ objectPosition: '50% 20%' }} sizes="100vw" />
+        <Image
+          src={image}
+          alt={imageAlt || title}
+          width={1920}
+          height={720}
+          priority
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: '50% 20%' }}
+          sizes="100vw"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
       </div>
       <div className="relative max-w-4xl mx-auto px-6 flex flex-col justify-end min-h-[320px] md:min-h-[440px] pb-6">

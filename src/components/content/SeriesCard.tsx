@@ -18,12 +18,13 @@ export function SeriesCard({ title, excerpt, href, image, imageAlt, seriesLabel 
     <SpotlightCard>
       <Link href={href} className="block group">
         {image && (
-          <div className="aspect-video overflow-hidden relative">
+          <div className="aspect-video overflow-hidden">
             <Image
               src={image}
               alt={imageAlt || title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              width={800}
+              height={450}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
             />
           </div>
