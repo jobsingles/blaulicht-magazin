@@ -81,10 +81,11 @@ export function CarouselCards({ title, items }: CarouselCardsProps) {
                 {item.image && (
                   <div className="aspect-[16/10] overflow-hidden relative">
                     <Image
+              width={1600}
+              height={900}
                       src={item.image}
                       alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="320px"
                     />
                   </div>
