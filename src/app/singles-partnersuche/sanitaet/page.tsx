@@ -10,11 +10,19 @@ import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
+const SANITAET_URL = 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet';
+
 export const metadata = {
   title: 'Sanität Dating Schweiz: Pikett-Partner finden — SRK, Spital, REGA',
   description: 'Singles bei Rettungssanitätern, Notfallmedizinern und Pflege. Nach 12h Schicht keine Erklärungen, sondern echte Verbindung. Jetzt kostenfrei starten.',
-  alternates: {
-    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet',
+  alternates: { canonical: SANITAET_URL },
+  openGraph: {
+    title: 'Sanität Dating Schweiz — Singles bei SRK, Rettungsdienst & Spital',
+    description: 'Partnersuche für Rettungssanitäter, Notfallmediziner und Pflege — wer versteht Pikett-Leben besser als jemand vom Fach?',
+    url: SANITAET_URL,
+    type: 'website',
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
   },
 };
 
