@@ -15,7 +15,7 @@ export function RegionalHero({ title, kanton, city, excerpt, image, imageAlt }: 
       {/* Background Image */}
       {image && (
         <div className="absolute inset-0">
-          <Image src={image} alt={imageAlt || `Blaulicht-Singles ${city || kanton}, Schweiz — Partnersuche und Dating`} fill className="object-cover" style={{ objectPosition: '50% 25%' }} sizes="100vw" />
+          <Image src={image} alt={imageAlt || `Blaulicht-Singles ${city || kanton}, Schweiz — Partnersuche und Dating`} fill priority className="object-cover" style={{ objectPosition: '50% 25%' }} sizes="100vw" />
           {/* Dark scrim for text contrast in both light + dark mode */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10" />
         </div>
