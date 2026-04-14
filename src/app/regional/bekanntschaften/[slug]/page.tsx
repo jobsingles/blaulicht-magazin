@@ -8,6 +8,7 @@ import { FAQAccordion } from '@/components/ui/FAQAccordion';
 import { HeartButton } from '@/components/ui/HeartButton';
 import { TakeawayBox } from '@/components/ui/TakeawayBox';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ArticleByline } from '@/components/content/ArticleByline';
 import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
 import { BekanntschaftenCrossLinks } from '@/components/content/BekanntschaftenCrossLinks';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
@@ -93,6 +94,8 @@ export default async function BekanntschaftenArticle({ params }: { params: Promi
           { label: 'Bekanntschaften', href: '/regional/bekanntschaften' },
           { label: article.city || article.title, href: `/regional/bekanntschaften/${slug}` },
         ]} />
+
+        <ArticleByline publishedAt={article.publishedAt || undefined} />
 
         <TableOfContents items={extractH2s(article.content)} />
         <ArticleBody content={article.content} />

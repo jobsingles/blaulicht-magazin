@@ -9,6 +9,7 @@ import { TakeawayBox } from '@/components/ui/TakeawayBox';
 import { FAQAccordion } from '@/components/ui/FAQAccordion';
 import { HeartButton } from '@/components/ui/HeartButton';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ArticleByline } from '@/components/content/ArticleByline';
 import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
@@ -102,6 +103,8 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
           { label: 'Tatort Zürich', href: '/tv-news/tatort-zuerich' },
           { label: article.title, href: `/tv-news/tatort-zuerich/${slug}` },
         ]} />
+
+        <ArticleByline publishedAt={article.publishedAt || undefined} />
 
         <TableOfContents items={extractH2s(article.content)} />
 

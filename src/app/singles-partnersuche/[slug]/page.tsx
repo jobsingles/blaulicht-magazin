@@ -15,6 +15,7 @@ import { MatchQuiz } from '@/components/ui/MatchQuiz';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { StickyTOC } from '@/components/content/StickyTOC';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { ArticleByline } from '@/components/content/ArticleByline';
 import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
 
 function toId(text: string) {
@@ -136,6 +137,8 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           { label: 'Singles & Partnersuche', href: '/singles-partnersuche' },
           { label: article.title, href: `/singles-partnersuche/${slug}` },
         ]} />
+
+        <ArticleByline publishedAt={article.publishedAt || undefined} />
 
         <TableOfContents items={extractH2s(article.content)} />
 
