@@ -18,6 +18,19 @@ function collectText(children: any[]): string {
     .join('');
 }
 
+const BASE_PATH = '/magazin';
+
+function prefixInternalHref(href: string): string {
+  if (!href) return href;
+  // Externe Links, Anchor-Links, mailto: unberührt
+  if (href.startsWith('//') || /^[a-z]+:/i.test(href) || href.startsWith('#')) return href;
+  // Bereits prefixed
+  if (href.startsWith(`${BASE_PATH}/`) || href === BASE_PATH) return href;
+  // Root-relative interne Links bekommen Prefix
+  if (href.startsWith('/')) return `${BASE_PATH}${href}`;
+  return href;
+}
+
 const markdocConfig = {
   nodes: {
     heading: {
@@ -30,6 +43,20 @@ const markdocConfig = {
         const level = node.attributes.level;
         const attrs = level === 2 ? { id: toId(collectText(children)) } : {};
         return new Markdoc.Tag(`h${level}`, attrs, children);
+      },
+    },
+    link: {
+      render: 'a',
+      attributes: {
+        href: { type: String, required: true },
+        title: { type: String },
+      },
+      transform(node: any, config: any) {
+        const children = node.transformChildren(config);
+        const href = prefixInternalHref(node.attributes.href);
+        const attrs: Record<string, string> = { href };
+        if (node.attributes.title) attrs.title = node.attributes.title;
+        return new Markdoc.Tag('a', attrs, children);
       },
     },
   },
