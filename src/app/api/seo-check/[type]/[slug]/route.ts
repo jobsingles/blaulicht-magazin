@@ -39,6 +39,41 @@ function wordCount(text: string | undefined | null): number {
   return text.split(/\s+/).filter(Boolean).length;
 }
 
+function normalize(s: string): string {
+  return s.toLowerCase().replace(/[äöüß]/g, (c) => ({ ä: 'ae', ö: 'oe', ü: 'ue', ß: 'ss' })[c] ?? c);
+}
+
+function containsKeyword(haystack: string | undefined | null, keyword: string): boolean {
+  if (!haystack || !keyword) return false;
+  return normalize(haystack).includes(normalize(keyword));
+}
+
+function keywordDensity(text: string, keyword: string): number {
+  if (!text || !keyword) return 0;
+  const words = text.split(/\s+/).filter(Boolean).length;
+  if (words === 0) return 0;
+  const occurrences = (normalize(text).match(new RegExp(normalize(keyword).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) ?? []).length;
+  return (occurrences / words) * 100;
+}
+
+function keywordChecks(entry: any, slug: string, contentText: string, firstPara: string): Check[] {
+  const kw = (entry.focusKeyword ?? '').trim();
+  if (!kw) {
+    return [{ ok: false, weight: 5, label: 'Focus-Keyword fehlt', hint: 'Setze ein Focus-Keyword im Backend, dann werden 7 Keyword-Checks aktiviert' }];
+  }
+  const density = keywordDensity(contentText, kw);
+  const densityOk = density >= 0.5 && density <= 3.0;
+  return [
+    { ok: containsKeyword(entry.title, kw), weight: 8, label: `Keyword "${kw}" im Titel`, hint: `Im Artikel-Titel verwenden` },
+    { ok: containsKeyword(slug, kw.replace(/\s+/g, '-')), weight: 6, label: `Keyword im Slug`, hint: `Slug enthält Keyword (mit Bindestrichen)` },
+    { ok: containsKeyword(entry.seoTitle, kw), weight: 6, label: `Keyword im SEO-Titel`, hint: `SEO-Titel enthält das Keyword` },
+    { ok: containsKeyword(entry.seoDescription, kw), weight: 6, label: `Keyword in SEO-Beschreibung`, hint: `Meta-Description enthält das Keyword` },
+    { ok: containsKeyword(entry.excerpt, kw), weight: 4, label: `Keyword im Auszug`, hint: `Auszug erwähnt das Keyword` },
+    { ok: containsKeyword(firstPara, kw), weight: 5, label: `Keyword im ersten Absatz`, hint: `Keyword in den ersten ~100 Wörtern` },
+    { ok: densityOk, weight: 5, label: `Keyword-Dichte ${density.toFixed(2)}%`, hint: densityOk ? undefined : `Optimal 0.5–3.0% (aktuell ${density.toFixed(2)}%)` },
+  ];
+}
+
 export async function GET(_: Request, { params }: { params: Promise<{ type: string; slug: string }> }) {
   const { type, slug } = await params;
 
@@ -56,8 +91,10 @@ export async function GET(_: Request, { params }: { params: Promise<{ type: stri
   const contentNode = typeof entry.content === 'function' ? await entry.content() : entry.content;
   const contentText = JSON.stringify(contentNode ?? '').replace(/<[^>]+>/g, ' ');
   const words = wordCount(contentText);
+  const firstPara = contentText.slice(0, 600);
 
   const checks: Check[] = [
+    ...keywordChecks(entry, slug, contentText, firstPara),
     lengthCheck(entry.title, 30, 70, 'Titel', 10),
     lengthCheck(entry.seoTitle ?? entry.title, 50, 60, 'SEO-Titel', 10),
     lengthCheck(entry.seoDescription, 140, 160, 'SEO-Beschreibung', 10),
