@@ -101,7 +101,7 @@ export default async function SanitaetRegional() {
                   {...(isFirstOfKanton ? { id: toAnchor(entry.entry.kanton) } : {})}
                 >
                   {entry.entry.featuredImage ? (
-                    <img
+                    <img width="600" height="400"
                       src={entry.entry.featuredImage}
                       alt={entry.entry.featuredImageAlt || entry.entry.title}
                       className="w-16 h-16 rounded-lg object-cover flex-none"

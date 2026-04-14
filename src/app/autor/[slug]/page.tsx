@@ -61,7 +61,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
       <section className="bg-surface border-b border-border/40 py-16 px-6">
         <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-8 items-center sm:items-start">
           {author.avatar ? (
-            <img
+            <img width="600" height="400"
               src={author.avatar}
               alt={author.name}
               className="w-28 h-28 rounded-full object-cover shrink-0 ring-4 ring-brand-orange/20"
@@ -118,7 +118,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                   className="group flex gap-4 items-start"
                 >
                   {a.entry.featuredImage && (
-                    <img
+                    <img width="600" height="400"
                       src={a.entry.featuredImage}
                       alt={a.entry.featuredImageAlt || a.entry.title}
                       className="w-20 h-14 object-cover rounded-lg shrink-0 opacity-80 group-hover:opacity-100 transition-opacity"
