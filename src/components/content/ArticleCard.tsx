@@ -12,9 +12,10 @@ interface ArticleCardProps {
   imageAlt?: string;
   category?: string;
   date?: string;
+  priority?: boolean;
 }
 
-export function ArticleCard({ title, excerpt, href, image, imageAlt, category, date }: ArticleCardProps) {
+export function ArticleCard({ title, excerpt, href, image, imageAlt, category, date, priority }: ArticleCardProps) {
   return (
     <SpotlightCard className="hover-lift">
       <Link href={href} className="block group">
@@ -25,6 +26,8 @@ export function ArticleCard({ title, excerpt, href, image, imageAlt, category, d
               alt={imageAlt || title}
               width={800}
               height={500}
+              priority={priority}
+              loading={priority ? 'eager' : 'lazy'}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               style={{ objectPosition: '50% 20%' }}
               sizes="(max-width: 768px) 100vw, 50vw"

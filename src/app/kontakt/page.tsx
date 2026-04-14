@@ -87,6 +87,21 @@ export default function KontaktPage() {
         </div>
       </section>
 
+      <h2 className="text-2xl font-bold mt-12 mb-3">Wer steckt hinter dem Magazin?</h2>
+      <p className="text-foreground/70">
+        Das Blaulicht-Magazin gehört zum Jobsingles-Netzwerk und wird redaktionell von Tommy Honold geführt. Schwerpunkt:
+        Singles aus Polizei, Feuerwehr, Sanität und medizinischen Berufen in der DACH-Region. Die Themen reichen von
+        TV-News rund um Bergdoktor und Tatort Zürich über regionale Dating-Tipps bis zu Erfolgsgeschichten echter Paare,
+        die sich über die Plattform gefunden haben.
+      </p>
+
+      <h2 className="text-2xl font-bold mt-10 mb-3">Themenvorschläge willkommen</h2>
+      <p className="text-foreground/70">
+        Wir nehmen Themen-Vorschläge gerne entgegen — vor allem wenn sie aus erster Hand kommen: aus dem Schichtdienst,
+        aus dem Rettungseinsatz, aus dem Beziehungsalltag mit Pikett. Anonymität ist möglich, alle Geschichten werden
+        nur mit ausdrücklicher Freigabe veröffentlicht.
+      </p>
+
       <p className="text-sm text-foreground/45 mt-12">
         Antwortzeit: typischerweise 24–48 Stunden, in Ausnahmefällen länger.
       </p>

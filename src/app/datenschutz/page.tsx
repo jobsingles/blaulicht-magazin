@@ -76,6 +76,23 @@ export default function DatenschutzPage() {
         </a>.
       </p>
 
+      <h2 className="text-2xl font-bold mt-10 mb-3">Schweizer Kontext</h2>
+      <p className="text-foreground/70">
+        Diese Datenschutzerklärung folgt sowohl dem revidierten Schweizer Datenschutzgesetz (revDSG, gültig seit 1. September 2023)
+        als auch der EU-DSGVO. Beides trifft zu, weil das Magazin in Deutschland und der Schweiz erreichbar ist und Nutzer aus
+        beiden Rechtsräumen anspricht. Die Plattform Blaulichtsingles.ch betreibt die ICONY GmbH (Sitz in Berlin) — Detail
+        siehe <a href="https://blaulichtsingles.ch/impressum.html" className="text-brand-orange hover:underline">Impressum auf
+        der Hauptseite</a>.
+      </p>
+
+      <h2 className="text-2xl font-bold mt-10 mb-3">Beschwerdestellen</h2>
+      <p className="text-foreground/70">
+        Wenn du der Meinung bist, dass deine Daten unrechtmässig verarbeitet werden, kannst du dich neben einer direkten
+        Anfrage an uns auch an die zuständigen Aufsichtsbehörden wenden: in der Schweiz an den Eidgenössischen Datenschutz-
+        und Öffentlichkeitsbeauftragten (EDÖB), in Deutschland an die jeweilige Landesdatenschutzbehörde, in Österreich an
+        die Datenschutzbehörde (DSB).
+      </p>
+
       <p className="text-sm text-foreground/45 mt-12">Stand: 14. April 2026</p>
     </main>
   );
