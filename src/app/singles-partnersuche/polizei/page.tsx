@@ -9,11 +9,19 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
+const POLIZEI_URL = 'https://blaulichtsingles.ch/magazin/singles-partnersuche/polizei';
+
 export const metadata = {
   title: 'Polizei Dating Schweiz: 18\'000 Singles verstehen deinen Dienst',
   description: 'Partnersuche für Kapo, Stadtpolizei & Fedpol. Singles die Pikett, Schichtdienst und Einsätze verstehen — ohne Erklärungen. Jetzt kostenfrei dabei.',
-  alternates: {
-    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/polizei',
+  alternates: { canonical: POLIZEI_URL },
+  openGraph: {
+    title: 'Polizei Dating Schweiz — Singles bei Kapo, Stadtpolizei & Fedpol',
+    description: 'Partnersuche für Polizistinnen und Polizisten — Schichtdienst, Pikett, Einsätze. Hier verstehen sie deinen Dienst.',
+    url: POLIZEI_URL,
+    type: 'website',
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
   },
 };
 

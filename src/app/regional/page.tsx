@@ -67,7 +67,7 @@ export default async function Regional() {
         </div>
       </section>
 
-      <PillarHero
+      <PillarHero as="h2"
         title="Regional"
         texts={['Liebe Dialekt', 'Singles vor Ort', 'Dein Kanton', 'Nähe verbindet', 'Regional']}
       />

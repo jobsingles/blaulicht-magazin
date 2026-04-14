@@ -21,14 +21,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const title = story.seoTitle || story.title;
   const description = story.seoDescription || story.excerpt;
 
+  const url = `https://blaulichtsingles.ch/magazin/erfolgsgeschichten/${slug}`;
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
       type: 'article',
-      url: `https://blaulichtsingles.ch/magazin/erfolgsgeschichten/${slug}`,
+      url,
       ...(story.featuredImage && { images: [{ url: story.featuredImage }] }),
     },
   };

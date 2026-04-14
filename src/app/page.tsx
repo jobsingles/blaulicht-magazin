@@ -126,6 +126,7 @@ export default async function HomePage() {
       {/* Particle Hero — below the fold so it doesn't block LCP */}
       <ScrollReveal>
         <PillarHero
+          as="h2"
           title="Blaulichtsingles"
           texts={[
             "Held sucht Herz",

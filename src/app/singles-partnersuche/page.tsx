@@ -76,7 +76,7 @@ export default async function SinglesPartnersuche() {
         </div>
       </section>
 
-      <PillarHero
+      <PillarHero as="h2"
         title="Partnersuche"
         texts={[
           "Schicht Liebe",

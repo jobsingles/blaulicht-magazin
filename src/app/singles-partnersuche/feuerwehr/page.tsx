@@ -9,11 +9,19 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
 
+const FEUERWEHR_URL = 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr';
+
 export const metadata = {
   title: 'Feuerwehr Dating Schweiz: 85% Miliz verstehen den Piepser',
   description: 'Singles bei Miliz- und Berufsfeuerwehr. Partnersuche mit Menschen, die «Du musst wieder weg?» kennen und mitmachen. Jetzt kostenfrei dabei.',
-  alternates: {
-    canonical: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr',
+  alternates: { canonical: FEUERWEHR_URL },
+  openGraph: {
+    title: 'Feuerwehr Dating Schweiz — Singles bei Miliz- & Berufsfeuerwehr',
+    description: 'Partnersuche für Feuerwehrleute — Pikett, Kameradschaft und echte Liebe unter einem Dach.',
+    url: FEUERWEHR_URL,
+    type: 'website',
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
   },
 };
 
