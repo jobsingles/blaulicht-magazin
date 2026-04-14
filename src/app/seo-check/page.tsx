@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Check = { ok: boolean; weight: number; label: string; hint?: string };
 
@@ -37,13 +37,14 @@ export default function SeoCheckPage() {
   const [result, setResult] = useState<ScoreResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const autoRan = useRef(false);
 
-  async function runCheck() {
+  async function runCheck(t = type, s = slug) {
     setLoading(true);
     setError(null);
     setResult(null);
     try {
-      const res = await fetch(`/magazin/api/seo-check/${type}/${encodeURIComponent(slug.trim())}`);
+      const res = await fetch(`/magazin/api/seo-check/${t}/${encodeURIComponent(s.trim())}`);
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? `HTTP ${res.status}`);
@@ -57,10 +58,40 @@ export default function SeoCheckPage() {
     }
   }
 
+  useEffect(() => {
+    if (autoRan.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const qType = params.get('type');
+    const qSlug = params.get('slug');
+    if (qType && qSlug && (TYPES as readonly string[]).includes(qType)) {
+      autoRan.current = true;
+      setType(qType as (typeof TYPES)[number]);
+      setSlug(qSlug);
+      runCheck(qType as (typeof TYPES)[number], qSlug);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <main className="max-w-3xl mx-auto px-6 pt-24 pb-20">
       <h1 className="text-3xl font-bold mb-2">SEO-Check</h1>
-      <p className="text-foreground/60 mb-8">Live-Score für Keystatic-Artikel — direkt aus dem Repo gelesen.</p>
+      <p className="text-foreground/60 mb-2">Live-Score für Keystatic-Artikel — direkt aus dem Repo gelesen.</p>
+      <details className="mb-6">
+        <summary className="text-sm text-brand-orange cursor-pointer">📌 1-Klick-Bookmarklet (einmalig in Lesezeichenleiste ziehen)</summary>
+        <div className="mt-3 p-4 rounded border border-foreground/10 bg-foreground/5 text-sm">
+          <p className="mb-2">Diesen Link in deine Browser-Lesezeichenleiste ziehen. Dann beim Editieren in Keystatic <strong>einmal anklicken</strong> → öffnet automatisch den Score für den aktuellen Artikel:</p>
+          <p className="my-3">
+            <a
+              href={`javascript:(function(){var m=location.pathname.match(/\\/keystatic\\/.*\\/collection\\/([^/]+)\\/item\\/([^/?#]+)/);if(!m){alert('Kein Keystatic-Artikel-URL gefunden.');return;}var t=decodeURIComponent(m[1]);var s=decodeURIComponent(m[2]);window.open('https://blaulichtsingles.ch/magazin/seo-check?type='+t+'&slug='+encodeURIComponent(s),'seocheck','width=520,height=900');})();`}
+              className="inline-block px-4 py-2 bg-brand-orange text-white rounded font-bold no-underline"
+              onClick={(e) => e.preventDefault()}
+            >
+              SEO-Check
+            </a>
+          </p>
+          <p className="text-xs text-foreground/60">Funktioniert auf <code>/keystatic/branch/main/collection/&lt;type&gt;/item/&lt;slug&gt;</code> URLs (also direkt im Backend).</p>
+        </div>
+      </details>
 
       <div className="flex flex-col md:flex-row gap-3 mb-8">
         <select
