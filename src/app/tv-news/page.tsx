@@ -30,8 +30,9 @@ export default async function TVNews() {
           <Image
             src="/images/hero-tv-news.webp"
             alt="Tatort-Kommissar und Bergdoktor Rücken an Rücken — Zürich bei Regen und Schweizer Alpen im Sonnenlicht"
-            fill
-            className="object-cover"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover"
             style={{ objectPosition: '50% 20%' }}
             priority
           />

@@ -49,8 +49,9 @@ export default async function Regional() {
           <Image
             src="/images/hero-regional.webp"
             alt="Blaulicht-Singles Regional — Polizei, Feuerwehr, Sanität und Ärzte vor Schweizer Alpenpanorama"
-            fill
-            className="object-cover"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover"
             style={{ objectPosition: '50% 15%' }}
             priority
           />

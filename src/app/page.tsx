@@ -35,8 +35,9 @@ export default async function HomePage() {
           <Image
             src="/images/hero-startseite.webp"
             alt="Blaulicht-Singles — Polizei, Feuerwehr, Sanität und Ärzte auf einer Brücke in der Schweiz"
-            fill
-            className="object-cover"
+            width={1920}
+            height={1080}
+            className="w-full h-full object-cover"
             style={{ objectPosition: '50% 15%' }}
             sizes="100vw"
             priority
@@ -78,10 +79,11 @@ export default async function HomePage() {
               >
                 {articles[0].entry.featuredImage && (
                   <Image
+              width={1600}
+              height={900}
                     src={articles[0].entry.featuredImage}
                     alt={articles[0].entry.featuredImageAlt || articles[0].entry.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     style={{ objectPosition: '50% 20%' }}
                     sizes="100vw"
                   />
@@ -176,10 +178,11 @@ export default async function HomePage() {
                 >
                   {article.entry.featuredImage && (
                     <Image
+              width={1600}
+              height={900}
                       src={article.entry.featuredImage}
                       alt={article.entry.featuredImageAlt || article.entry.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: '50% 20%' }}
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     />
