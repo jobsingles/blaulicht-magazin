@@ -9,10 +9,11 @@ interface SeriesCardProps {
   excerpt: string;
   href: string;
   image?: string;
+  imageAlt?: string;
   seriesLabel?: string;
 }
 
-export function SeriesCard({ title, excerpt, href, image, seriesLabel }: SeriesCardProps) {
+export function SeriesCard({ title, excerpt, href, image, imageAlt, seriesLabel }: SeriesCardProps) {
   return (
     <SpotlightCard>
       <Link href={href} className="block group">
@@ -20,7 +21,7 @@ export function SeriesCard({ title, excerpt, href, image, seriesLabel }: SeriesC
           <div className="aspect-video overflow-hidden relative">
             <Image
               src={image}
-              alt={title}
+              alt={imageAlt || title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"

@@ -79,7 +79,7 @@ export default async function HomePage() {
                 {articles[0].entry.featuredImage && (
                   <Image
                     src={articles[0].entry.featuredImage}
-                    alt={articles[0].entry.title}
+                    alt={articles[0].entry.featuredImageAlt || articles[0].entry.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     style={{ objectPosition: '50% 20%' }}
@@ -175,7 +175,7 @@ export default async function HomePage() {
                   {article.entry.featuredImage && (
                     <Image
                       src={article.entry.featuredImage}
-                      alt={article.entry.title}
+                      alt={article.entry.featuredImageAlt || article.entry.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: '50% 20%' }}

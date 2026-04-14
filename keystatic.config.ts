@@ -84,6 +84,10 @@ export default config({
           directory: 'public/images/articles',
           publicPath: '/images/articles/',
         }),
+        featuredImageAlt: fields.text({
+          label: 'Alt-Text Beitragsbild',
+          description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Beispiel: "Hans Sigl im weißen Arztkittel vor Bergpanorama". Falls leer, wird der Artikel-Titel als Fallback genutzt.',
+        }),
         author: fields.relationship({
           label: 'Autor',
           collection: 'authors',
@@ -153,6 +157,10 @@ export default config({
           directory: 'public/images/regional',
           publicPath: '/images/regional/',
         }),
+        featuredImageAlt: fields.text({
+          label: 'Alt-Text Ortsbild',
+          description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
+        }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
           fields.object({
@@ -186,6 +194,10 @@ export default config({
           label: 'Stadtbild',
           directory: 'public/images/bekanntschaften',
           publicPath: '/images/bekanntschaften/',
+        }),
+        featuredImageAlt: fields.text({
+          label: 'Alt-Text Stadtbild',
+          description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
         }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
@@ -246,6 +258,10 @@ export default config({
           directory: 'public/images/articles',
           publicPath: '/images/articles/',
         }),
+        featuredImageAlt: fields.text({
+          label: 'Alt-Text Bild',
+          description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
+        }),
         calloutQuestion: fields.text({ label: 'Callout Frage' }),
         calloutAnswer: fields.text({ label: 'Callout Antwort', multiline: true }),
         content: fields.markdoc({ label: 'Inhalt' }),
@@ -281,6 +297,10 @@ export default config({
           label: 'Paar-Foto',
           directory: 'public/images/stories',
           publicPath: '/images/stories/',
+        }),
+        featuredImageAlt: fields.text({
+          label: 'Alt-Text Paar-Foto',
+          description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
         }),
         content: fields.markdoc({ label: 'Geschichte' }),
         isFeatured: fields.checkbox({ label: 'Auf ICONY-Startseite anzeigen (max. 3)', defaultValue: false }),

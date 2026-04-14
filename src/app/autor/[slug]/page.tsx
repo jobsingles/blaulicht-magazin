@@ -120,7 +120,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                   {a.entry.featuredImage && (
                     <img
                       src={a.entry.featuredImage}
-                      alt={a.entry.title}
+                      alt={a.entry.featuredImageAlt || a.entry.title}
                       className="w-20 h-14 object-cover rounded-lg shrink-0 opacity-80 group-hover:opacity-100 transition-opacity"
                     />
                   )}

@@ -9,11 +9,12 @@ interface ArticleCardProps {
   excerpt: string;
   href: string;
   image?: string;
+  imageAlt?: string;
   category?: string;
   date?: string;
 }
 
-export function ArticleCard({ title, excerpt, href, image, category, date }: ArticleCardProps) {
+export function ArticleCard({ title, excerpt, href, image, imageAlt, category, date }: ArticleCardProps) {
   return (
     <SpotlightCard className="hover-lift">
       <Link href={href} className="block group">
@@ -21,7 +22,7 @@ export function ArticleCard({ title, excerpt, href, image, category, date }: Art
           <div className="aspect-[16/10] overflow-hidden relative">
             <Image
               src={image}
-              alt={title}
+              alt={imageAlt || title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               style={{ objectPosition: '50% 20%' }}

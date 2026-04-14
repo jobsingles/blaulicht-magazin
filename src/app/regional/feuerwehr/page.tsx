@@ -100,7 +100,7 @@ export default async function FeuerwehrRegional() {
                   {entry.entry.featuredImage ? (
                     <img
                       src={entry.entry.featuredImage}
-                      alt={entry.entry.title}
+                      alt={entry.entry.featuredImageAlt || entry.entry.title}
                       className="w-16 h-16 rounded-lg object-cover flex-none"
                       loading="lazy"
                     />
