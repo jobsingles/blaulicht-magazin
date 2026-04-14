@@ -112,7 +112,7 @@ export default function SeoCheckPage() {
           onKeyDown={(e) => e.key === 'Enter' && runCheck()}
         />
         <button
-          onClick={runCheck}
+          onClick={() => runCheck()}
           disabled={loading || !slug.trim()}
           className="px-6 py-2 rounded bg-brand-orange text-white font-bold disabled:opacity-50"
         >
