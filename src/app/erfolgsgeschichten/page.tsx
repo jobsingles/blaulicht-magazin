@@ -23,6 +23,22 @@ export default async function Erfolgsgeschichten() {
         </div>
       </section>
 
+      <section className="max-w-3xl mx-auto px-6 pb-4">
+        <div className="space-y-4 text-foreground/75 leading-relaxed">
+          <p>
+            Echte Paare, die sich über Blaulichtsingles.ch gefunden haben. Keine Werbesprüche, keine inszenierten Models —
+            sondern Menschen, die im Berufsalltag mit Schichtdienst, Pikett und Einsatzstress leben. Ihre Geschichten
+            zeigen, dass Partnersuche im Blaulicht-Umfeld funktioniert, auch wenn die Rahmenbedingungen unvorhersehbar sind.
+          </p>
+          <p>
+            Jede Erfolgsgeschichte stammt aus einem persönlichen Gespräch mit dem Paar — freigegeben für die Veröffentlichung.
+            Die Namen sind echt (oder mit Einverständnis leicht verändert), die Beschreibungen stammen aus den Paaren selbst.
+            Was sie eint: beide Seiten verstehen, was der andere beruflich durchmacht, und beide haben bewusst eine Plattform
+            gewählt, die darauf zugeschnitten ist.
+          </p>
+        </div>
+      </section>
+
       <section className="max-w-6xl mx-auto px-6 py-16">
         <h2 className="sr-only">Erfolgsgeschichten unserer Mitglieder</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
