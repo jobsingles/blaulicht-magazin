@@ -1,6 +1,15 @@
 import Image from 'next/image';
-import { ParticleText } from '@/components/ui/ParticleText';
+import dynamic from 'next/dynamic';
 import { SpotlightHero } from '@/components/ui/SpotlightHero';
+
+const ParticleText = dynamic(() => import('@/components/ui/ParticleText').then((m) => m.ParticleText), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-40 md:h-56 mb-0 flex items-center justify-center">
+      <div className="text-4xl md:text-6xl font-bold text-foreground/70" aria-hidden="true">·</div>
+    </div>
+  ),
+});
 
 interface PillarHeroProps {
   title: string;
