@@ -66,7 +66,7 @@ export default async function StoryDetail({ params }: { params: Promise<{ slug: 
             <PolaroidCard rotation="slight" tape="center">
               <img width="600" height="400"
                 src={withBasePath(story.featuredImage)}
-                alt={story.couple}
+                alt={story.featuredImageAlt || `${story.couple} — Erfolgsgeschichte blaulichtsingles.ch`}
                 className="w-full max-w-sm aspect-square object-cover"
               />
               <div className="p-3 text-center">
