@@ -38,6 +38,8 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
       const db = b.entry.publishedAt || '';
       return db.localeCompare(da);
     });
+  const totalArticles = authorArticles.length;
+  const visibleArticles = authorArticles.slice(0, 30);
 
   const personJsonLd = {
     '@context': 'https://schema.org',
@@ -106,13 +108,13 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
       {/* Articles */}
       <section className="max-w-3xl mx-auto px-6 py-14">
         <h2 className="text-xl font-bold text-foreground mb-8">
-          Artikel von {author.name} ({authorArticles.length})
+          Artikel von {author.name} ({totalArticles})
         </h2>
-        {authorArticles.length === 0 ? (
+        {totalArticles === 0 ? (
           <p className="text-foreground/50 text-sm">Noch keine Artikel vorhanden.</p>
         ) : (
           <ul className="divide-y divide-border/40">
-            {authorArticles.map((a) => (
+            {visibleArticles.map((a) => (
               <li key={a.slug} className="py-5">
                 <Link
                   href={getArticleUrl(a.slug, a.entry.type, a.entry.series)}
@@ -146,6 +148,11 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
               </li>
             ))}
           </ul>
+        )}
+        {totalArticles > 30 && (
+          <p className="text-xs text-foreground/50 mt-6 text-center">
+            Zeigt 30 der {totalArticles} Artikel — die neusten zuerst.
+          </p>
         )}
       </section>
     </>
