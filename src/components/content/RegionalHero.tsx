@@ -7,9 +7,10 @@ interface RegionalHeroProps {
   excerpt?: string;
   image?: string;
   imageAlt?: string;
+  imageCredit?: string;
 }
 
-export function RegionalHero({ title, kanton, city, excerpt, image, imageAlt }: RegionalHeroProps) {
+export function RegionalHero({ title, kanton, city, excerpt, image, imageAlt, imageCredit }: RegionalHeroProps) {
   return (
     <section className={`relative overflow-hidden ${image ? 'min-h-[320px] md:min-h-[400px]' : ''}`}>
       {/* Background Image */}
@@ -51,6 +52,11 @@ export function RegionalHero({ title, kanton, city, excerpt, image, imageAlt }: 
           </p>
         )}
       </div>
+      {imageCredit && image && (
+        <div className="absolute bottom-1 right-2 text-[10px] text-white/60 drop-shadow-sm pointer-events-none">
+          {imageCredit}
+        </div>
+      )}
     </section>
   );
 }

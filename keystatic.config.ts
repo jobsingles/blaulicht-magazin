@@ -92,6 +92,10 @@ export default config({
           label: 'Alt-Text Beitragsbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Beispiel: "Hans Sigl im weißen Arztkittel vor Bergpanorama". Falls leer, wird der Artikel-Titel als Fallback genutzt.',
         }),
+        featuredImageCredit: fields.text({
+          label: 'Bild-Credit',
+          description: 'Urhebernennung unter dem Bild. Beispiel: "Foto: ZDF/Sabine Finger Fotografie" oder "© Superbass / CC BY-SA 4.0 via Wikimedia Commons". Pflicht bei Pressebildern.',
+        }),
         author: fields.relationship({
           label: 'Autor',
           collection: 'authors',
@@ -169,6 +173,10 @@ export default config({
           label: 'Alt-Text Ortsbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
         }),
+        featuredImageCredit: fields.text({
+          label: 'Bild-Credit',
+          description: 'Urhebernennung unter dem Bild. Beispiel: "Foto: ZDF/Sabine Finger Fotografie" oder "© Superbass / CC BY-SA 4.0 via Wikimedia Commons". Pflicht bei Pressebildern.',
+        }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
           fields.object({
@@ -210,6 +218,10 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Stadtbild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
+        }),
+        featuredImageCredit: fields.text({
+          label: 'Bild-Credit',
+          description: 'Urhebernennung unter dem Bild. Beispiel: "Foto: ZDF/Sabine Finger Fotografie" oder "© Superbass / CC BY-SA 4.0 via Wikimedia Commons". Pflicht bei Pressebildern.',
         }),
         content: fields.markdoc({ label: 'Inhalt' }),
         faqItems: fields.array(
@@ -278,6 +290,10 @@ export default config({
           label: 'Alt-Text Bild',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
         }),
+        featuredImageCredit: fields.text({
+          label: 'Bild-Credit',
+          description: 'Urhebernennung unter dem Bild. Beispiel: "Foto: ZDF/Sabine Finger Fotografie" oder "© Superbass / CC BY-SA 4.0 via Wikimedia Commons". Pflicht bei Pressebildern.',
+        }),
         calloutQuestion: fields.text({ label: 'Callout Frage' }),
         calloutAnswer: fields.text({ label: 'Callout Antwort', multiline: true }),
         content: fields.markdoc({ label: 'Inhalt' }),
@@ -321,6 +337,10 @@ export default config({
         featuredImageAlt: fields.text({
           label: 'Alt-Text Paar-Foto',
           description: 'Beschreibung des Bild-Motivs (SEO + Barrierefreiheit). Falls leer → Titel als Fallback.',
+        }),
+        featuredImageCredit: fields.text({
+          label: 'Bild-Credit',
+          description: 'Urhebernennung unter dem Bild. Beispiel: "Foto: ZDF/Sabine Finger Fotografie" oder "© Superbass / CC BY-SA 4.0 via Wikimedia Commons". Pflicht bei Pressebildern.',
         }),
         content: fields.markdoc({ label: 'Geschichte' }),
         isFeatured: fields.checkbox({ label: 'Auf ICONY-Startseite anzeigen (max. 3)', defaultValue: false }),

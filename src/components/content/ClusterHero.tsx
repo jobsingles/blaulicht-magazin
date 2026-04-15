@@ -6,10 +6,11 @@ interface ClusterHeroProps {
   category?: string;
   image?: string;
   imageAlt?: string;
+  imageCredit?: string;
   date?: string;
 }
 
-export function ClusterHero({ title, excerpt, category, image, imageAlt, date }: ClusterHeroProps) {
+export function ClusterHero({ title, excerpt, category, image, imageAlt, imageCredit, date }: ClusterHeroProps) {
   if (!image) {
     return (
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-12">
@@ -46,6 +47,11 @@ export function ClusterHero({ title, excerpt, category, image, imageAlt, date }:
         <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3 leading-tight drop-shadow-lg">{title}</h1>
         {excerpt && <p className="text-base md:text-lg text-white/80 max-w-2xl leading-relaxed drop-shadow">{excerpt}</p>}
       </div>
+      {imageCredit && (
+        <div className="absolute bottom-1 right-2 text-[10px] text-white/60 drop-shadow-sm pointer-events-none">
+          {imageCredit}
+        </div>
+      )}
     </section>
   );
 }
