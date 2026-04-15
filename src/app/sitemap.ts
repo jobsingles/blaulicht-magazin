@@ -51,12 +51,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly',
   }));
 
-  const seriesPages: MetadataRoute.Sitemap = series.map((s) => ({
-    url: `${BASE}/tv-news/${s.entry.seriesId}/${s.slug}`,
-    lastModified: s.entry.publishedAt ? new Date(s.entry.publishedAt) : undefined,
-    priority: 0.6,
-    changeFrequency: 'monthly',
-  }));
+  const seriesPages: MetadataRoute.Sitemap = series
+    .filter((s) => s.entry.status !== 'draft')
+    .map((s) => ({
+      url: `${BASE}/tv-news/${s.entry.seriesId}/${s.slug}`,
+      lastModified: s.entry.publishedAt ? new Date(s.entry.publishedAt) : undefined,
+      priority: 0.6,
+      changeFrequency: 'monthly',
+    }));
 
   const storyPages: MetadataRoute.Sitemap = stories.map((s) => ({
     url: `${BASE}/erfolgsgeschichten/${s.slug}`,
