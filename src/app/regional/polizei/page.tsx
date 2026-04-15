@@ -49,6 +49,7 @@ export default async function PolizeiRegional() {
   return (
     <>
       <PillarHero
+        as="h2"
         title="Singles Polizei"
         texts={['Kantonspolizei', 'Stadtpolizei', 'Blaulicht', 'Polizei Singles', 'Dein Kanton']}
         subtitle="Polizei Singles & Partnersuche in allen Schweizer Kantonen — finde jemanden, der deinen Alltag kennt."

@@ -49,6 +49,7 @@ export default async function FeuerwehrRegional() {
   return (
     <>
       <PillarHero
+        as="h2"
         title="Singles Feuerwehr"
         texts={['Berufsfeuerwehr', 'Milizfeuerwehr', 'Blaulicht', 'Feuerwehr Singles', 'Dein Kanton']}
         subtitle="Feuerwehr Singles & Partnersuche in allen Schweizer Kantonen — finde jemanden, der deinen Alltag kennt."
