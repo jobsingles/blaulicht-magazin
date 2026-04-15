@@ -45,6 +45,7 @@ export default config({
       label: 'Artikel',
       slugField: 'title',
       path: 'content/articles/*',
+      columns: ['publishedAt', 'title', 'category'],
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
@@ -145,6 +146,7 @@ export default config({
       label: 'Regional',
       slugField: 'title',
       path: 'content/regional/*',
+      columns: ['publishedAt', 'kanton', 'title'],
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
@@ -201,6 +203,7 @@ export default config({
       label: 'Bekanntschaften',
       slugField: 'title',
       path: 'content/bekanntschaften/*',
+      columns: ['publishedAt', 'city', 'title'],
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
@@ -247,6 +250,7 @@ export default config({
       label: 'TV News',
       slugField: 'title',
       path: 'content/series/*',
+      columns: ['publishedAt', 'seriesId', 'title', 'status'],
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
@@ -319,6 +323,7 @@ export default config({
       label: 'Erfolgsgeschichten',
       slugField: 'title',
       path: 'content/stories/*',
+      columns: ['publishedAt', 'couple', 'location'],
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Titel' } }),
