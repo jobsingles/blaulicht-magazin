@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: { params: Promise<{ kanton: s
     openGraph: {
       title,
       description,
-      url,
+      url: canonicalUrl,
       type: 'article',
       images: [{ url: image, width: 1256, height: 710, alt: title }],
       siteName: 'Blaulicht Magazin',

@@ -49,6 +49,7 @@ export default async function SanitaetRegional() {
   return (
     <>
       <PillarHero
+        as="h2"
         title="Singles Sanität"
         texts={['Rettungsdienst', 'Sanitäter', 'Blaulicht', 'Sanität Singles', 'Dein Kanton']}
         subtitle="Sanität Singles & Partnersuche in allen Schweizer Kantonen — finde jemanden, der deinen Alltag kennt."
