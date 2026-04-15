@@ -97,6 +97,7 @@ export default async function BergdoktorArticle({ params }: { params: Promise<{ 
         category="Der Bergdoktor"
         image={article.featuredImage || undefined}
         imageAlt={article.featuredImageAlt || undefined}
+        imageCredit={article.featuredImageCredit || undefined}
         date={article.publishedAt || undefined}
       />
 

@@ -127,6 +127,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
         category={article.category}
         image={article.featuredImage || undefined}
         imageAlt={article.featuredImageAlt || undefined}
+        imageCredit={article.featuredImageCredit || undefined}
         date={article.publishedAt || undefined}
       />
 
