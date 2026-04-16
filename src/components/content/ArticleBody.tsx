@@ -31,7 +31,33 @@ function prefixInternalHref(href: string): string {
   return href;
 }
 
+function YouTubeEmbed({ url, title }: { url: string; title?: string }) {
+  const videoId = url.match(/(?:v=|youtu\.be\/)([^&\s]+)/)?.[1];
+  if (!videoId) return null;
+  return (
+    <div className="relative w-full aspect-video rounded-xl overflow-hidden my-8 shadow-lg">
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}`}
+        title={title || 'YouTube Video'}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="absolute inset-0 w-full h-full border-0"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 const markdocConfig = {
+  tags: {
+    youtube: {
+      render: 'YouTube',
+      attributes: {
+        url: { type: String, required: true },
+        title: { type: String },
+      },
+    },
+  },
   nodes: {
     heading: {
       render: 'heading',
@@ -72,6 +98,10 @@ type Props = {
   insertElement?: ReactNode;
 };
 
+const markdocComponents = {
+  YouTube: YouTubeEmbed,
+};
+
 export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
   const node = 'node' in content ? content.node : content;
   const renderable = Markdoc.transform(node, markdocConfig);
@@ -79,7 +109,7 @@ export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
   if (!insertAfterH2 || !insertElement) {
     return (
       <div className={proseClasses}>
-        {Markdoc.renderers.react(renderable, React)}
+        {Markdoc.renderers.react(renderable, React, { components: markdocComponents })}
       </div>
     );
   }
@@ -113,7 +143,7 @@ export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
   if (splitIndex === -1) {
     return (
       <div className={proseClasses}>
-        {Markdoc.renderers.react(renderable, React)}
+        {Markdoc.renderers.react(renderable, React, { components: markdocComponents })}
       </div>
     );
   }

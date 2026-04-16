@@ -16,7 +16,7 @@ import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { StickyTOC } from '@/components/content/StickyTOC';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ArticleByline } from '@/components/content/ArticleByline';
-import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
+import { JsonLd, articleJsonLd, faqJsonLd, videoJsonLd } from '@/components/seo/JsonLd';
 
 function toId(text: string) {
   return text.toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -119,6 +119,15 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
       />
       {article.faqItems && article.faqItems.length > 0 && (
         <JsonLd data={faqJsonLd(article.faqItems)} />
+      )}
+      {slug === 'partnersuche-polizei' && (
+        <JsonLd data={videoJsonLd({
+          name: 'Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles',
+          description: 'Schichtarbeit, Pikettdienst und emotionale Belastung machen Dating für Schweizer Polizistinnen und Polizisten besonders schwer. Dieser Guide zeigt den Weg.',
+          videoId: 'VQQ07ejarHg',
+          uploadDate: '2026-04-16',
+          duration: 'PT33S',
+        })} />
       )}
 
       <ClusterHero

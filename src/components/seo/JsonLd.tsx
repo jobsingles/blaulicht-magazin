@@ -86,6 +86,37 @@ export function faqJsonLd(items: readonly { readonly question: string; readonly 
   };
 }
 
+export function videoJsonLd({
+  name,
+  description,
+  videoId,
+  uploadDate,
+  duration,
+}: {
+  name: string;
+  description: string;
+  videoId: string;
+  uploadDate: string;
+  duration: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name,
+    description,
+    thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+    uploadDate,
+    duration,
+    contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+    embedUrl: `https://www.youtube.com/embed/${videoId}`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'BlaulichtSingles.ch',
+      url: 'https://blaulichtsingles.ch',
+    },
+  };
+}
+
 export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',
