@@ -7,7 +7,7 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
-import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
+import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd, videoJsonLd } from '@/components/seo/JsonLd';
 
 const FEUERWEHR_URL = 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr';
 
@@ -128,6 +128,15 @@ export default async function FeuerwehrPillar() {
           { name: 'Feuerwehr Dating', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/feuerwehr' },
         ])}
       />
+      <JsonLd
+        data={videoJsonLd({
+          name: 'Feuerwehr Singles Schweiz — Bekanntschaften für Einsatzkräfte',
+          description: 'Feuerwehr Singles in der Schweiz: 80 Prozent der Feuerwehr sind Miliz. Der Piepser klingelt auch beim Date. Auf Blaulichtsingles findest du Menschen, die das verstehen — Kameradschaft, Pikett und echte Bekanntschaften.',
+          videoId: 'jnHk7avIZS8',
+          uploadDate: '2026-04-16T00:00:00+02:00',
+          duration: 'PT34S',
+        })}
+      />
       <PillarHero
         title="Feuerwehr Singles"
         texts={[
@@ -191,6 +200,29 @@ export default async function FeuerwehrPillar() {
           <HeartButton href="https://blaulichtsingles.ch/?AID=magazin-feuerwehr">
             Jetzt kostenfrei mitmachen
           </HeartButton>
+        </section>
+      </ScrollReveal>
+
+      {/* YouTube Short */}
+      <ScrollReveal>
+        <section className="max-w-xs mx-auto px-6 py-8">
+          <AnimatedGradientBorder
+            gradientColors={['#FF7A00', '#E95014', '#FF4500', '#FF7A00']}
+            borderRadius={16}
+            borderWidth={3}
+            className="w-full"
+          >
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/jnHk7avIZS8"
+                title="Feuerwehr Singles Schweiz — Bekanntschaften für Einsatzkräfte"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+              />
+            </div>
+          </AnimatedGradientBorder>
         </section>
       </ScrollReveal>
 
