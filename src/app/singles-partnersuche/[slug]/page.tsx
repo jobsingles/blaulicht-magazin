@@ -160,35 +160,46 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
 
         <ArticleBody
           content={article.content}
-          insertAfterH2={2}
+          insertAfterH2={slug === 'partnersuche-polizei' ? 1 : 2}
           insertElement={
-            <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
-              <div className="p-6 text-center">
-                <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
-                <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
-                  Jetzt kostenfrei anmelden
-                </HeartButton>
+            slug === 'partnersuche-polizei' ? (
+              <div className="my-8">
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                  <iframe
+                    src="https://www.youtube.com/embed/VQQ07ejarHg"
+                    title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full border-0"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-            </AnimatedGradientBorder>
+            ) : (
+              <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
+                <div className="p-6 text-center">
+                  <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
+                  <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+                    Jetzt kostenfrei anmelden
+                  </HeartButton>
+                </div>
+              </AnimatedGradientBorder>
+            )
+          }
+          insertAfterH2_2={slug === 'partnersuche-polizei' ? 3 : undefined}
+          insertElement_2={
+            slug === 'partnersuche-polizei' ? (
+              <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
+                <div className="p-6 text-center">
+                  <p className="text-sm text-foreground/70 mb-3">Du bist bei Polizei, Feuerwehr oder Sanität?</p>
+                  <HeartButton href="https://blaulichtsingles.ch/?AID=magazin">
+                    Jetzt kostenfrei anmelden
+                  </HeartButton>
+                </div>
+              </AnimatedGradientBorder>
+            ) : undefined
           }
         />
-
-        {/* YouTube Embed — slug-spezifisch */}
-        {slug === 'partnersuche-polizei' && (
-          <div className="my-10">
-            <h2 className="text-2xl font-bold mb-4 scroll-mt-24" id="video-partnersuche-polizei-schweiz">Video: Partnersuche Polizei Schweiz</h2>
-            <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/VQQ07ejarHg"
-                title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-0"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        )}
 
         {/* CTA Stopper nach Content */}
         <AnimatedGradientBorder borderRadius={16} borderWidth={2} className="my-12">
