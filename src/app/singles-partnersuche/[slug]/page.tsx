@@ -164,16 +164,18 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           insertElement={
             slug === 'partnersuche-polizei' ? (
               <div className="my-8 flex justify-center">
-                <div className="relative w-full max-w-xs aspect-[9/16] rounded-xl overflow-hidden shadow-lg">
-                  <iframe
-                    src="https://www.youtube.com/embed/VQQ07ejarHg"
-                    title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full border-0"
-                    loading="lazy"
-                  />
-                </div>
+                <AnimatedGradientBorder borderRadius={16} borderWidth={3} className="w-full max-w-xs">
+                  <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
+                    <iframe
+                      src="https://www.youtube.com/embed/VQQ07ejarHg"
+                      title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full border-0"
+                      loading="lazy"
+                    />
+                  </div>
+                </AnimatedGradientBorder>
               </div>
             ) : (
               <AnimatedGradientBorder borderRadius={12} borderWidth={2} className="my-8">
