@@ -93,7 +93,7 @@ export default function UeberUns() {
               Von 2018 bis 2022 war Thomas zusätzlich <strong>Geschäftsführer (CEO) der Aubii GmbH</strong> — dem Unternehmen hinter <strong>Ausgezeichnet.org</strong>, einem der führenden Online-Bewertungssiegel im deutschsprachigen Raum. Dort baute er das B2B-Geschäft auf, führte ein Team und lernte, wie man digitale Plattformen skaliert.
             </p>
             <p>
-              Heute baut Thomas nicht nur das Jobsingles-Netzwerk weiter aus, sondern betreibt mit <strong><a href="https://seeside.ai" target="_blank" rel="noopener" className="text-brand-orange hover:underline">seeside.ai</a></strong> auch KI-Agentenlösungen für Solopreneure und Unternehmen. Die gesamte Infrastruktur hinter BlaulichtSingles.ch — von der automatisierten Content-Erstellung bis zur SEO-Optimierung — läuft auf seiner eigenen KI-Plattform.
+              Heute baut Thomas nicht nur das Jobsingles-Netzwerk weiter aus, sondern betreibt mit <strong><a href="https://seeside.ai" target="_blank" rel="nofollow noopener" className="text-brand-orange hover:underline">seeside.ai</a></strong> auch KI-Agentenlösungen für Solopreneure und Unternehmen. Die gesamte Infrastruktur hinter BlaulichtSingles.ch — von der automatisierten Content-Erstellung bis zur SEO-Optimierung — läuft auf seiner eigenen KI-Plattform.
             </p>
           </div>
         </section>
