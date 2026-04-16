@@ -155,11 +155,11 @@ export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
   return (
     <>
       <div className={proseClasses}>
-        {Markdoc.renderers.react(firstHalf, React)}
+        {Markdoc.renderers.react(firstHalf, React, { components: markdocComponents })}
       </div>
       {insertElement}
       <div className={proseClasses}>
-        {Markdoc.renderers.react(secondHalf, React)}
+        {Markdoc.renderers.react(secondHalf, React, { components: markdocComponents })}
       </div>
     </>
   );

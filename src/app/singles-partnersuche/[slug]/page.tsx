@@ -173,6 +173,23 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           }
         />
 
+        {/* YouTube Embed — slug-spezifisch */}
+        {slug === 'partnersuche-polizei' && (
+          <div className="my-10">
+            <h2 className="text-2xl font-bold mb-4 scroll-mt-24" id="video-partnersuche-polizei-schweiz">Video: Partnersuche Polizei Schweiz</h2>
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/VQQ07ejarHg"
+                title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        )}
+
         {/* CTA Stopper nach Content */}
         <AnimatedGradientBorder borderRadius={16} borderWidth={2} className="my-12">
           <div className="py-10 px-6 bg-surface-dark text-white text-center">
