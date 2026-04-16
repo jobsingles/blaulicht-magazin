@@ -164,7 +164,7 @@ export default async function ClusterArticle({ params }: { params: Promise<{ slu
           insertElement={
             slug === 'partnersuche-polizei' ? (
               <div className="my-8">
-                <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                <div className="relative w-full aspect-[4/3] sm:aspect-video rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     src="https://www.youtube.com/embed/VQQ07ejarHg"
                     title="Partnersuche Polizei Schweiz — Guide für Blaulicht-Singles"
