@@ -104,11 +104,8 @@ export function Footer() {
                 <a href="https://blaulichtsingles.ch/kontakt/kündigen/" rel="nofollow" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Premium-Mitgliedschaft kündigen
                 </a>
-                <Link href="/datenschutz" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
-                  Datenschutz (Magazin)
-                </Link>
                 <a href="https://blaulichtsingles.ch/datenschutz.html" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
-                  Datenschutz Plattform
+                  Datenschutz
                 </a>
                 <a href="https://blaulichtsingles.ch/impressum.html" className="text-sm text-white/75 hover:text-brand-orange transition-colors">
                   Impressum / AGB
