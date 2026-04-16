@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
     // Default-quality: aggressiver
     qualities: [60, 75, 85],
   },
+  async redirects() {
+    return [
+      {
+        source: '/singles-partnersuche/polizei',
+        destination: '/singles-partnersuche/partnersuche-polizei',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     const securityHeaders = [
       { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
