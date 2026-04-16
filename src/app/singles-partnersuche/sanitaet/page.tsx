@@ -246,7 +246,25 @@ export default async function SanitaetPillar() {
         </section>
       </ScrollReveal>
 
-      {/* 5. Thematische Sektionen (oben) */}
+      {/* 5. YouTube Short */}
+      <ScrollReveal>
+        <section className="max-w-xs mx-auto px-6 py-8">
+          <AnimatedGradientBorder borderRadius={16} borderWidth={3} className="w-full">
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/0Rqk6EoZk2g"
+                title="Partnersuche als Sanitäter & Arzt — Bekanntschaften im Rettungsdienst"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+              />
+            </div>
+          </AnimatedGradientBorder>
+        </section>
+      </ScrollReveal>
+
+      {/* 6. Thematische Sektionen (oben) */}
       {SECTIONS.map(renderSection)}
 
       {/* 6. CTA Mitte */}
@@ -282,24 +300,6 @@ export default async function SanitaetPillar() {
               { value: 47, suffix: '', label: 'Erfolgspaare' },
             ]}
           />
-        </section>
-      </ScrollReveal>
-
-      {/* 8. YouTube Short */}
-      <ScrollReveal>
-        <section className="max-w-xs mx-auto px-6 py-8">
-          <AnimatedGradientBorder borderRadius={16} borderWidth={3} className="w-full">
-            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.youtube.com/embed/0Rqk6EoZk2g"
-                title="Partnersuche als Sanitäter & Arzt — Bekanntschaften im Rettungsdienst"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-0"
-                loading="lazy"
-              />
-            </div>
-          </AnimatedGradientBorder>
         </section>
       </ScrollReveal>
 
