@@ -92,55 +92,48 @@ const proseClasses = "prose prose-lg max-w-none prose-headings:text-foreground p
 
 type Props = {
   content: { node: any } | any[];
-  /** Insert this element after the Nth H2 heading */
+  /** Insert this element after the Nth H2 heading (first insert — use for video in upper third) */
   insertAfterH2?: number;
-  /** The element to insert */
+  /** The element to insert at the first insert point */
   insertElement?: ReactNode;
+  /** Insert this element after the Nth H2 heading (second insert — use for mid-article CTA) */
+  insertAfterH2_2?: number;
+  /** The element to insert at the second insert point */
+  insertElement_2?: ReactNode;
 };
 
 const markdocComponents = {
   YouTube: YouTubeEmbed,
 };
 
-export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
-  const node = 'node' in content ? content.node : content;
-  const renderable = Markdoc.transform(node, markdocConfig);
-
-  if (!insertAfterH2 || !insertElement) {
-    return (
-      <div className={proseClasses}>
-        {Markdoc.renderers.react(renderable, React, { components: markdocComponents })}
-      </div>
-    );
-  }
-
-  // Split the Markdoc tree at the Nth H2, before rendering
-  const topChildren = Array.isArray(renderable) ? renderable : (renderable as any)?.children ?? [];
+function findSplitIndex(topChildren: any[], afterH2: number): number {
   let h2Count = 0;
-  let splitIndex = -1;
-
   for (let i = 0; i < topChildren.length; i++) {
-    const child = topChildren[i];
-    const tag = typeof child === 'object' && child !== null && 'name' in child ? (child as any).name : null;
+    const tag = typeof topChildren[i] === 'object' && topChildren[i] !== null && 'name' in topChildren[i]
+      ? (topChildren[i] as any).name : null;
     if (tag === 'h2') {
       h2Count++;
-      if (h2Count === insertAfterH2) {
-        // Insert before the NEXT h2
+      if (h2Count === afterH2) {
         for (let j = i + 1; j < topChildren.length; j++) {
-          const next = topChildren[j];
-          const nextTag = typeof next === 'object' && next !== null && 'name' in next ? (next as any).name : null;
-          if (nextTag === 'h2') {
-            splitIndex = j;
-            break;
-          }
+          const nextTag = typeof topChildren[j] === 'object' && topChildren[j] !== null && 'name' in topChildren[j]
+            ? (topChildren[j] as any).name : null;
+          if (nextTag === 'h2') return j;
         }
-        if (splitIndex === -1) splitIndex = Math.min(i + 4, topChildren.length);
-        break;
+        return Math.min(i + 4, topChildren.length);
       }
     }
   }
+  return -1;
+}
 
-  if (splitIndex === -1) {
+export function ArticleBody({ content, insertAfterH2, insertElement, insertAfterH2_2, insertElement_2 }: Props) {
+  const node = 'node' in content ? content.node : content;
+  const renderable = Markdoc.transform(node, markdocConfig);
+
+  const hasInsert1 = insertAfterH2 !== undefined && insertElement !== undefined;
+  const hasInsert2 = insertAfterH2_2 !== undefined && insertElement_2 !== undefined;
+
+  if (!hasInsert1 && !hasInsert2) {
     return (
       <div className={proseClasses}>
         {Markdoc.renderers.react(renderable, React, { components: markdocComponents })}
@@ -148,19 +141,56 @@ export function ArticleBody({ content, insertAfterH2, insertElement }: Props) {
     );
   }
 
-  // Build two separate trees
-  const firstHalf = { ...renderable as any, children: topChildren.slice(0, splitIndex) };
-  const secondHalf = { ...renderable as any, children: topChildren.slice(splitIndex) };
+  const topChildren = Array.isArray(renderable) ? renderable : (renderable as any)?.children ?? [];
+  const split1 = hasInsert1 ? findSplitIndex(topChildren, insertAfterH2!) : -1;
+  const split2 = hasInsert2 ? findSplitIndex(topChildren, insertAfterH2_2!) : -1;
 
+  // Both valid and in order
+  if (split1 !== -1 && split2 !== -1 && split2 > split1) {
+    const part1 = { ...renderable as any, children: topChildren.slice(0, split1) };
+    const part2 = { ...renderable as any, children: topChildren.slice(split1, split2) };
+    const part3 = { ...renderable as any, children: topChildren.slice(split2) };
+    return (
+      <>
+        <div className={proseClasses}>{Markdoc.renderers.react(part1, React, { components: markdocComponents })}</div>
+        {insertElement}
+        <div className={proseClasses}>{Markdoc.renderers.react(part2, React, { components: markdocComponents })}</div>
+        {insertElement_2}
+        <div className={proseClasses}>{Markdoc.renderers.react(part3, React, { components: markdocComponents })}</div>
+      </>
+    );
+  }
+
+  // Only first insert
+  if (split1 !== -1) {
+    const firstHalf = { ...renderable as any, children: topChildren.slice(0, split1) };
+    const secondHalf = { ...renderable as any, children: topChildren.slice(split1) };
+    return (
+      <>
+        <div className={proseClasses}>{Markdoc.renderers.react(firstHalf, React, { components: markdocComponents })}</div>
+        {insertElement}
+        <div className={proseClasses}>{Markdoc.renderers.react(secondHalf, React, { components: markdocComponents })}</div>
+      </>
+    );
+  }
+
+  // Only second insert
+  if (split2 !== -1) {
+    const firstHalf = { ...renderable as any, children: topChildren.slice(0, split2) };
+    const secondHalf = { ...renderable as any, children: topChildren.slice(split2) };
+    return (
+      <>
+        <div className={proseClasses}>{Markdoc.renderers.react(firstHalf, React, { components: markdocComponents })}</div>
+        {insertElement_2}
+        <div className={proseClasses}>{Markdoc.renderers.react(secondHalf, React, { components: markdocComponents })}</div>
+      </>
+    );
+  }
+
+  // Fallback: no valid split found
   return (
-    <>
-      <div className={proseClasses}>
-        {Markdoc.renderers.react(firstHalf, React, { components: markdocComponents })}
-      </div>
-      {insertElement}
-      <div className={proseClasses}>
-        {Markdoc.renderers.react(secondHalf, React, { components: markdocComponents })}
-      </div>
-    </>
+    <div className={proseClasses}>
+      {Markdoc.renderers.react(renderable, React, { components: markdocComponents })}
+    </div>
   );
 }
