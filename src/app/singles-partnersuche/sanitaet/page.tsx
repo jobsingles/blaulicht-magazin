@@ -8,7 +8,7 @@ import { CircularTestimonials } from '@/components/ui/CircularTestimonials';
 import { AnimatedStats } from '@/components/ui/AnimatedCounter';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd } from '@/components/seo/JsonLd';
+import { JsonLd, collectionPageJsonLd, breadcrumbJsonLd, videoJsonLd } from '@/components/seo/JsonLd';
 
 const SANITAET_URL = 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet';
 
@@ -180,6 +180,13 @@ export default async function SanitaetPillar() {
           { name: 'Sanität Dating', url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche/sanitaet' },
         ])}
       />
+      <JsonLd data={videoJsonLd({
+        name: 'Partnersuche als Sanitäter & Arzt — Bekanntschaften im Rettungsdienst',
+        description: 'Schichtdienst, Pikettdienst, Zwölf-Stunden-Schichten — wer versteht das schon? Auf Blaulichtsingles findest du Menschen, denen du nichts erklären musst.',
+        videoId: '0Rqk6EoZk2g',
+        uploadDate: '2026-04-16T00:00:00+02:00',
+        duration: 'PT37S',
+      })} />
       {/* 1. PillarHero */}
       <PillarHero
         title="Sanität Singles"
@@ -278,7 +285,25 @@ export default async function SanitaetPillar() {
         </section>
       </ScrollReveal>
 
-      {/* 8. CircularTestimonials */}
+      {/* 8. YouTube Short */}
+      <ScrollReveal>
+        <section className="max-w-xs mx-auto px-6 py-8">
+          <AnimatedGradientBorder borderRadius={16} borderWidth={3} className="w-full">
+            <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/0Rqk6EoZk2g"
+                title="Partnersuche als Sanitäter & Arzt — Bekanntschaften im Rettungsdienst"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+              />
+            </div>
+          </AnimatedGradientBorder>
+        </section>
+      </ScrollReveal>
+
+      {/* 9. CircularTestimonials */}
       <ScrollReveal>
         <section className="max-w-6xl mx-auto px-6 py-8">
           <CircularTestimonials items={testimonials} />
