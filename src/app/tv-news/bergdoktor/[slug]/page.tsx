@@ -11,7 +11,7 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ArticleByline } from '@/components/content/ArticleByline';
 import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
-import { JsonLd, articleJsonLd, faqJsonLd } from '@/components/seo/JsonLd';
+import { JsonLd, articleJsonLd, faqJsonLd, videoJsonLd } from '@/components/seo/JsonLd';
 import { AuthorBio } from '@/components/ui/AuthorBio';
 
 function toId(text: string) {
@@ -21,6 +21,21 @@ function collectText(n: any): string {
   if (typeof n === 'string') return n;
   if (n?.type === 'text') return n.attributes?.content ?? '';
   return (n?.children ?? []).map(collectText).join('');
+}
+function findYoutubeId(content: any): string | null {
+  const node = 'node' in content ? content.node : content;
+  let id: string | null = null;
+  function walk(n: any) {
+    if (id) return;
+    if (n?.type === 'tag' && n?.tag === 'youtube') {
+      const url = n?.attributes?.url ?? '';
+      const m = url.match(/(?:v=|youtu\.be\/|shorts\/)([^&\s?]+)/);
+      if (m) { id = m[1]; return; }
+    }
+    (n?.children ?? []).forEach(walk);
+  }
+  walk(node);
+  return id;
 }
 function extractH2s(content: any): { label: string; id: string }[] {
   const node = 'node' in content ? content.node : content;
@@ -73,6 +88,7 @@ export default async function BergdoktorArticle({ params }: { params: Promise<{ 
 
   const hasFaq = 'faqItems' in article && article.faqItems && article.faqItems.length > 0;
   const isNews = 'isNews' in article ? (article as any).isNews : false;
+  const youtubeId = findYoutubeId(article.content);
 
   return (
     <>
@@ -89,6 +105,15 @@ export default async function BergdoktorArticle({ params }: { params: Promise<{ 
       />
       {hasFaq && (
         <JsonLd data={faqJsonLd((article as any).faqItems)} />
+      )}
+      {youtubeId && (
+        <JsonLd data={videoJsonLd({
+          name: article.title,
+          description: article.excerpt,
+          videoId: youtubeId,
+          uploadDate: `${article.publishedAt || new Date().toISOString().slice(0,10)}T08:00:00+02:00`,
+          duration: 'PT36S',
+        })} />
       )}
 
       <ClusterHero
