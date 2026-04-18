@@ -66,6 +66,23 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Particle Hero — direkt unter dem Header-Bild */}
+      <ScrollReveal>
+        <PillarHero
+          as="h2"
+          title="Blaulichtsingles"
+          texts={[
+            "Held sucht Herz",
+            "Notruf Liebe",
+            "Einsatz Herz",
+            "Dein Match",
+            "Blaulicht Herz",
+            "Frei. Verliebt.",
+            "Blaulicht Singles",
+          ]}
+        />
+      </ScrollReveal>
+
       {/* Neueste Artikel — einheitliche ArticleCards (Bild + Text darunter) */}
       <ScrollReveal>
         <section className="max-w-6xl mx-auto px-6 pt-4 pb-12">
@@ -105,23 +122,6 @@ export default async function HomePage() {
             ]}
           />
         </section>
-      </ScrollReveal>
-
-      {/* Particle Hero — below the fold so it doesn't block LCP */}
-      <ScrollReveal>
-        <PillarHero
-          as="h2"
-          title="Blaulichtsingles"
-          texts={[
-            "Held sucht Herz",
-            "Notruf Liebe",
-            "Einsatz Herz",
-            "Dein Match",
-            "Blaulicht Herz",
-            "Frei. Verliebt.",
-            "Blaulicht Singles",
-          ]}
-        />
       </ScrollReveal>
 
       {/* Erfolgsgeschichten */}
