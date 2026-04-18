@@ -160,33 +160,16 @@ export default async function HomePage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {tvNews.map((article) => (
-                <Link
+                <ArticleCard
                   key={article.slug}
+                  title={article.entry.title}
+                  excerpt={article.entry.excerpt}
                   href={`/tv-news/${article.entry.seriesId}/${article.slug}`}
-                  className="group relative rounded-2xl overflow-hidden min-h-[240px] hover:shadow-xl transition-all"
-                >
-                  {article.entry.featuredImage && (
-                    <Image
-              width={1600}
-              height={900}
-                      src={article.entry.featuredImage}
-                      alt={article.entry.featuredImageAlt || article.entry.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ objectPosition: '50% 20%' }}
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  <div className="relative flex flex-col justify-end h-full p-5">
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-orange mb-1">
-                      {article.entry.seriesId === 'tatort-zuerich' ? '«Tatort» Zürich' : 'Der Bergdoktor'}
-                    </span>
-                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-brand-orange transition-colors line-clamp-2">
-                      {article.entry.title}
-                    </h3>
-                    <p className="text-white/60 text-sm line-clamp-2">{article.entry.excerpt}</p>
-                  </div>
-                </Link>
+                  image={article.entry.featuredImage || undefined}
+                  imageAlt={article.entry.featuredImageAlt || undefined}
+                  category={article.entry.seriesId === 'tatort-zuerich' ? '«Tatort» Zürich' : 'Der Bergdoktor'}
+                  date={article.entry.publishedAt || undefined}
+                />
               ))}
             </div>
           </section>
