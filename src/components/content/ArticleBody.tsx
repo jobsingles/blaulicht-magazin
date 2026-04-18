@@ -32,18 +32,20 @@ function prefixInternalHref(href: string): string {
 }
 
 function YouTubeEmbed({ url, title }: { url: string; title?: string }) {
-  const videoId = url.match(/(?:v=|youtu\.be\/)([^&\s]+)/)?.[1];
+  const videoId = url.match(/(?:v=|youtu\.be\/|shorts\/)([^&\s?]+)/)?.[1];
   if (!videoId) return null;
   return (
-    <div className="relative w-full aspect-video rounded-xl overflow-hidden my-8 shadow-lg">
-      <iframe
-        src={`https://www.youtube.com/embed/${videoId}`}
-        title={title || 'YouTube Video'}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="absolute inset-0 w-full h-full border-0"
-        loading="lazy"
-      />
+    <div className="my-8 flex justify-center">
+      <div className="relative w-full max-w-xs aspect-[9/16] rounded-xl overflow-hidden shadow-lg">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title || 'YouTube Video'}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full border-0"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }
