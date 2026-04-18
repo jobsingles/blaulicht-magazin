@@ -17,8 +17,20 @@ export default async function HomePage() {
   const allArticles = await reader.collections.articles.all();
   const stories = await reader.collections.stories.all();
   const allSeries = await reader.collections.series.all();
-  const articles = allArticles.filter((a) => a.entry.status !== 'draft');
-  const tvNews = allSeries.filter((s) => s.entry.status !== 'draft').slice(0, 3);
+
+  const byDateDesc = <T extends { entry: { publishedAt?: string | null } }>(a: T, b: T) =>
+    (b.entry.publishedAt || '').localeCompare(a.entry.publishedAt || '');
+
+  const articles = allArticles
+    .filter((a) => a.entry.status !== 'draft')
+    .sort(byDateDesc);
+
+  const seriesSorted = allSeries
+    .filter((s) => s.entry.status !== 'draft')
+    .sort(byDateDesc);
+  const tvNewsBergdoktor = seriesSorted.filter((s) => s.entry.seriesId === 'bergdoktor').slice(0, 2);
+  const tvNewsTatort = seriesSorted.filter((s) => s.entry.seriesId === 'tatort-zuerich').slice(0, 1);
+  const tvNews = [...tvNewsBergdoktor, ...tvNewsTatort];
 
   const carouselItems = articles.slice(0, 8).map((article) => ({
     title: article.entry.title,
