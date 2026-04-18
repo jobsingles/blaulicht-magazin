@@ -41,13 +41,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'wX9Cm671l9E8x5f5BB72cAo-r_RcVHKKk3Eu0rr-fZM',
   },
-  icons: {
-    icon: [
-      { url: '/magazin/logos/jobsingles-logo.png', type: 'image/png' },
-    ],
-    shortcut: '/magazin/logos/jobsingles-logo.png',
-    apple: '/magazin/logos/jobsingles-logo.png',
-  },
 };
 
 export default function RootLayout({
