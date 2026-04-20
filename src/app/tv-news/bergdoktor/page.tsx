@@ -9,6 +9,7 @@ import { withBasePath } from '@/lib/url';
 export const metadata = {
   title: 'Der Bergdoktor — News & Hintergründe',
   description: 'Der Bergdoktor: Hans Sigl, Ronja Forcher und das Privatleben der Stars aus den Tiroler Bergen — Drehorte, neue Staffeln und Dating-Perspektiven.',
+  alternates: { canonical: '/tv-news/bergdoktor' },
   openGraph: {
     title: 'Der Bergdoktor — News & Hintergründe | Blaulicht-Singles Magazin',
     description: 'Hans Sigl, Ronja Forcher und das Privatleben der Stars aus den Tiroler Bergen.',

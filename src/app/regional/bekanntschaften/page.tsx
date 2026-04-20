@@ -5,6 +5,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { withBasePath } from '@/lib/url';
 
 export const metadata = {
+  alternates: { canonical: \'/regional/bekanntschaften\' },
   title: 'Bekanntschaften in der Schweiz — Blaulicht-Singles finden',
   description: 'Bekanntschaften für Polizei, Feuerwehr & Sanität in Schweizer Grossstädten. Finde Blaulicht-Singles in Zürich, Bern, Basel, Luzern und mehr.',
 };

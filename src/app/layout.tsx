@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   description:
     'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität. Partnersuche, Erfolgsgeschichten und regionale Tipps.',
   metadataBase: new URL(BASE_URL),
-  alternates: { canonical: BASE_URL },
   openGraph: {
     title: 'Blaulicht Magazin — Dating für Blaulicht-Singles',
     description: 'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität.',

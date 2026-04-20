@@ -8,6 +8,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { AnimatedGradientBorder } from '@/components/ui/AnimatedGradientBorder';
 
 export const metadata = {
+  alternates: { canonical: \'/singles-partnersuche\' },
   title: 'Singles & Partnersuche',
   description: 'Partnersuche für Polizei, Sanität und Rettungskräfte — Tipps, Erfahrungen und Cluster-Artikel.',
 };

@@ -9,6 +9,7 @@ import { withBasePath } from '@/lib/url';
 export const metadata = {
   title: 'Tatort Zürich — News & Hintergründe',
   description: 'Tatort Zürich: Neue Folgen, Drehorte an der Limmat und das Privatleben der Ermittler — Grandjean, Ott und die Zürcher Krimi-Welt.',
+  alternates: { canonical: '/tv-news/tatort-zuerich' },
   openGraph: {
     title: 'Tatort Zürich — News & Hintergründe | Blaulicht-Singles Magazin',
     description: 'Neue Folgen, Drehorte an der Limmat und das Privatleben der Ermittler.',
