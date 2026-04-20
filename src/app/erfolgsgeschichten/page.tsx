@@ -10,7 +10,10 @@ export const metadata = {
 const rotations: Array<'left' | 'right' | 'slight'> = ['left', 'right', 'slight'];
 
 export default async function Erfolgsgeschichten() {
-  const stories = await reader.collections.stories.all();
+  const allStories = await reader.collections.stories.all();
+  const stories = [...allStories].sort((a, b) =>
+    String(b.entry.publishedAt ?? '').localeCompare(String(a.entry.publishedAt ?? ''))
+  );
 
   return (
     <>
