@@ -19,7 +19,9 @@ export const metadata = {
 
 export default async function TVNews() {
   const seriesArticles = await reader.collections.series.all();
-  const published = seriesArticles.filter((s) => s.entry.status !== 'draft');
+  const byDateDesc = (a: { entry: { publishedAt?: string | null } }, b: { entry: { publishedAt?: string | null } }) =>
+    String(b.entry.publishedAt ?? '').localeCompare(String(a.entry.publishedAt ?? ''));
+  const published = seriesArticles.filter((s) => s.entry.status !== 'draft').sort(byDateDesc);
 
   const bergdoktor = published.filter((s) => s.entry.seriesId === 'bergdoktor');
   const tatort = published.filter((s) => s.entry.seriesId === 'tatort-zuerich');
