@@ -1,5 +1,6 @@
 import { reader } from '@/lib/keystatic';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { SeriesCard } from '@/components/content/SeriesCard';
 import { SendetermineWidget } from '@/components/content/SendetermineWidget';
@@ -29,11 +30,14 @@ export default async function Bergdoktor() {
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">
       <section className="relative overflow-hidden min-h-[320px] md:min-h-[440px]">
         <div className="absolute inset-0">
-          <img width="600" height="400"
+          <Image
             src="/images/hero-bergdoktor.webp"
             alt="Arzt im weissen Kittel blickt von einer Alp auf ein Schweizer Bergdorf mit schneebedeckten Gipfeln"
+            width={1600}
+            height={885}
             className="w-full h-full object-cover"
             style={{ objectPosition: '50% 20%' }}
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
         </div>
