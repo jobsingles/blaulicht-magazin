@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  alternates: { canonical: \'/kontakt\' },
+  alternates: { canonical: '/kontakt' },
   title: 'Kontakt — Blaulicht Magazin | blaulichtsingles.ch',
   description:
     'Kontakt zum Blaulicht-Magazin: Redaktion, Hinweise zu Artikeln, Pressekontakt, Werbung. Wir antworten innerhalb von 48 Stunden.',

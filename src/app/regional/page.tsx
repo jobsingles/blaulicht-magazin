@@ -5,7 +5,7 @@ import { PillarHero } from '@/components/content/PillarHero';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const metadata = {
-  alternates: { canonical: \'/regional\' },
+  alternates: { canonical: '/regional' },
   title: 'Regional',
   description: 'Blaulicht-Dating in deinem Kanton — regionale Tipps und lokale Singles für Polizei, Sanität und Feuerwehr.',
 };
