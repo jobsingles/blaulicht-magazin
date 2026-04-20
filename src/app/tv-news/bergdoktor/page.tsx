@@ -23,9 +23,9 @@ export const metadata = {
 
 export default async function Bergdoktor() {
   const allSeries = await reader.collections.series.all();
-  const articles = allSeries.filter(
-    (s) => s.entry.seriesId === 'bergdoktor' && s.entry.status !== 'draft'
-  );
+  const articles = allSeries
+    .filter((s) => s.entry.seriesId === 'bergdoktor' && s.entry.status !== 'draft')
+    .sort((a, b) => String(b.entry.publishedAt ?? '').localeCompare(String(a.entry.publishedAt ?? '')));
 
   return (
     <div data-theme="dark" className="bg-background text-foreground min-h-screen">
