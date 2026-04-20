@@ -11,6 +11,10 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { AnimatedStats } from '@/components/ui/AnimatedCounter';
 import { MatchQuiz } from '@/components/ui/MatchQuiz';
 
+export const metadata = {
+  alternates: { canonical: '/' },
+};
+
 const rotations: Array<'left' | 'right' | 'slight'> = ['left', 'right', 'slight'];
 
 export default async function HomePage() {

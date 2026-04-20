@@ -2,6 +2,7 @@ import { reader } from '@/lib/keystatic';
 import { SuccessStory } from '@/components/content/SuccessStory';
 
 export const metadata = {
+  alternates: { canonical: \'/erfolgsgeschichten\' },
   title: 'Erfolgsgeschichten',
   description: 'Echte Liebesgeschichten von Blaulicht-Singles — Paare die sich über uns gefunden haben.',
 };

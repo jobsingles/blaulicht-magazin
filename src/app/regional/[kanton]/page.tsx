@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ kanton: s
   return {
     title: `Singles ${label} — Blaulicht-Dating Kanton ${label}`,
     description: `Polizei, Feuerwehr und Sanität: Singles im Kanton ${label} kennenlernen. Regionale Tipps, Treffpunkte und Bekanntschaften für Blaulicht-Singles aus ${label}.`,
+    alternates: { canonical: `/regional/${kanton}` },
   };
 }
 

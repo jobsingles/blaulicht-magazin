@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: seoTitle || article.title,
     description: seoDescription || article.excerpt,
+    alternates: { canonical: `/tv-news/tatort-zuerich/${slug}` },
     openGraph: {
       title: seoTitle || article.title,
       description: seoDescription || article.excerpt,

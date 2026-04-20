@@ -12,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${author.name} — Autor | Blaulicht Magazin`,
     description: author.bio || `Artikel von ${author.name} auf dem Blaulicht Magazin.`,
+    alternates: { canonical: `/autor/${slug}` },
     openGraph: {
       title: `${author.name} — Autor | Blaulicht Magazin`,
       description: author.bio || undefined,

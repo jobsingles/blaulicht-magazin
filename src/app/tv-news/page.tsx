@@ -5,6 +5,7 @@ import { SeriesCard } from '@/components/content/SeriesCard';
 export const metadata = {
   title: 'TV News — Tatort Zürich & Der Bergdoktor',
   description: 'Blaulicht-Singles TV News: Hintergrund-Storys zu Tatort Zürich und Der Bergdoktor — was die Darsteller privat machen, Drehorte und neue Folgen.',
+  alternates: { canonical: '/tv-news' },
   openGraph: {
     title: 'TV News — Tatort Zürich & Der Bergdoktor | Blaulicht-Singles Magazin',
     description: 'Hintergrund-Storys zu Tatort Zürich und Der Bergdoktor — was die Darsteller privat machen, Drehorte und neue Folgen.',
