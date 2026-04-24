@@ -91,13 +91,13 @@ export function videoJsonLd({
   description,
   videoId,
   uploadDate,
-  duration,
+  duration = 'PT35S',
 }: {
   name: string;
   description: string;
   videoId: string;
   uploadDate: string;
-  duration: string;
+  duration?: string;
 }) {
   return {
     '@context': 'https://schema.org',
@@ -115,6 +115,43 @@ export function videoJsonLd({
       url: 'https://blaulichtsingles.ch',
     },
   };
+}
+
+/**
+ * Extract YouTube embed info from a Keystatic Markdoc content tree.
+ * Finds the first `{% youtube url="..." title="..." /%}` tag node.
+ */
+export function extractYoutubeEmbed(content: unknown): { videoId: string; title: string } | null {
+  const root = content && typeof content === 'object' && 'node' in content
+    ? (content as { node: unknown }).node
+    : content;
+  let found: { videoId: string; title: string } | null = null;
+
+  function walk(n: unknown): void {
+    if (found || !n || typeof n !== 'object') return;
+    const node = n as {
+      type?: string;
+      name?: string;
+      tag?: string;
+      attributes?: { url?: string; title?: string };
+      children?: unknown[];
+    };
+    const tagName = node.tag ?? node.name;
+    if (node.type === 'tag' && tagName === 'youtube') {
+      const url = node.attributes?.url;
+      const title = node.attributes?.title ?? '';
+      if (url) {
+        const m = url.match(/(?:v=|youtu\.be\/|shorts\/)([^&\s?]+)/);
+        if (m) {
+          found = { videoId: m[1], title };
+          return;
+        }
+      }
+    }
+    if (Array.isArray(node.children)) node.children.forEach(walk);
+  }
+  walk(root);
+  return found;
 }
 
 export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
