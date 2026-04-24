@@ -319,6 +319,11 @@
       "source": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-franz-kafka-2026-03-30",
       "destination": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-carol-schuler-franz-kafka",
       "permanent": true
+    },
+    {
+      "source": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-koenige-der-nacht-2026",
+      "destination": "/magazin/tv-news/tatort-zuerich/tatort-zuerich-anna-pieri-zuercher-koenige-der-nacht-2026",
+      "permanent": true
     }
   ],
   "rewrites": [
