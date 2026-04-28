@@ -8,6 +8,12 @@ export const metadata = {
   alternates: { canonical: '/regional' },
   title: 'Regional',
   description: 'Blaulicht-Dating in deinem Kanton — regionale Tipps und lokale Singles für Polizei, Sanität und Feuerwehr.',
+  openGraph: {
+    url: 'https://blaulichtsingles.ch/magazin/regional',
+    type: 'website' as const,
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
+  },
 };
 
 const BERUFE = [

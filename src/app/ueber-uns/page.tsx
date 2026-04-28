@@ -7,6 +7,12 @@ export const metadata = {
   alternates: { canonical: '/ueber-uns' },
   title: 'Über uns — BlaulichtSingles.ch',
   description: 'Thomas Honold: Vom Küchenmeister und Marine-Koch zum Gründer des grössten Berufs-Dating-Netzwerks der Schweiz. Die Geschichte hinter BlaulichtSingles.ch.',
+  openGraph: {
+    url: 'https://blaulichtsingles.ch/magazin/ueber-uns',
+    type: 'website' as const,
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
+  },
 };
 
 const faqItems = [

@@ -5,6 +5,12 @@ export const metadata = {
   alternates: { canonical: '/erfolgsgeschichten' },
   title: 'Erfolgsgeschichten',
   description: 'Echte Liebesgeschichten von Blaulicht-Singles — Paare die sich über uns gefunden haben.',
+  openGraph: {
+    url: 'https://blaulichtsingles.ch/magazin/erfolgsgeschichten',
+    type: 'website' as const,
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
+  },
 };
 
 const rotations: Array<'left' | 'right' | 'slight'> = ['left', 'right', 'slight'];

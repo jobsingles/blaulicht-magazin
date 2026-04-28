@@ -11,6 +11,12 @@ export const metadata = {
   alternates: { canonical: '/singles-partnersuche' },
   title: 'Singles & Partnersuche',
   description: 'Partnersuche für Polizei, Sanität und Rettungskräfte — Tipps, Erfahrungen und Cluster-Artikel.',
+  openGraph: {
+    url: 'https://blaulichtsingles.ch/magazin/singles-partnersuche',
+    type: 'website' as const,
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
+  },
 };
 
 const PILLARS = [

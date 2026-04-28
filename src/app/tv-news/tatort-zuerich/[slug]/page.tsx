@@ -56,6 +56,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: seoTitle || article.title,
       description: seoDescription || article.excerpt,
+      url: `https://blaulichtsingles.ch/magazin/tv-news/tatort-zuerich/${slug}`,
+      type: 'article',
+      siteName: 'Blaulicht Magazin',
+      locale: 'de_CH',
       images: article.featuredImage ? [article.featuredImage] : [],
     },
   };

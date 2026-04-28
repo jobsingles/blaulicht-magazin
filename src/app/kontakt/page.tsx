@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: 'Kontakt — Blaulicht Magazin | blaulichtsingles.ch',
   description:
     'Kontakt zum Blaulicht-Magazin: Redaktion, Hinweise zu Artikeln, Pressekontakt, Werbung. Wir antworten innerhalb von 48 Stunden.',
+  openGraph: {
+    url: 'https://blaulichtsingles.ch/magazin/kontakt',
+    type: 'website',
+    siteName: 'Blaulicht Magazin',
+    locale: 'de_CH',
+  },
 };
 
 export default function KontaktPage() {

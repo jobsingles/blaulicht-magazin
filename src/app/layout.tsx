@@ -16,14 +16,14 @@ const BASE_URL = 'https://blaulichtsingles.ch/magazin';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Blaulicht Magazin — Dating für Blaulicht-Singles',
-    template: '%s · Blaulicht',
+    default: '❤️ Blaulicht Magazin — Dating für Blaulicht-Singles',
+    template: '%s ❤️ Blaulicht',
   },
   description:
     'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität. Partnersuche, Erfolgsgeschichten und regionale Tipps.',
   metadataBase: new URL(BASE_URL),
   openGraph: {
-    title: 'Blaulicht Magazin — Dating für Blaulicht-Singles',
+    title: '❤️ Blaulicht Magazin — Dating für Blaulicht-Singles',
     description: 'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität.',
     url: BASE_URL,
     type: 'website',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blaulicht Magazin — Dating für Blaulicht-Singles',
+    title: '❤️ Blaulicht Magazin — Dating für Blaulicht-Singles',
     description: 'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität.',
     images: [`${BASE_URL}/images/hero-startseite.webp`],
   },
