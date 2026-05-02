@@ -5,7 +5,11 @@ import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
-const API_KEY = process.env.TOGETHER_API_KEY || '***REVOKED-TOGETHER-KEY-2026-05-02***';
+const API_KEY = process.env.TOGETHER_API_KEY;
+if (!API_KEY) {
+  console.error('FATAL: TOGETHER_API_KEY env var fehlt');
+  process.exit(1);
+}
 const OUT_ROOT = '/docker/projects/blaulicht-magazin/public/images/bekanntschaften';
 
 const CITIES = {
