@@ -17,7 +17,7 @@ const BASE_URL = 'https://blaulichtsingles.ch/magazin';
 export const metadata: Metadata = {
   title: {
     default: '❤️ Blaulicht Magazin — Dating für Blaulicht-Singles',
-    template: '%s ❤️ Blaulicht',
+    template: '%s ❤️',
   },
   description:
     'Das Magazin für Singles bei Polizei, Feuerwehr und Sanität. Partnersuche, Erfolgsgeschichten und regionale Tipps.',
