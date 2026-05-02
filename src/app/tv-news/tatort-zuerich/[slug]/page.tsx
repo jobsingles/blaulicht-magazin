@@ -11,6 +11,7 @@ import { HeartButton } from '@/components/ui/HeartButton';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { ArticleByline } from '@/components/content/ArticleByline';
 import { PillarBacklinkCard } from '@/components/content/PillarBacklinkCard';
+import { RelatedSeriesArticles } from '@/components/content/RelatedSeriesArticles';
 import { JsonLd, articleJsonLd, faqJsonLd, videoJsonLd, extractYoutubeEmbed } from '@/components/seo/JsonLd';
 import { AuthorBio } from '@/components/ui/AuthorBio';
 
@@ -159,6 +160,8 @@ export default async function TatortArticle({ params }: { params: Promise<{ slug
             socialLinks={author.socialLinks}
           />
         )}
+
+        <RelatedSeriesArticles currentSlug={slug} currentSeriesId={article.seriesId} />
 
         <PillarBacklinkCard variant="tv-news" seriesId="tatort-zuerich" />
 
